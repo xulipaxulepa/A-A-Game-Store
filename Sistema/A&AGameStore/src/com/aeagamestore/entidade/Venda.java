@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
@@ -24,50 +25,77 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Arley
+ * @author arley
  */
 @Entity
-@Table(name = "compras")
-public class Compra implements Serializable {
-
+@Table(name = "vendas")
+public class Venda implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
     @ManyToOne
-    private Fornecedor fornecedor;
+    public Cliente cliente;
+    
+    @OneToMany
+    public Funcionario antendente;
     
     @Column(precision = 5, scale = 2)
     private BigDecimal valor;
     
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "vendas")
+    private List<ItemVenda> itens;
+    
     @Temporal(TemporalType.DATE)
     private Date data;
     
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "compras")
-    private List<ItemCompra> itens;
+    @ManyToOne
+    private FormaDePagamento formaDePagamento;
 
-    public Compra(){
+    public FormaDePagamento getFormaDePagamento() {
+        return formaDePagamento;
+    }
+
+    public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
+        this.formaDePagamento = formaDePagamento;
+    }
+    
+    public Venda() {
         this.itens = new LinkedList<>();
         this.valor = new BigDecimal("0.00");
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-    
-    public void add(ItemCompra i){
-        this.itens.add(i);
-        this.valor.add(i.getProduto().getValor().multiply(new BigDecimal(i.getQuantidade())));
-    }
-    
-    public void remove(ItemCompra i){
-        this.itens.remove(i);
-        this.valor.subtract(i.getProduto().getValor().multiply(new BigDecimal(i.getQuantidade())));
+    public Date getData() {
+        return data;
     }
 
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
+    public void setData(Date data) {
+        this.data = data;
+    }
+  
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public Funcionario getAntendente() {
+        return antendente;
+    }
+
+    public void setAntendente(Funcionario antendente) {
+        this.antendente = antendente;
     }
 
     public BigDecimal getValor() {
@@ -78,28 +106,27 @@ public class Compra implements Serializable {
         this.valor = valor;
     }
 
-    public Date getData() {
-        return data;
+    public BigDecimal getValorTotal() {
+        return valor;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valor = valorTotal;
     }
 
-    public List<ItemCompra> getItens() {
+    public List<ItemVenda> getItens() {
         return itens;
     }
 
-    public void setItens(List<ItemCompra> itens) {
-        this.itens = itens;
+    
+    public void add(ItemVenda i){
+        this.itens.add(i);
+        this.valor.add(i.getProduto().getValor().multiply(new BigDecimal(i.getQuantidade())));
     }
     
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void remove(ItemVenda i){
+        this.itens.remove(i);
+        this.valor.subtract(i.getProduto().getValor().multiply(new BigDecimal(i.getQuantidade())));
     }
 
     @Override
@@ -112,10 +139,10 @@ public class Compra implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Compra)) {
+        if (!(object instanceof Venda)) {
             return false;
         }
-        Compra other = (Compra) object;
+        Venda other = (Venda) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -124,7 +151,7 @@ public class Compra implements Serializable {
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.MeuPrimeiroJPA.Entidades.Compra[ id=" + id + " ]";
+        return "br.edu.ifnmg.MeuPrimeiroJPA.Entidades.Venda[ id=" + id + " ]";
     }
     
 }

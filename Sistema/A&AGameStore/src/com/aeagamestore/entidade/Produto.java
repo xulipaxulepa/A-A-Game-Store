@@ -40,6 +40,21 @@ public abstract class Produto implements Serializable {
     @Column(nullable = false)
     private int estoque;
 
+    @Column(precision = 5, scale = 2)
+    private BigDecimal valor;
+
+    public Produto() {
+        this.valor = new BigDecimal("0.00");
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+    
     public Long getId() {
         return id;
     }

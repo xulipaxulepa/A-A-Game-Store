@@ -3,78 +3,82 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
-import javax.persistence.Column;
+import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
  *
- * @author Arley
+ * @author arley
  */
 @Entity
-@Table(name = "fornecedores")
-public class Fornecedor implements Serializable {
-
+@Table(name = "itensvendas")
+public class ItemVenda implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(unique = true, nullable = false, length = 500)
-    private String cnpj;
+    @ManyToOne()
+    private Venda venda;
     
-    @Column(nullable = false, length = 500)
-    private String nome;
+    @ManyToOne
+    private Produto produto;   
     
-    @OneToMany
-    private List<Telefone> telefones;
+    private int quantidade;
 
-    public Fornecedor(){
-      this.telefones = new LinkedList<>();
+    public ItemVenda(Venda venda, Produto produto, int quantidade) {
+        this.venda = venda;
+        this.produto = produto;
+        this.quantidade = quantidade;
     }
+
+    public ItemVenda() {
+    }
+    
+    
+
     public Long getId() {
         return id;
     }
 
-    public void addTelefone(Telefone t){
-        this.telefones.add(t);
-    }
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
-    public String getNome() {
-        return nome;
+    public Venda getVenda() {
+        return venda;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 
-    public List<Telefone> getTelefones() {
-        return telefones;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setTelefones(List<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
+    
+    
 
     @Override
     public int hashCode() {
@@ -86,10 +90,10 @@ public class Fornecedor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Fornecedor)) {
+        if (!(object instanceof ItemVenda)) {
             return false;
         }
-        Fornecedor other = (Fornecedor) object;
+        ItemVenda other = (ItemVenda) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -98,7 +102,7 @@ public class Fornecedor implements Serializable {
 
     @Override
     public String toString() {
-        return "com.aeagamestore.entidade.Fornecedor[ id=" + id + " ]";
+        return "br.edu.ifnmg.MeuPrimeiroJPA.Entidades.ItemVenda[ id=" + id + " ]";
     }
     
 }

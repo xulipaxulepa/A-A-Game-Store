@@ -33,6 +33,10 @@ public class Telefone implements Serializable {
     @Column(nullable = false, length = 10)
     private String tipo;
 
+    public Telefone(String telefone, String tipo){
+        this.telefone = telefone;
+        this.tipo = tipo;
+    }
     public String getTelefone() {
         return telefone;
     }

@@ -3,14 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Cargo.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/META-INF/persistence.xml</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/IPessoa.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Pessoa.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Fornecedor.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Endereco.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Telefone.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Cliente.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/IPessoa.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Telefone.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Pessoa.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Cargo.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Funcionario.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Produto.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Jogo.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Console.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Periferico.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Genero.java</file>
+            <file>file:/home/grupoandroid/Vídeos/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Fabricante.java</file>
         </group>
     </open-files>
 </project-private>

@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "funcionarios")
-public class Funcionario extends Pessoa implements Serializable {
+public class Funcionario extends Pessoa implements Serializable{
     
     @ManyToOne
     private Cargo cargo;

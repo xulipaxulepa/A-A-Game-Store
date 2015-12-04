@@ -6,11 +6,11 @@
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,43 +18,23 @@ import javax.persistence.Table;
  * @author Arley
  */
 @Entity
-@Table(name = "telefones")
-public class Telefone implements Serializable {
+@Table(name = "clientes")
+public class Cliente extends Pessoa implements Serializable {
 
-   
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(nullable = false, length = 20)
-    private String telefone;
     
-    @Column(nullable = false, length = 10)
-    private String tipo;
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
+    @OneToOne
+    Endereco endereco;
     
+
     public Long getId() {
         return id;
     }
 
-   
     public void setId(Long id) {
         this.id = id;
     }
@@ -69,10 +49,10 @@ public class Telefone implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Telefone)) {
+        if (!(object instanceof Cliente)) {
             return false;
         }
-        Telefone other = (Telefone) object;
+        Cliente other = (Cliente) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -81,7 +61,7 @@ public class Telefone implements Serializable {
 
     @Override
     public String toString() {
-        return "com.aeagamestore.entidade.Telefone[ id=" + id + " ]";
+        return "com.aeagamestore.entidade.Cliente[ id=" + id + " ]";
     }
     
 }

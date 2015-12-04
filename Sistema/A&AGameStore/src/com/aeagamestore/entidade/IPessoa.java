@@ -10,5 +10,6 @@ package com.aeagamestore.entidade;
  * @author Arley
  */
 public interface IPessoa {
+    
     public boolean autentica(String email, String senha);
 }

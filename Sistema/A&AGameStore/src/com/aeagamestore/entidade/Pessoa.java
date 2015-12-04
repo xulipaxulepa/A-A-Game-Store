@@ -7,11 +7,15 @@ package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,8 +26,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "pessoas")
-public abstract class Pessoa implements Serializable {
-
+public abstract class Pessoa implements Serializable, IPessoa {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,11 +44,18 @@ public abstract class Pessoa implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
     
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pessoas")
+    List<Telefone> telefones;
+    
     @Column(unique = true, length = 100)
     private String email;
     
     @Column(unique = false, length = 100)
     private String senha;
+    
+    public Pessoa(){
+        this.telefones = new LinkedList<>();
+    }
 
     public String getNome() {
         return nome;
@@ -126,6 +136,11 @@ public abstract class Pessoa implements Serializable {
     @Override
     public String toString() {
         return "com.aeagamestore.entidade.Pessoa[ id=" + id + " ]";
+    }
+
+    @Override
+    public boolean autentica(String email, String senha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

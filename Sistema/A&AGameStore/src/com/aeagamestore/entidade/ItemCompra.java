@@ -6,13 +6,14 @@
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,23 +21,28 @@ import javax.persistence.Table;
  * @author Arley
  */
 @Entity
-@Table(name = "fornecedores")
-public class Fornecedor implements Serializable {
+@Table(name = "itensCompra")
+public class ItemCompra implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @Column(unique = true, nullable = false, length = 500)
-    private String cnpj;
+    @ManyToOne()
+    private Compra compra;
     
-    @Column(nullable = false, length = 500)
-    private String nome;
+    @ManyToOne
+    private Produto produto;   
     
-    @OneToMany
-    private List<Telefone> telefones;
+    private int quantidade;
 
+    public ItemCompra(Compra compra, Produto produto, int quantidade) {
+        this.compra = compra;
+        this.produto = produto;
+        this.quantidade = quantidade;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -45,28 +51,28 @@ public class Fornecedor implements Serializable {
         this.id = id;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    public Compra getCompra() {
+        return compra;
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 
-    public String getNome() {
-        return nome;
+    public Produto getProduto() {
+        return produto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
-    public List<Telefone> getTelefones() {
-        return telefones;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setTelefones(List<Telefone> telefones) {
-        this.telefones = telefones;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     @Override
@@ -79,10 +85,10 @@ public class Fornecedor implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Fornecedor)) {
+        if (!(object instanceof ItemCompra)) {
             return false;
         }
-        Fornecedor other = (Fornecedor) object;
+        ItemCompra other = (ItemCompra) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -91,7 +97,7 @@ public class Fornecedor implements Serializable {
 
     @Override
     public String toString() {
-        return "com.aeagamestore.entidade.Fornecedor[ id=" + id + " ]";
+        return "com.aeagamestore.entidade.ItemCompra[ id=" + id + " ]";
     }
     
 }

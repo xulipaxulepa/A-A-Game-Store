@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -33,10 +34,24 @@ public class Telefone implements Serializable {
     @Column(nullable = false, length = 10)
     private String tipo;
 
+    @ManyToOne
+    private Pessoa pessoa;
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+    
+    public Telefone(){}
+    
     public Telefone(String telefone, String tipo){
         this.telefone = telefone;
         this.tipo = tipo;
     }
+    
     public String getTelefone() {
         return telefone;
     }

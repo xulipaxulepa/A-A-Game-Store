@@ -5,26 +5,26 @@
     <class>com.aeagamestore.entidade.Pessoa</class>
     <class>com.aeagamestore.entidade.Telefone</class>
     <class>com.aeagamestore.entidade.Cliente</class>
-    <class>com.aeagamestore.entidade.Endereco</class>
-    <class>com.aeagamestore.entidade.Cargo</class>
-    <class>com.aeagamestore.entidade.Compra</class>
-    <class>com.aeagamestore.entidade.Console</class>
-    <class>com.aeagamestore.entidade.FormaDePagamento</class>
-    <class>com.aeagamestore.entidade.Fornecedor</class>
     <class>com.aeagamestore.entidade.Funcionario</class>
+    <class>com.aeagamestore.entidade.Cargo</class>
+    <class>com.aeagamestore.entidade.Endereco</class>
     <class>com.aeagamestore.entidade.Genero</class>
-    <class>com.aeagamestore.entidade.ItemCompra</class>
-    <class>com.aeagamestore.entidade.ItemVenda</class>
     <class>com.aeagamestore.entidade.Jogo</class>
-    <class>com.aeagamestore.entidade.Periferico</class>
     <class>com.aeagamestore.entidade.Produto</class>
+    <class>com.aeagamestore.entidade.Fornecedor</class>
+    <class>com.aeagamestore.entidade.Console</class>
+    <class>com.aeagamestore.entidade.Fabricante</class>
+    <class>com.aeagamestore.entidade.Periferico</class>
+    <class>com.aeagamestore.entidade.Compra</class>
+    <class>com.aeagamestore.entidade.ItemCompra</class>
+    <class>com.aeagamestore.entidade.FormaDePagamento</class>
+    <class>com.aeagamestore.entidade.ItemVenda</class>
     <class>com.aeagamestore.entidade.Venda</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/A_AGameStorePU"/>
       <property name="javax.persistence.jdbc.user" value="A_AGameStorePU"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value="A_AGameStorePU"/>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>

@@ -46,6 +46,9 @@ public class Endereco implements Serializable {
     
     @Column(nullable = false, unique = false, length = 100)
     private String estado;
+    
+    public Endereco(){
+    }
 
     public String getRua() {
         return rua;

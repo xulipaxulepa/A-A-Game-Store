@@ -33,6 +33,9 @@ public class Cargo implements Serializable {
     @Column(nullable = false, length = 500)
     private String observação;
     
+    public Cargo(){
+    }
+    
     public Long getId() {
         return id;
     }

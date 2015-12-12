@@ -38,13 +38,14 @@ public class Venda implements Serializable {
     @ManyToOne
     public Cliente cliente;
     
-    @OneToMany
-    public Funcionario antendente;
-    
+    @ManyToOne
+    public Funcionario funcionario;
+
+       
     @Column(precision = 5, scale = 2)
     private BigDecimal valor;
     
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "vendas")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "venda")
     private List<ItemVenda> itens;
     
     @Temporal(TemporalType.DATE)
@@ -56,6 +57,16 @@ public class Venda implements Serializable {
     public FormaDePagamento getFormaDePagamento() {
         return formaDePagamento;
     }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+    
+    
 
     public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
         this.formaDePagamento = formaDePagamento;
@@ -90,14 +101,7 @@ public class Venda implements Serializable {
         this.cliente = cliente;
     }
 
-    public Funcionario getAntendente() {
-        return antendente;
-    }
-
-    public void setAntendente(Funcionario antendente) {
-        this.antendente = antendente;
-    }
-
+    
     public BigDecimal getValor() {
         return valor;
     }

@@ -7,15 +7,19 @@ package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author grupoandroid
  */
+@Entity
+@Table(name = "fabricantes")
 public class Fabricante implements Serializable {
     
     private static final long serialVersionUID = 1L;
@@ -29,14 +33,11 @@ public class Fabricante implements Serializable {
     @Column(nullable = false, length = 500)
     private String website;
     
-    @ManyToOne
-    private Console console;
-    
-    @ManyToOne
-    private Periferico periferico;
-
     public Long getId() {
         return id;
+    }
+
+    public Fabricante() {
     }
 
     public void setId(Long id) {
@@ -57,22 +58,6 @@ public class Fabricante implements Serializable {
 
     public void setWebsite(String website) {
         this.website = website;
-    }
-
-    public Console getConsole() {
-        return console;
-    }
-
-    public void setConsole(Console console) {
-        this.console = console;
-    }
-
-    public Periferico getPeriferico() {
-        return periferico;
-    }
-
-    public void setPeriferico(Periferico periferico) {
-        this.periferico = periferico;
     }
     
 }

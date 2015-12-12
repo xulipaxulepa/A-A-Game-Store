@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,6 +30,9 @@ public class ItemCompra implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @Column(precision = 5, scale = 2)
+    private BigDecimal valor;
+    
     @ManyToOne()
     private Compra compra;
     
@@ -37,10 +41,21 @@ public class ItemCompra implements Serializable {
     
     private int quantidade;
 
+    public ItemCompra() {
+    }
+
     public ItemCompra(Compra compra, Produto produto, int quantidade) {
         this.compra = compra;
         this.produto = produto;
         this.quantidade = quantidade;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
     }
     
     public Long getId() {

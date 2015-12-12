@@ -8,6 +8,7 @@ package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,11 +28,14 @@ public class ItemVenda implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToOne()
+    @ManyToOne
     private Venda venda;
     
     @ManyToOne
-    private Produto produto;   
+    private Produto produto;
+    
+    @Column(precision = 5, scale = 2)
+    private BigDecimal valor;
     
     private int quantidade;
 

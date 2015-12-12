@@ -8,35 +8,44 @@ package com.aeagamestore.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
  *
  * @author grupoandroid
  */
-
 @Entity
 @Table(name = "produtos")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING, length = 32)
+@DiscriminatorValue("produto")
 public abstract class Produto implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column(nullable = false, length = 500)
     private String nome;
-    
+
     @Column(nullable = false, length = 500)
-    private String descrição;
-    
+    private String descricao;
+
+    private String DTYPE;
+
     @Column(nullable = false)
     private BigDecimal valorunitario;
-    
+
     @Column(nullable = false)
     private int estoque;
 
@@ -54,7 +63,7 @@ public abstract class Produto implements Serializable {
     public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -72,11 +81,11 @@ public abstract class Produto implements Serializable {
     }
 
     public String getDescrição() {
-        return descrição;
+        return descricao;
     }
 
     public void setDescrição(String descrição) {
-        this.descrição = descrição;
+        this.descricao = descrição;
     }
 
     public BigDecimal getValorunitario() {
@@ -94,7 +103,5 @@ public abstract class Produto implements Serializable {
     public void setEstoque(int estoque) {
         this.estoque = estoque;
     }
-    
-    
-    
+
 }

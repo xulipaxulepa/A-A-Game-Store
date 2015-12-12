@@ -3,17 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Repositorio.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/ClienteRepositorio.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/persistencia/DAOGenerico.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/apresentacao/Testes.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/PessoaRepositorio.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Fornecedor.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Telefone.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/FornecedorRepositorio.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/persistencia/FornecedorDAO.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Cargo.java</file>
-            <file>file:/C:/Users/Arley/Google%20Drive/TADS-IFNMG/5º%20Periodo/Arquitetura%20de%20Software/A-A-Game-Store/Sistema/A&amp;AGameStore/src/META-INF/persistence.xml</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/META-INF/persistence.xml</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Venda.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Telefone.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/apresentacao/Testes.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Pessoa.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/persistencia/PessoaDAO.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Cargo.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/persistencia/FornecedorDAO.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/persistencia/DAOGenerico.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Funcionario.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Cliente.java</file>
+            <file>file:/home/arley/Projetos/A&amp;AGameStore/A-A-Game-Store/Sistema/A&amp;AGameStore/src/com/aeagamestore/entidade/Endereco.java</file>
         </group>
     </open-files>
 </project-private>

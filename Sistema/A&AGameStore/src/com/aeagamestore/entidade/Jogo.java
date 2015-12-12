@@ -8,7 +8,11 @@ package com.aeagamestore.entidade;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,10 +25,16 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "Jogos")
+@DiscriminatorValue("jogo")
 public class Jogo extends Produto implements Serializable{
     
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
     @Temporal(TemporalType.DATE)
-    private Date dataDeLançamento;
+    private Date dataDeLancamento;
     
     @Column(nullable = false)
     private int ESRB;
@@ -35,12 +45,15 @@ public class Jogo extends Produto implements Serializable{
     @ManyToOne
     private Genero genero;
 
+    public Jogo() {
+    }
+
     public Date getDataDeLançamento() {
-        return dataDeLançamento;
+        return dataDeLancamento;
     }
 
     public void setDataDeLançamento(Date dataDeLançamento) {
-        this.dataDeLançamento = dataDeLançamento;
+        this.dataDeLancamento = dataDeLançamento;
     }
 
     public int getESRB() {

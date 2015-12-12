@@ -8,6 +8,7 @@ package com.aeagamestore.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -19,6 +20,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "funcionarios")
+@DiscriminatorValue("funcionario")
 public class Funcionario extends Pessoa implements Serializable{
     
     @ManyToOne
@@ -27,6 +29,9 @@ public class Funcionario extends Pessoa implements Serializable{
     
     @Column(nullable = false)
     private BigDecimal salario;
+    
+    public Funcionario(){
+    }
 
     public Cargo getCargo() {
         return cargo;

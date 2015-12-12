@@ -5,9 +5,12 @@
  */
 package com.aeagamestore.apresentacao;
 
-import com.aeagamestore.entidade.Fornecedor;
+import com.aeagamestore.entidade.Cliente;
+import com.aeagamestore.entidade.Endereco;
 import com.aeagamestore.entidade.Telefone;
-import com.aeagamestore.persistencia.FornecedorDAO;
+import com.aeagamestore.persistencia.ClienteDAO;
+import java.util.Date;
+
 
 /**
  *
@@ -18,19 +21,29 @@ public class Testes {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Fornecedor f = new Fornecedor();
+               
+         Cliente arley = new Cliente();
          
-         f.setCnpj("101010");
-         f.setNome("MicroSoft");
-         Telefone t = new Telefone("38-91080138", "Celular");
+         arley = (Cliente) arley;
          
-         f.addTelefone(t);
-         
-         FornecedorDAO fdao = new FornecedorDAO();
-         
-         fdao.Salvar(f);
-         
+         Endereco e = new Endereco();
+         e.setBairro("Cidade Nova");
+         e.setCidade("Januária");
+         e.setRua("I");
+         e.setNumero(25);
+         e.setEstado("MG");
          
          
+        arley.setEndereco(e);
+        arley.setCpf("1010101");
+        arley.setNome("Arley");
+        arley.setDataNascimento(new Date());
+        arley.setEmail("arley.msn@hotmail.com");
+        arley.setSenha("10101");
+        arley.addTelefone(new Telefone("38 99802829", "Celular"));
+        
+        ClienteDAO pdao = new ClienteDAO();
+        pdao.Salvar(arley);
+        
     }
 }

@@ -41,6 +41,8 @@ public class Fornecedor implements Serializable {
     public Fornecedor(){
       this.telefones = new LinkedList<>();
     }
+    
+    
     public Long getId() {
         return id;
     }

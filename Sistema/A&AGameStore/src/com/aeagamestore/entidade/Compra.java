@@ -41,10 +41,11 @@ public class Compra implements Serializable {
     @Column(precision = 5, scale = 2)
     private BigDecimal valor;
     
+
     @Temporal(TemporalType.DATE)
     private Date data;
     
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "compras")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "compra")
     private List<ItemCompra> itens;
 
     public Compra(){

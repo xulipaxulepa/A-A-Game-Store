@@ -6,6 +6,7 @@
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "clientes")
+@DiscriminatorValue("cliente")
 public class Cliente extends Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,7 +32,17 @@ public class Cliente extends Pessoa implements Serializable {
     @OneToOne
     Endereco endereco;
     
+    public Cliente(){
+    }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+    
     public Long getId() {
         return id;
     }

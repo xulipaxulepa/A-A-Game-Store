@@ -11,10 +11,15 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,6 +31,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "pessoas")
+@Inheritance(strategy=InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING, length = 32)
+@DiscriminatorValue("pessoa")
 public abstract class Pessoa implements Serializable, IPessoa {
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,7 +52,10 @@ public abstract class Pessoa implements Serializable, IPessoa {
     @Temporal(TemporalType.DATE)
     private Date dataNascimento;
     
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pessoas")
+    
+    private String DTYPE;
+    
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pessoa")
     List<Telefone> telefones;
     
     @Column(unique = true, length = 100)
@@ -52,7 +63,7 @@ public abstract class Pessoa implements Serializable, IPessoa {
     
     @Column(unique = false, length = 100)
     private String senha;
-    
+      
     public Pessoa(){
         this.telefones = new LinkedList<>();
     }
@@ -111,6 +122,10 @@ public abstract class Pessoa implements Serializable, IPessoa {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public void addTelefone(Telefone telefone){
+        this.telefones.add(telefone);
     }
 
     @Override

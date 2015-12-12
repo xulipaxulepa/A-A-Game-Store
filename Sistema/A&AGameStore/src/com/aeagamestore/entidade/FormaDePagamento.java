@@ -29,6 +29,9 @@ public class FormaDePagamento implements Serializable {
     @Column(nullable = false, length = 500)
     private String tipo;
 
+    public FormaDePagamento() {
+    }
+
     public String getTipo() {
         return tipo;
     }

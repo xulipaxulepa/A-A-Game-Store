@@ -1,5 +1,7 @@
 
-package com.aeagamestore.entidade;
+package com.aeagamestore.entidade.repositorios;
+
+import com.aeagamestore.entidade.Pessoa;
 
 /**
  *

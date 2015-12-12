@@ -6,7 +6,7 @@
 package com.aeagamestore.persistencia;
 
 import com.aeagamestore.entidade.Fornecedor;
-import com.aeagamestore.entidade.FornecedorRepositorio;
+import com.aeagamestore.entidade.repositorios.FornecedorRepositorio;
 import java.util.List;
 import javax.persistence.Query;
 

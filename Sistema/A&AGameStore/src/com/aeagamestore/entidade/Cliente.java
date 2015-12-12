@@ -6,11 +6,14 @@
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,7 +32,8 @@ public class Cliente extends Pessoa implements Serializable {
     private Long id;
     
     
-    @OneToOne
+    
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
     Endereco endereco;
     
     public Cliente(){

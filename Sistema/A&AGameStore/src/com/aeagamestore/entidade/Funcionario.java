@@ -7,6 +7,7 @@ package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
 @DiscriminatorValue("funcionario")
 public class Funcionario extends Pessoa implements Serializable{
     
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL)
     private Cargo cargo;
     
     

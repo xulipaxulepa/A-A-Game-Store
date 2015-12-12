@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aeagamestore.entidade;
+package com.aeagamestore.entidade.repositorios;
 
 import java.util.List;
 
@@ -16,4 +16,5 @@ public interface Repositorio<T> {
     public T Abrir(Long id);
     public boolean Apagar(T obj);
     public List<T> Buscar(T filtro);
+    public boolean Atualizar(T obj);
 }

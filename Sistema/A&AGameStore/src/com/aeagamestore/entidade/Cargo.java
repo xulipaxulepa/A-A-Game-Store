@@ -35,6 +35,13 @@ public class Cargo implements Serializable {
     
     public Cargo(){
     }
+
+    public Cargo(String nome, String observação) {
+        this.nome = nome;
+        this.observação = observação;
+    }
+    
+    
     
     public Long getId() {
         return id;

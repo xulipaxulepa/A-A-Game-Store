@@ -31,7 +31,7 @@ public class Genero implements Serializable {
     private String nome;
     
     @Column(nullable = false, length = 500)
-    private String descrição;
+    private String descricao;
 
     public Long getId() {
         return id;
@@ -39,6 +39,14 @@ public class Genero implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Genero() {
+    }
+
+    public Genero(String nome, String descricao) {
+        this.nome = nome;
+        this.descricao = descricao;
     }
 
     public String getNome() {
@@ -49,14 +57,12 @@ public class Genero implements Serializable {
         this.nome = nome;
     }
 
-    public String getDescrição() {
-        return descrição;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescrição(String descrição) {
-        this.descrição = descrição;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-    
-    
     
 }

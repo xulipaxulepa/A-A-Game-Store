@@ -34,17 +34,6 @@ public class Telefone implements Serializable {
     @Column(nullable = false, length = 10)
     private String tipo;
 
-    @ManyToOne
-    private Pessoa pessoa;
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-    
     public Telefone(){}
     
     public Telefone(String telefone, String tipo){

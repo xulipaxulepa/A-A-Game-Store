@@ -55,7 +55,7 @@ public abstract class Pessoa implements Serializable, IPessoa {
     
     private String DTYPE;
     
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pessoa")
+    @OneToMany(cascade = CascadeType.ALL)
     List<Telefone> telefones;
     
     @Column(unique = true, length = 100)

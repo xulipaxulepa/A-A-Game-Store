@@ -8,12 +8,18 @@ package com.aeagamestore.apresentacao;
 import com.aeagamestore.entidade.Cargo;
 import com.aeagamestore.entidade.Cliente;
 import com.aeagamestore.entidade.Endereco;
+import com.aeagamestore.entidade.Fornecedor;
 import com.aeagamestore.entidade.Funcionario;
+import com.aeagamestore.entidade.Genero;
+import com.aeagamestore.entidade.Jogo;
 import com.aeagamestore.entidade.Pessoa;
+import com.aeagamestore.entidade.Produto;
 import com.aeagamestore.entidade.Telefone;
 import com.aeagamestore.persistencia.ClienteDAO;
+import com.aeagamestore.persistencia.FornecedorDAO;
 import com.aeagamestore.persistencia.FuncionarioDAO;
 import com.aeagamestore.persistencia.PessoaDAO;
+import com.aeagamestore.persistencia.ProdutoDAO;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +34,37 @@ public class Testes {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Produto produto = new Jogo();
+        produto.setNome("Super Mário");
+        produto.setDescricao("Jogo Super Mario V3");
+        produto.setEstoque(10);
+        
+        Jogo jogo = (Jogo) produto;
+        
+        jogo.setDataDeLançamento(new Date());
+        jogo.setESRB(16);
+        jogo.setMidia("DVD");
+        jogo.setGenero(new Genero("Aventua", "Diversão em alta pressão"));
+        
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        produtoDAO.Salvar(jogo);
+        
+        
+        List<Fornecedor> fornecedores;
+        
+        
+        
+        
+        /*
+        fornecedor.setCnpj("10101010");
+        fornecedor.setNome("Samsung");
+        fornecedor.addTelefone(new Telefone("3890304939", "Fixo"));
+        fornecedor.addTelefone(new Telefone("3836214628", "-Celular"));*/
+        
+        FornecedorDAO fornecedorDAO = new FornecedorDAO();
+       
+        fornecedores = fornecedorDAO.Buscar(null);
         
         Funcionario f = new Funcionario();
        
@@ -110,6 +147,7 @@ public class Testes {
         c.setNome("Arley Oliveira");
         
         c.getEndereco().setCidade("Januária");
+        c.addTelefone(new Telefone("3898291884", "Celular"));
         
         cdao.Atualizar(c);
         

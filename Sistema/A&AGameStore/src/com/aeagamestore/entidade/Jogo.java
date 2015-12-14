@@ -7,6 +7,7 @@ package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -42,12 +43,12 @@ public class Jogo extends Produto implements Serializable{
     @Column(nullable = false, length = 500)
     private String midia;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Genero genero;
 
     public Jogo() {
     }
-
+    
     public Date getDataDeLançamento() {
         return dataDeLancamento;
     }

@@ -44,12 +44,9 @@ public abstract class Produto implements Serializable {
     private String DTYPE;
 
     @Column(nullable = false)
-    private BigDecimal valorunitario;
-
-    @Column(nullable = false)
     private int estoque;
 
-    @Column(precision = 5, scale = 2)
+    @Column(precision = 5, scale = 2, nullable = false)
     private BigDecimal valor;
 
     public Produto() {
@@ -80,20 +77,12 @@ public abstract class Produto implements Serializable {
         this.nome = nome;
     }
 
-    public String getDescrição() {
+    public String getDescricao() {
         return descricao;
     }
 
-    public void setDescrição(String descrição) {
-        this.descricao = descrição;
-    }
-
-    public BigDecimal getValorunitario() {
-        return valorunitario;
-    }
-
-    public void setValorunitario(BigDecimal valorunitario) {
-        this.valorunitario = valorunitario;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public int getEstoque() {

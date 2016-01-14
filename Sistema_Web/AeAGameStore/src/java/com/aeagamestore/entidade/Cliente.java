@@ -31,8 +31,6 @@ public class Cliente extends Pessoa implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    
-    
     @OneToOne(cascade = CascadeType.ALL, optional = true)
     Endereco endereco;
     

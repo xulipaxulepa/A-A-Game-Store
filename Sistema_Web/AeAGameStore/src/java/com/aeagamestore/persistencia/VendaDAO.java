@@ -8,6 +8,7 @@ package com.aeagamestore.persistencia;
 import com.aeagamestore.entidade.Venda;
 import com.aeagamestore.repositorios.VendaRepositorio;
 import java.util.List;
+import javax.ejb.Singleton;
 
 
 
@@ -15,6 +16,7 @@ import java.util.List;
  *
  * @author xulipaxulepa
  */
+@Singleton
 public class VendaDAO extends DAOGenerico<Venda> implements VendaRepositorio{
     
     public VendaDAO(){

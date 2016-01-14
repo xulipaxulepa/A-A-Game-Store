@@ -6,7 +6,11 @@
 package com.aeagamestore.persistencia;
 
 import com.aeagamestore.entidade.Cliente;
+import com.aeagamestore.entidade.Produto;
+import com.aeagamestore.repositorios.ClienteRepositorio;
+import com.aeagamestore.repositorios.ProdutoRepositorio;
 import java.util.List;
+import javax.ejb.Singleton;
 import javax.persistence.Query;
 
 
@@ -15,7 +19,9 @@ import javax.persistence.Query;
  *
  * @author Arley
  */
-public class ClienteDAO extends DAOGenerico<Cliente> {
+
+@Singleton
+public class ClienteDAO extends DAOGenerico<Cliente> implements ClienteRepositorio {
 
     public ClienteDAO() {
         super(Cliente.class);
@@ -45,4 +51,5 @@ public class ClienteDAO extends DAOGenerico<Cliente> {
     public boolean Atualizar(Cliente obj) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

@@ -8,6 +8,7 @@ package com.aeagamestore.persistencia;
 import com.aeagamestore.entidade.Fornecedor;
 import com.aeagamestore.repositorios.FornecedorRepositorio;
 import java.util.List;
+import javax.ejb.Singleton;
 import javax.persistence.Query;
 
 
@@ -16,6 +17,7 @@ import javax.persistence.Query;
  *
  * @author Arley
  */
+@Singleton
 public class FornecedorDAO extends DAOGenerico<Fornecedor> implements FornecedorRepositorio{
 
     public FornecedorDAO() {

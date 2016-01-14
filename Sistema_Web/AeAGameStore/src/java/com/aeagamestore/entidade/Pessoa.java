@@ -34,7 +34,7 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING, length = 32)
 @DiscriminatorValue("pessoa")
-abstract public class Pessoa implements Serializable, IPessoa {
+abstract public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -153,7 +153,7 @@ abstract public class Pessoa implements Serializable, IPessoa {
         return "com.aeagamestore.entidade.Pessoa[ id=" + id + " ]";
     }
 
-    @Override
+
     public boolean autentica(String email, String senha) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

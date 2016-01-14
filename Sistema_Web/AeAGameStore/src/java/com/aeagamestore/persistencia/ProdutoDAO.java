@@ -8,6 +8,7 @@ package com.aeagamestore.persistencia;
 import com.aeagamestore.entidade.Produto;
 import com.aeagamestore.repositorios.ProdutoRepositorio;
 import java.util.List;
+import javax.ejb.Singleton;
 
 
 
@@ -15,6 +16,7 @@ import java.util.List;
  *
  * @author arley
  */
+@Singleton
 public class ProdutoDAO extends DAOGenerico<Produto> implements ProdutoRepositorio{
 
     public ProdutoDAO() {

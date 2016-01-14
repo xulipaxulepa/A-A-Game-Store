@@ -3,44 +3,45 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <h:outputStylesheet name="./css/default.css"/>
-        <h:outputStylesheet name="./css/cssLayout.css"/>
-        <title>Facelets Template</title>
+        <!--    <h:outputStylesheet name="./css/default.css"/>
+                <h:outputStylesheet name="./css/cssLayout.css"/> 
+        -->
+        
+        <title>AeA Game Store</title>
     </h:head>
 
     <h:body>
-        <h:form>
 
-            <div id="top">
-                <ui:insert name="top">
+        <h:form>
+        <div id="top">
                     <p:menubar>
-                        <p:submenu label="Home"  />
-                        <p:submenu label="Cadastros" >
-                                <p:menuitem value="Produtos"></p:menuitem>
-                                <p:menuitem value="Fornecedor"></p:menuitem>
-                                <p:menuitem value="Clientes" ajax="false" action="ClienteListagem.xhtml" />
-                        </p:submenu>
-                            <p:menuitem value="Open"></p:menuitem>
-                            <p:menuitem value="Sair"></p:menuitem>
+                    <p:menuitem value="Inicio" action="index.xhtml" />
+                    <p:menuitem value="Comprar" />
+                    <p:menuitem value="Cadastrar" action="CadastroCliente.xhtml" />
+                    <p:menuitem value="Consultar Clientes" ajax="false" action="ClienteListagem.xthml" />
+                    <p:menuitem value="Login"  action="Login.xhtml"/>
+                    <p:menuitem value="WishList" />
+                    <f:facet name="options">
+                    <p:inputText style="margin-right:10px" placeholder="Search"/>
+                    <p:commandButton type="button" value="Logout" />
+                    </f:facet>
                     </p:menubar>
-                </ui:insert>
-            </div>
-            <div>
-                <div id="left">
-                    <ui:insert name="left">Left</ui:insert>
+                    <p:growl id="global" showDetail="true" />
                 </div>
-                <div id="content" class="left_content">
-                    <ui:insert name="content">Content</ui:insert>
-                </div>
-            </div>
-            <div id="bottom">
-                <ui:insert name="bottom">Bottom</ui:insert>
+            
+            <div id="content" class="center_content">
+                <ui:insert name="content"></ui:insert>
             </div>
         </h:form>
+       
+        <div id="bottom">
+            Desenvolvido por Áquilla e Arley.
+        </div>
     </h:body>
 
 </html>

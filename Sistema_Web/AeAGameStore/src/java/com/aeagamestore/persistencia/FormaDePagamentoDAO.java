@@ -8,12 +8,14 @@ package com.aeagamestore.persistencia;
 import com.aeagamestore.entidade.FormaDePagamento;
 import com.aeagamestore.repositorios.FormaDePagamentoRepositorio;
 import java.util.List;
+import javax.ejb.Singleton;
 
 
 /**
  *
  * @author xulipaxulepa
  */
+@Singleton
 public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implements FormaDePagamentoRepositorio {
     
     public FormaDePagamentoDAO(){

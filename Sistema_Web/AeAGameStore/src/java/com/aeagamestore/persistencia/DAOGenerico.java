@@ -4,6 +4,7 @@ import com.aeagamestore.repositorios.Repositorio;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -17,6 +18,7 @@ import javax.persistence.Query;
  *
  * @author petronio
  */
+
 public abstract class DAOGenerico<T> implements Repositorio<T> {
 
     @PersistenceContext(name = "AeAGameStorePU")

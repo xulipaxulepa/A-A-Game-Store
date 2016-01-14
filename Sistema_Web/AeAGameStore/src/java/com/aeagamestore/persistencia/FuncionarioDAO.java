@@ -8,12 +8,14 @@ package com.aeagamestore.persistencia;
 import com.aeagamestore.entidade.Funcionario;
 import com.aeagamestore.repositorios.FuncionarioRepositorio;
 import java.util.List;
+import javax.ejb.Singleton;
 
 
 /**
  *
  * @author arley
  */
+@Singleton
 public class FuncionarioDAO extends DAOGenerico<Funcionario> implements FuncionarioRepositorio{
 
     public FuncionarioDAO() {

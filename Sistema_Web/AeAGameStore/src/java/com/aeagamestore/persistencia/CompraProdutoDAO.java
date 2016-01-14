@@ -8,12 +8,14 @@ package com.aeagamestore.persistencia;
 import com.aeagamestore.entidade.CompraProduto;
 import com.aeagamestore.repositorios.CompraProdutoRepositorio;
 import java.util.List;
+import javax.ejb.Singleton;
 
 
 /**
  *
  * @author xulipaxulepa
  */
+@Singleton
 public class CompraProdutoDAO extends DAOGenerico<CompraProduto> implements CompraProdutoRepositorio{
     
     public CompraProdutoDAO(){

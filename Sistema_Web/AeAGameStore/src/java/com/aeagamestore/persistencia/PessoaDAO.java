@@ -7,6 +7,7 @@ package com.aeagamestore.persistencia;
 
 import com.aeagamestore.entidade.Fornecedor;
 import com.aeagamestore.entidade.Pessoa;
+import com.aeagamestore.entidade.Produto;
 import java.util.List;
 import javax.ejb.Singleton;
 import javax.persistence.Query;
@@ -25,10 +26,18 @@ public class PessoaDAO extends DAOGenerico<Pessoa> {
         super(Pessoa.class);
     }
 
+    @Override
     public List<Pessoa> Buscar(Pessoa filtro) {
-        Query query = manager.createQuery("Select p from Pessoa p");
-        return query.getResultList();
+        if(filtro != null){
+            return this.Like("nome", filtro.getNome())
+                   .IgualA("id", filtro.getId())
+                   .OrderBy("nome", "ASC").Buscar();
+            
+        }
+        return this.Buscar();
     }
+    
+
 
  
     public Fornecedor Abrir(String cpf) {

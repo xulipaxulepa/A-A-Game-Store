@@ -31,5 +31,10 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> implements Funciona
         }
         return this.Buscar();
     }
+
+    @Override
+    public boolean Atualizar(Funcionario obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

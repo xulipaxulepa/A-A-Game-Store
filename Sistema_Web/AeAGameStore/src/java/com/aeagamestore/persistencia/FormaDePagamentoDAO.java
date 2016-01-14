@@ -30,4 +30,9 @@ public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implement
         }
         return this.Buscar();
     }
+
+    @Override
+    public boolean Atualizar(FormaDePagamento obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

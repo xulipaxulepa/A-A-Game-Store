@@ -8,7 +8,9 @@ package com.aeagamestore.persistencia;
 import com.aeagamestore.entidade.Fornecedor;
 import com.aeagamestore.entidade.Pessoa;
 import java.util.List;
+import javax.ejb.Singleton;
 import javax.persistence.Query;
+
 
 
 
@@ -16,6 +18,7 @@ import javax.persistence.Query;
  *
  * @author Arley
  */
+@Singleton
 public class PessoaDAO extends DAOGenerico<Pessoa> {
 
     public PessoaDAO() {
@@ -33,5 +36,10 @@ public class PessoaDAO extends DAOGenerico<Pessoa> {
         return (Fornecedor) consulta
                 .setParameter("p0", cpf)
                 .getSingleResult();
+    }
+
+    @Override
+    public boolean Atualizar(Pessoa obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

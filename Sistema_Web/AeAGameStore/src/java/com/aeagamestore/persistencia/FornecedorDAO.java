@@ -35,5 +35,10 @@ public class FornecedorDAO extends DAOGenerico<Fornecedor> implements Fornecedor
                 .setParameter("p0", cnpj)
                 .getSingleResult();
     }
+
+    @Override
+    public boolean Atualizar(Fornecedor obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

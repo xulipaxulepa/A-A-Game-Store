@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 
@@ -18,8 +19,8 @@ import javax.persistence.Query;
  */
 public abstract class DAOGenerico<T> implements Repositorio<T> {
 
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("A_AGameStorePU");
-    protected EntityManager manager = factory.createEntityManager();
+    @PersistenceContext(name = "AeAGameStorePU")
+    protected EntityManager manager;
     Class classe;
     String where = "";
     String orderby = "";
@@ -28,6 +29,42 @@ public abstract class DAOGenerico<T> implements Repositorio<T> {
     
     public DAOGenerico(Class t) {
         this.classe = t;
+    }
+    
+    @Override
+    public boolean Salvar(T obj) {
+                 
+        try {            
+
+            manager.merge(obj);
+            manager.flush();
+            
+            return true;
+        
+        } catch (Exception e){
+       
+            return false;
+        }
+    }
+
+    @Override
+    public T Abrir(Long id) {
+        return (T) manager.find(classe, id);
+    }
+
+    @Override
+    public boolean Apagar(T obj) {
+        
+        try {           
+
+            manager.remove(obj);
+
+            manager.flush();
+            return true;
+        
+        } catch (Exception e){
+            return false;
+        }
     }
     
     public DAOGenerico<T> OrderBy(String campo, String order) {
@@ -39,7 +76,6 @@ public abstract class DAOGenerico<T> implements Repositorio<T> {
 
             orderby += "c." + campo + " " + order;
         }
-
         return this;
     }
 
@@ -106,72 +142,6 @@ public abstract class DAOGenerico<T> implements Repositorio<T> {
             orderby = "";
             parametros = new HashMap<>();
         }
-
     }
-
-    @Override
-    public boolean Salvar(T obj) {
-        EntityTransaction t = manager.getTransaction();
-
-        try {
-
-            t.begin();
-
-            manager.persist(obj);
-
-            t.commit();
-            return true;
-
-        } catch (Exception e) {
-            t.rollback();
-            return false;
-        }
-    }
-
-    @Override
-    public boolean Atualizar(T obj) {
-        EntityTransaction t = manager.getTransaction();
-
-        try {
-
-            t.begin();
-
-            manager.merge(obj);
-
-            t.commit();
-            return true;
-
-        } catch (Exception e) {
-            t.rollback();
-            return false;
-        }
-    }
-
-    @Override
-    public T Abrir(Long id) {
-        return (T) manager.find(classe, id);
-    }
-
-    @Override
-    public boolean Apagar(T obj) {
-        EntityTransaction t = manager.getTransaction();
-
-        try {
-
-            t.begin();
-
-            manager.remove(obj);
-
-            t.commit();
-            return true;
-
-        } catch (Exception e) {
-            t.rollback();
-            return false;
-        }
-    }
-
-    @Override
-    public abstract List<T> Buscar(T filtro);
 
 }

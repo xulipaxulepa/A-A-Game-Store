@@ -31,4 +31,9 @@ public class CompraProdutoDAO extends DAOGenerico<CompraProduto> implements Comp
         }
         return this.Buscar();
     }
+
+    @Override
+    public boolean Atualizar(CompraProduto obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

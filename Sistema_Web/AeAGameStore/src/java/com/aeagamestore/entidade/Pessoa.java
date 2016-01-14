@@ -34,7 +34,7 @@ import javax.persistence.TemporalType;
 @Inheritance(strategy=InheritanceType.JOINED)
 @DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING, length = 32)
 @DiscriminatorValue("pessoa")
-public abstract class Pessoa implements Serializable, IPessoa {
+abstract public class Pessoa implements Serializable, IPessoa {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

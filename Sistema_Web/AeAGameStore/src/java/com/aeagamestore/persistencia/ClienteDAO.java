@@ -40,4 +40,9 @@ public class ClienteDAO extends DAOGenerico<Cliente> {
         }
         return this.Buscar();
     }
+
+    @Override
+    public boolean Atualizar(Cliente obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

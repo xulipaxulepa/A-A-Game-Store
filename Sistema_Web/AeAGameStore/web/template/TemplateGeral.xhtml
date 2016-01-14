@@ -21,18 +21,18 @@
                     <p:menuitem value="Inicio" action="index.xhtml" />
                     <p:menuitem value="Comprar" />
                     <p:menuitem value="Cadastrar" action="CadastroCliente.xhtml" />
-                    <p:menuitem value="Login" />
+                    <p:menuitem value="Login"  action="Login.xhtml"/>
                     <p:menuitem value="WishList" />
                     <f:facet name="options">
                     <p:inputText style="margin-right:10px" placeholder="Search"/>
-                    <p:commandButton type="button" value="Logout" action="teste.xhtml"/>
+                    <p:commandButton type="button" value="Logout" />
                     </f:facet>
                     </p:menubar>
                     <p:growl id="global" showDetail="true" />
                 </div>
             
             <div id="content" class="center_content">
-                <ui:insert name="content">Content</ui:insert>
+                <ui:insert name="content"></ui:insert>
             </div>
         </h:form>
        

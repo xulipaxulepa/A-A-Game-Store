@@ -62,7 +62,7 @@ public class Testes {
         fornecedor.addTelefone(new Telefone("3890304939", "Fixo"));
         fornecedor.addTelefone(new Telefone("3836214628", "-Celular"));*/
         
-        FornecedorDAO fornecedorDAO = new FornecedorDAO();
+        /*FornecedorDAO fornecedorDAO = new FornecedorDAO();
        
         fornecedores = fornecedorDAO.Buscar(null);
         
@@ -75,7 +75,7 @@ public class Testes {
         
         for (Funcionario funcionario : funcionarios) {
             System.out.println(funcionario.getNome() + " - " + funcionario.getSalario() + " - " + funcionario.getCargo().getNome());
-        }
+        }*/
         
         /* 
         f.setCpf("2020202");
@@ -93,7 +93,7 @@ public class Testes {
         fdao.Salvar(f);*/
         
         
-         /*
+         
          Endereco e = new Endereco();
          e.setBairro("Cidade Nova");
          e.setCidade("Januária");
@@ -101,17 +101,17 @@ public class Testes {
          e.setNumero(25);
          e.setEstado("MG");
          
-         
+        Cliente arley = new Cliente(); 
         arley.setEndereco(e);
         arley.setCpf("1010101");
         arley.setNome("Arley");
         arley.setDataNascimento(new Date());
         arley.setEmail("arley.msn@hotmail.com");
         arley.setSenha("10101");
-        arley.addTelefone(new Telefone("38 99802829", "Celular"));*/
+        arley.addTelefone(new Telefone("38 99802829", "Celular"));
         
         ClienteDAO pdao = new ClienteDAO();
-        //pdao.Salvar(arley);
+        pdao.Salvar(arley);
     
         
         PessoaDAO pdao1 = new PessoaDAO();
@@ -132,7 +132,7 @@ public class Testes {
         }
         */
         
-        Cliente c1 = new Cliente();
+        /*Cliente c1 = new Cliente();
         c1.setNome("Arley");
         c1.setCpf("1010101");
         List<Cliente> cliente = cdao.Buscar(c1);
@@ -156,6 +156,6 @@ public class Testes {
         
         
         
-        System.out.println(c.getSexo() + " - " + c.getNome());
+        System.out.println(c.getSexo() + " - " + c.getNome());*/
     }
 }

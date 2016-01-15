@@ -38,8 +38,19 @@
                     goodLabel="Razoável" strongLabel="Forte" 
                         />
         </p:panelGrid>
+<<<<<<< HEAD
         <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}" ajax="false"/>
         <p:commandButton value="Voltar" action="index.xhtml" />
+=======
+        <p:commandButton value="Cadastrar" onclick="msgSalvar.show();"  />
+        <p:commandButton value="Voltar" action="index.xhtml" ajax="false"/>
+
+        <p:confirmDialog message="Deseja realmente cadastrar esse cliente?"  
+                         header="Confirmação" severity="alert" widgetVar="msgSalvar">  
+
+            <p:commandButton ajax="false" value="SIM" action="#{ClienteController.salvar()}" />  
+            <p:commandButton value="NÃO" onclick="msgSalvar.hide();" type="button" />   
+        </p:confirmDialog>
     </ui:define>
 
 </ui:composition>

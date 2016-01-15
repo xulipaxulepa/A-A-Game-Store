@@ -22,7 +22,14 @@
                     <p:menubar>
                     <p:menuitem value="Inicio" action="index.xhtml" />
                     <p:menuitem value="Comprar" />
-                    <p:menuitem value="Cadastrar" action="CadastroCliente.xhtml" />
+                    <p:submenu label="Cadastrar">
+                        <p:menuitem value="Cadastrar Cliente" action="CadastroCliente.xhtml" ajax="false" />
+                        <p:submenu label="Cadastrar Produto">
+                        <p:menuitem value="Cadastrar Jogo" action="CadastraProdutoJogo.xhtml" ajax="false" />
+                        <p:menuitem value="Cadastrar Console" action="CadastraProdutoConsole.xhtml" ajax="false" />
+                        <p:menuitem value="Cadastrar Periferico" action="CadastraProdutoPeriferico.xhtml" ajax="false" />
+                        </p:submenu>
+                    </p:submenu>
                     <p:menuitem value="Consultar Clientes" ajax="false" action="ClienteListagem.xthml" />
                     <p:menuitem value="Login"  action="Login.xhtml"/>
                     <p:menuitem value="WishList" />

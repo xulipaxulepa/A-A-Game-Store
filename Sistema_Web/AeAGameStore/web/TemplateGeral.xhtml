@@ -35,7 +35,11 @@
                         </p:submenu>
                     <p:menuitem value="Cadastrar Cargo" action="CadastrarCargo.xhtml" ajax="false" />
                     </p:submenu>
-                    <p:menuitem value="Consultar Clientes" ajax="false" action="ClienteListagem.xthml" />
+                    <p:submenu label="Consultar">
+                        <p:menuitem value="Consultar clientes" action="ClienteListagem.xhtml" ajax="false"/>
+                        <p:menuitem value="Consultar cargo" action="CargoListagem.xhtml" ajax="false"/>
+                        
+                    </p:submenu>
                     <p:menuitem value="Login"  action="Login.xhtml"/>
                     <p:menuitem value="WishList" />
                     <f:facet name="options">

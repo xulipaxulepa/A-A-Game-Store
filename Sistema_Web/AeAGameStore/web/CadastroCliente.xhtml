@@ -37,7 +37,25 @@
                         promptLabel="Enter com sua senha" weakLabel="Fraca"
                     goodLabel="Razoável" strongLabel="Forte" 
                         />
-        </p:panelGrid>
+            </p:panelGrid>
+            Informações de endereço
+            <p:panelGrid columns="2" >
+            Rua:
+            <p:inputText  id="rua" value="#{ClienteController.entidade.endereco.rua}"/>
+            Numero:
+            <p:inputText  id="numero" value="#{ClienteController.entidade.endereco.numero}"/>
+            Complemento:
+            <p:inputTextarea id="complemento" rows="6" cols="33" value="#{ClienteController.entidade.endereco.complemento}" />
+            Referencia:
+            <p:inputTextarea id="referencia" rows="6" cols="33" value="#{ClienteController.entidade.endereco.referencia}"/>
+            Bairro:
+            <p:inputText  id="bairro" value="#{ClienteController.entidade.endereco.bairro}"/>
+            Cidade:
+            <p:inputText  id="cidade" value="#{ClienteController.entidade.endereco.cidade}"/>
+            Estado:
+            <p:inputText  id="estado" value="#{ClienteController.entidade.endereco.estado}"/>
+                
+            </p:panelGrid>
         
         <p:commandButton value="Voltar" ajax="false"/>
         <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}" ajax="false" />

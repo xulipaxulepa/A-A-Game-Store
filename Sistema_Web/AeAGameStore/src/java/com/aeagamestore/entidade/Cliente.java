@@ -35,6 +35,7 @@ public class Cliente extends Pessoa implements Serializable {
     Endereco endereco;
     
     public Cliente(){
+        endereco = new Endereco();
     }
 
     public Endereco getEndereco() {

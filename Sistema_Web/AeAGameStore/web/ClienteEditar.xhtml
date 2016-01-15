@@ -8,6 +8,8 @@
 
     <ui:define name="content">
         <p:panelGrid columns="2">
+            ID:
+            <p:outputLabel value="#{PessoaController.entidade.id}" />
             Nome:
             <p:inputText  id="nome" value="#{ClienteController.entidade.nome}"/>
             CPF:
@@ -38,8 +40,8 @@
                     goodLabel="Razoável" strongLabel="Forte" 
                         />
         </p:panelGrid>
-        <p:commandButton value="Salvar" onclick="msgSalvar.show();"  />
-        <p:commandButton value="Apagar" onclick="msgApagar.show();" />
+        <p:commandButton value="Salvar" onclick="#{ClienteController.salvar()}"  />
+        <p:commandButton value="Apagar" action="#{ClienteController.apagar()}" />
         <p:commandButton value="Cancelar" action="PessoaListagem.xhtml" />
 
         <p:confirmDialog message="Deseja realmente salvar as alterações?"  

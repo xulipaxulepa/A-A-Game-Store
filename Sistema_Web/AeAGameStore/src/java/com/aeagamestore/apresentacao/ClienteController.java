@@ -72,7 +72,7 @@ public class ClienteController implements Serializable {
     
     public String apagar(){
         if(dao.Apagar(entidade))
-            return "PessoaListagem.xhtml";
+            return "ClienteListagem.xhtml";
         else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");
             return "";

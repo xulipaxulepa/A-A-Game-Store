@@ -21,6 +21,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -55,8 +56,19 @@ abstract public class Pessoa implements Serializable {
     
     private String DTYPE;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    List<Telefone> telefones;
+    //@OneToMany(cascade = CascadeType.ALL)
+    //List<Telefone> telefones;
+    
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
+    Telefone telefone;
+
+    public Telefone getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
     
     @Column(unique = true, length = 100)
     private String email;
@@ -65,7 +77,8 @@ abstract public class Pessoa implements Serializable {
     private String senha;
       
     public Pessoa(){
-        this.telefones = new LinkedList<>();
+        //this.telefones = new LinkedList<>();
+        this.telefone = new Telefone();
     }
 
     public String getNome() {
@@ -125,7 +138,7 @@ abstract public class Pessoa implements Serializable {
     }
     
     public void addTelefone(Telefone telefone){
-        this.telefones.add(telefone);
+        //this.telefones.add(telefone);
     }
 
     @Override

@@ -2,7 +2,8 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./TemplateGeral.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         <p:dataTable value="#{ClienteController.listagem}" 
@@ -18,6 +19,13 @@
             </p:column>
             <p:column headerText="Sexo">
                 #{item.sexo}
+            </p:column>
+            <p:column>
+                
+                <p:commandButton value="Editar" ajax="false" action="ClienteEditar.xhtml">
+                    <f:setPropertyActionListener target="#{ClienteController.entidade}"
+                                                 value="#{item}" />
+                </p:commandButton>
             </p:column>
         </p:dataTable>
     </ui:define>

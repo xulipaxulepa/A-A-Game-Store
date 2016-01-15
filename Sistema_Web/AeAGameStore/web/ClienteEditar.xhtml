@@ -3,11 +3,11 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./TemplateGeral.xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <p:panelGrid columns="2" >
+        <p:panelGrid columns="2">
             Nome:
             <p:inputText  id="nome" value="#{ClienteController.entidade.nome}"/>
             CPF:
@@ -38,15 +38,21 @@
                     goodLabel="Razoável" strongLabel="Forte" 
                         />
         </p:panelGrid>
-        
-        <p:commandButton value="Voltar" ajax="false"/>
-        <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}" ajax="false" />
+        <p:commandButton value="Salvar" onclick="msgSalvar.show();"  />
+        <p:commandButton value="Apagar" onclick="msgApagar.show();" />
+        <p:commandButton value="Cancelar" action="PessoaListagem.xhtml" />
 
-        <p:confirmDialog message="Deseja realmente cadastrar esse cliente?"  
+        <p:confirmDialog message="Deseja realmente salvar as alterações?"  
                          header="Confirmação" severity="alert" widgetVar="msgSalvar">  
-
-            <p:commandButton ajax="false" value="SIM" action="#{ClienteController.salvar()}" />  
+            <p:commandButton ajax="false" value="SIM" action="#{PessoaController.salvar()}" />  
             <p:commandButton value="NÃO" onclick="msgSalvar.hide();" type="button" />   
+        </p:confirmDialog>
+
+        <p:confirmDialog message="Deseja realmente apagar o registro?"  
+                         header="Confirmação" severity="alert" widgetVar="msgApagar">  
+
+            <p:commandButton ajax="false" value="SIM" action="#{PessoaController.apagar()}" />  
+            <p:commandButton value="NÃO" onclick="msgApagar.hide();" type="button" />   
         </p:confirmDialog>
     </ui:define>
 

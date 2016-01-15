@@ -43,7 +43,7 @@ abstract public class Pessoa implements Serializable {
     @Column(nullable = false, length = 500)
     private String nome;
     
-    @Column(unique = true, length = 11)
+    @Column(unique = true, length = 14)
     private String cpf;
     
     @Column(nullable = false, length = 1)

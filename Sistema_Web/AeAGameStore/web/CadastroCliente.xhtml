@@ -3,37 +3,43 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./TemplateGeral.xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <p:panelGrid columns="2">
+        <p:panelGrid columns="2" >
             Nome:
-            <p:inputText  />
+            <p:inputText  id="nome" value="#{ClienteController.entidade.nome}"/>
             CPF:
-            <p:inputMask mask="999-99-9999"/>
+            <p:inputMask mask="999.999.999-99" id="cpf" value="#{ClienteController.entidade.cpf}"/>
             Sexo:
-            <p:selectOneRadio id="sexo" >
-                <f:selectItem itemLabel="Masculino" itemValue="m" />
-                <f:selectItem itemLabel="Feminino" itemValue="f" />
+            <p:selectOneRadio id="sexo" value="#{ClienteController.entidade.sexo}">
+                <f:selectItem itemLabel="Masculino" itemValue="M" />
+                <f:selectItem itemLabel="Feminino" itemValue="F" />
             </p:selectOneRadio>
             <p:outputLabel for="dataNascimento" value="Data Nascimento:" />
-            <p:calendar id="dataNascimento" locale="de" navigator="true" pattern="dd/MM/yyyy" mask="true" />
-            Telefone:
-            <p:inputMask mask="(999) 999-9999"/>
+            <p:calendar id="dataNascimento" locale="de" navigator="true" pattern="dd/MM/yyyy" mask="true" value="#{ClienteController.entidade.dataNascimento}" />
+            <h:panelGroup>
+                Telefone:
+            </h:panelGroup>
+            <h:panelGroup>
+                <p:selectOneListbox id="tipoTelefone" value="#{ClienteController.telefone.tipo}">
+                        <f:selectItem itemLabel="Celular"  itemValue="Celular" />
+                        <f:selectItem itemLabel="Fixo" itemValue="Fixo" />
+                </p:selectOneListbox> <br />
+                
+                    <p:inputMask mask="(99) 99999-9999" value="#{ClienteController.telefone.telefone}"/>                   
+            </h:panelGroup>
             E-Mail:
-            <p:inputText  />
-            Senha:
-            <p:inputText  />
+            <p:inputText id="email" value="#{ClienteController.entidade.email}" />
+            <p:outputLabel for="senha" value="Senha: " />
+            <p:password id="senha" value="#{ClienteController.entidade.senha}" feedback="true" inline="true"
+                        promptLabel="Enter com sua senha" weakLabel="Fraca"
+                    goodLabel="Razoável" strongLabel="Forte" 
+                        />
         </p:panelGrid>
-        <p:commandButton value="Cadastrar" onclick="msgSalvar.show();"  />
+        <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}" ajax="false"/>
         <p:commandButton value="Voltar" action="index.xhtml" />
-
-        <p:confirmDialog message="Deseja realmente salvar as alterações?"  
-                         header="Confirmação" severity="alert" widgetVar="msgSalvar">  
-
-            <p:commandButton ajax="false" value="SIM" action="#{ClienteController.salvar()}" />  
-            <p:commandButton value="NÃO" onclick="msgSalvar.hide();" type="button" />   
-        </p:confirmDialog>
     </ui:define>
 
 </ui:composition>

@@ -3,8 +3,8 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./TemplateGeral.xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         <p:panelGrid columns="2" >
@@ -38,12 +38,8 @@
                     goodLabel="Razoável" strongLabel="Forte" 
                         />
         </p:panelGrid>
-<<<<<<< HEAD
-        <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}" ajax="false"/>
-        <p:commandButton value="Voltar" action="index.xhtml" />
-=======
-        <p:commandButton value="Cadastrar" onclick="msgSalvar.show();"  />
-        <p:commandButton value="Voltar" action="index.xhtml" ajax="false"/>
+        <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}" ajax="false" />
+        <p:commandButton value="Voltar" ajax="false"/>
 
         <p:confirmDialog message="Deseja realmente cadastrar esse cliente?"  
                          header="Confirmação" severity="alert" widgetVar="msgSalvar">  

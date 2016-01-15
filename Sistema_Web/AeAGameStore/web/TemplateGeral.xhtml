@@ -21,7 +21,11 @@
         <div id="top">
                     <p:menubar>
                     <p:menuitem value="Inicio" action="index.xhtml" />
-                    <p:menuitem value="Comprar" />
+                    <p:submenu label="Comprar" >
+                        <p:menuitem value="Comprar Jogos" action="ComprarJogo.xhtml" ajax="false" />
+                        <p:menuitem value="Comprar Consoles" action="ComprarConsole.xhtml" ajax="false" />
+                        <p:menuitem value="Comprar Perifericos" action="ComprarPeriferico.xhtml" ajax="false" />
+                        </p:submenu>
                     <p:submenu label="Cadastrar">
                         <p:menuitem value="Cadastrar Cliente" action="CadastroCliente.xhtml" ajax="false" />
                         <p:submenu label="Cadastrar Produto">

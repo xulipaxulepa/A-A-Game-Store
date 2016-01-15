@@ -58,7 +58,7 @@
             </p:panelGrid>
         
         <p:commandButton value="Voltar" ajax="false"/>
-        <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}" ajax="false" />
+        <p:commandButton value="Cadastrar" action="#{msgSalvar.show()}" ajax="false" />
 
         <p:confirmDialog message="Deseja realmente cadastrar esse cliente?"  
                          header="Confirmação" severity="alert" widgetVar="msgSalvar">  

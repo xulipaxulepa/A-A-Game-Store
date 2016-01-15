@@ -68,7 +68,6 @@ public class CargoController implements Serializable {
     }
     
     public void salvar(){
-        //entidade.addTelefone(telefone);
         if(dao.Salvar(entidade)){
             this.limparCampos();
             MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
@@ -77,8 +76,10 @@ public class CargoController implements Serializable {
     }
     
     public String apagar(){
-        if(dao.Apagar(entidade))
-            return "ClienteListagem.xhtml";
+        if(dao.Apagar(entidade)){
+            limparCampos();
+            return "CargoListagem.xhtml";
+        }
         else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");
             return "";

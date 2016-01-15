@@ -37,14 +37,11 @@ public abstract class DAOGenerico<T> implements Repositorio<T> {
     public boolean Salvar(T obj) {
                  
         try {            
-
             manager.merge(obj);
             manager.flush();
-            
             return true;
         
         } catch (Exception e){
-       
             return false;
         }
     }
@@ -58,9 +55,7 @@ public abstract class DAOGenerico<T> implements Repositorio<T> {
     public boolean Apagar(T obj) {
         
         try {           
-
             manager.remove(obj);
-
             manager.flush();
             return true;
         

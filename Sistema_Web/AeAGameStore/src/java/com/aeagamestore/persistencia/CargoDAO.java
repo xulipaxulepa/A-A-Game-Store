@@ -8,11 +8,13 @@ package com.aeagamestore.persistencia;
 import com.aeagamestore.entidade.Cargo;
 import com.aeagamestore.repositorios.CargoRepositorio;
 import java.util.List;
+import javax.ejb.Singleton;
 
 /**
  *
  * @author arley
  */
+@Singleton
 public class CargoDAO extends DAOGenerico<Cargo> implements CargoRepositorio{
 
     public CargoDAO() {

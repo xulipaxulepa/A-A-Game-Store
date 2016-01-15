@@ -17,11 +17,10 @@ import javax.persistence.Table;
  *
  * @author grupoandroid
  */
-
 @Entity
 @Table(name = "cargos")
 public class Cargo implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,20 +28,18 @@ public class Cargo implements Serializable {
 
     @Column(nullable = false, length = 500)
     private String nome;
-    
+
     @Column(nullable = false, length = 500)
-    private String observação;
-    
-    public Cargo(){
+    private String observacao;
+
+    public Cargo() {
     }
 
     public Cargo(String nome, String observação) {
         this.nome = nome;
-        this.observação = observação;
+        this.observacao = observação;
     }
-    
-    
-    
+
     public Long getId() {
         return id;
     }
@@ -59,14 +56,12 @@ public class Cargo implements Serializable {
         this.nome = nome;
     }
 
-    public String getObservação() {
-        return observação;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setObservação(String observação) {
-        this.observação = observação;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
-    
-    
-    
+
 }

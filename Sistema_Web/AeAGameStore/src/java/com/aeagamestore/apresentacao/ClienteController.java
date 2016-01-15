@@ -17,6 +17,7 @@ import javax.faces.context.FacesContext;
 @Named(value = "ClienteController")
 @SessionScoped
 public class ClienteController implements Serializable {
+    
     @EJB
     ClienteRepositorio dao;
     

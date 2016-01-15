@@ -16,7 +16,7 @@ import javax.persistence.Query;
  */
 public abstract class DAOGenerico<T> implements Repositorio<T> {
 
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("A_AGameStorePU");
+    EntityManagerFactory factory = Persistence.createEntityManagerFactory("AeAGameStorePU");
     protected EntityManager manager = factory.createEntityManager();
     Class classe;
     String where = "";

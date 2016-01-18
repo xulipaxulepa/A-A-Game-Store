@@ -7,56 +7,9 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <p:panelGrid columns="2" >
-            Nome:
-            <p:inputText  id="nome" value="#{funcionarioController.entidade.nome}"/>
-            CPF:
-            <p:inputMask mask="999.999.999-99" id="cpf" value="#{funcionarioController.entidade.cpf}"/>
-            Sexo:
-            <p:selectOneRadio id="sexo" value="#{funcionarioController.entidade.sexo}">
-                <f:selectItem itemLabel="Masculino" itemValue="M" />
-                <f:selectItem itemLabel="Feminino" itemValue="F" />
-            </p:selectOneRadio>
-            <p:outputLabel for="dataNascimento" value="Data Nascimento:" />
-            <p:calendar id="dataNascimento" locale="de" navigator="true" pattern="dd/MM/yyyy" mask="true" value="#{funcionarioController.entidade.dataNascimento}" />
-            <h:panelGroup>
-                Telefone:
-            </h:panelGroup>
-            <h:panelGroup>
-                <p:selectOneListbox id="tipoTelefone" value="#{funcionarioController.entidade.telefone.tipo}">
-                    <f:selectItem itemLabel="Celular"  itemValue="Celular" />
-                    <f:selectItem itemLabel="Fixo" itemValue="Fixo" />
-                </p:selectOneListbox> 
-                <p:spacer height="30" width="0"/>
-                <p:inputMask mask="(99) 99999-9999" value="#{funcionarioController.entidade.telefone.telefone}"/>                   
-            </h:panelGroup>
-            E-Mail:
-            <p:inputText id="email" value="#{funcionarioController.entidade.email}" />
-            <p:outputLabel for="senha" value="Senha: " />
-            <p:password id="senha" value="#{funcionarioController.entidade.senha}" feedback="true" inline="true"
-                        promptLabel="Enter com sua senha" weakLabel="Fraca"
-                        goodLabel="Razoável" strongLabel="Forte" 
-                        />
-            <h:panelGroup>
-                <p:outputLabel for="advanced" value="Cargo :" />
-                <p:selectOneListbox id="advanced" value="#{funcionarioController.entidade.cargo}">
-                    <f:selectItems value="#{CargoController.listagem}" var="item" itemLabel="#{item.nome}" itemValue="#{item}" />
-                </p:selectOneListbox>
-            </h:panelGroup>
-
-            Salario:
-            <p:inputText id="email"   value="#{funcionarioController.entidade.salario}"/>
-        </p:panelGrid>
-
-        <p:commandButton value="Voltar" ajax="false"/>
-        <p:commandButton value="Cadastrar" action="#{funcionarioController.salvar()}" ajax="false" />
-
-        <p:confirmDialog message="Deseja realmente cadastrar esse cliente?"  
-                         header="Confirmação" severity="alert" widgetVar="msgSalvar">  
-
-            <p:commandButton ajax="false" value="SIM" action="#{funcionarioController.salvar()}" />  
-            <p:commandButton value="NÃO" onclick="msgSalvar.hide();" type="button" />   
-        </p:confirmDialog>
+        <h:form>
+            
+        </h:form>
     </ui:define>
 
 </ui:composition>

@@ -11,51 +11,51 @@
         <!--    <h:outputStylesheet name="./css/default.css"/>
                 <h:outputStylesheet name="./css/cssLayout.css"/> 
         -->
-        
+
         <title>AeA Game Store</title>
     </h:head>
 
     <h:body>
 
-        <h:form>
+
         <div id="top">
-                    <p:menubar>
+            <h:form>
+                <p:menubar>
                     <p:menuitem value="Inicio" action="index.xhtml" />
                     <p:submenu label="Comprar" >
                         <p:menuitem value="Comprar Jogos" action="ComprarJogo.xhtml" ajax="false" />
                         <p:menuitem value="Comprar Consoles" action="ComprarConsole.xhtml" ajax="false" />
                         <p:menuitem value="Comprar Perifericos" action="ComprarPeriferico.xhtml" ajax="false" />
-                        </p:submenu>
+                    </p:submenu>
                     <p:submenu label="Cadastrar">
                         <p:menuitem value="Cadastrar Cliente" action="CadastroCliente.xhtml" ajax="false" />
                         <p:menuitem value="Cadastrar Funcionário" action="CadastroFuncionario.xhtml" ajax="false" />
                         <p:submenu label="Cadastrar Produto">
-                        <p:menuitem value="Cadastrar Jogo" action="CadastraProdutoJogo.xhtml" ajax="false" />
-                        <p:menuitem value="Cadastrar Console" action="CadastraProdutoConsole.xhtml" ajax="false" />
-                        <p:menuitem value="Cadastrar Periferico" action="CadastraProdutoPeriferico.xhtml" ajax="false" />
+                            <p:menuitem value="Cadastrar Jogo" action="CadastraProdutoJogo.xhtml" ajax="false" />
+                            <p:menuitem value="Cadastrar Console" action="CadastraProdutoConsole.xhtml" ajax="false" />
+                            <p:menuitem value="Cadastrar Periferico" action="CadastraProdutoPeriferico.xhtml" ajax="false" />
                         </p:submenu>
-                    <p:menuitem value="Cadastrar Cargo" action="CadastrarCargo.xhtml" ajax="false" />
+                        <p:menuitem value="Cadastrar Cargo" action="CadastrarCargo.xhtml" ajax="false" />
                     </p:submenu>
                     <p:submenu label="Consultar">
                         <p:menuitem value="Consultar clientes" action="ClienteListagem.xhtml" ajax="false"/>
                         <p:menuitem value="Consultar cargo" action="CargoListagem.xhtml" ajax="false"/>
-                        
+
                     </p:submenu>
                     <p:menuitem value="Login"  action="Login.xhtml"/>
                     <p:menuitem value="WishList" />
                     <f:facet name="options">
-                    <p:inputText style="margin-right:10px" placeholder="Pesquisar"/>
-                    <p:commandButton type="button" value="Logout" />
+                        <p:inputText style="margin-right:10px" placeholder="Pesquisar"/>
+                        <p:commandButton type="button" value="Logout" />
                     </f:facet>
-                    </p:menubar>
-                    <p:growl id="global" showDetail="true" />
-                </div>
-            
-            <div id="content" class="center_content">
-                <ui:insert name="content"></ui:insert>
-            </div>
-        </h:form>
-       
+                </p:menubar>
+                <p:growl id="global" showDetail="true" />
+            </h:form>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content"></ui:insert>
+        </div>
         <div id="bottom">
             Desenvolvido por Áquilla e Arley.
         </div>

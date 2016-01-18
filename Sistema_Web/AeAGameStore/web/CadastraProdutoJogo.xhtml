@@ -26,7 +26,7 @@
                 <f:selectItem itemLabel="Blu-Ray" itemValue="bluray" />
         </p:selectOneRadio>
         </p:panelGrid>
-        <p:commandButton value="Cadastrar" onclick="msgSalvar.show();"  />
+        <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}"  />
         <p:commandButton value="Voltar" action="index.xhtml" ajax="false"/>
 
         <p:confirmDialog message="Deseja realmente cadastrar esse jogo?"  

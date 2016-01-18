@@ -11,7 +11,7 @@
         Observação:
         <p:inputTextarea rows="6" cols="33" value="#{CargoController.entidade.observacao}"/>
         </p:panelGrid>
-        <p:commandButton value="Cadastrar"  action="#{msgSalvar.show()}" ajax="false" />
+        <p:commandButton value="Cadastrar"  action="#{CargoController.salvar()}" ajax="false" />
         <p:commandButton value="Voltar" action="index.xhtml" ajax="false"/>
 
         <p:confirmDialog message="Deseja realmente cadastrar esse cargo?"  

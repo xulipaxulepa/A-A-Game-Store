@@ -21,7 +21,7 @@
         <div id="top">
             <h:form>
                 <p:menubar>
-                    <p:menuitem value="Inicio" action="index.xhtml" />
+                    <p:menuitem value="Inicio" action="index.xhtml" ajax="false" />
                     <p:submenu label="Comprar" >
                         <p:menuitem value="Comprar Jogos" action="ComprarJogo.xhtml" ajax="false" />
                         <p:menuitem value="Comprar Consoles" action="ComprarConsole.xhtml" ajax="false" />
@@ -39,10 +39,10 @@
                     </p:submenu>
                     <p:submenu label="Consultar">
                         <p:menuitem value="Consultar clientes" action="ClienteListagem.xhtml" ajax="false"/>
-                        <p:menuitem value="Consultar cargo" action="CargoListagem.xhtml" ajax="false"/>
-
+                        <p:menuitem value="Consultar cargos" action="CargoListagem.xhtml" ajax="false"/>
+                        <p:menuitem value="Consultar funcionários" action="FuncionarioListagem.xhtml" ajax="false"/>
                     </p:submenu>
-                    <p:menuitem value="Login"  action="Login.xhtml"/>
+                    <p:menuitem value="Login"  action="Login.xhtml" ajax="false"/>
                     <p:menuitem value="WishList" />
                     <f:facet name="options">
                         <p:inputText style="margin-right:10px" placeholder="Pesquisar"/>

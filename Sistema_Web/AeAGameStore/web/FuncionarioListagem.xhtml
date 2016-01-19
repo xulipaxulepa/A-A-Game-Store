@@ -8,7 +8,7 @@
 
     <ui:define name="content">
         <h:form>
-            <p:dataTable value="#{ClienteController.listagem}" 
+            <p:dataTable value="#{funcionarioController.listagem}" 
                          var="item">
                 <p:column headerText="ID">
                     #{item.id}
@@ -22,10 +22,17 @@
                 <p:column headerText="Sexo">
                     #{item.sexo}
                 </p:column>
+                <p:column headerText="Cargo">
+                    #{item.cargo.nome}
+                </p:column>
+                <p:column headerText="Sálario">
+                    #{item.salario}
+                </p:column>
+                
                 <p:column>
 
                     <p:commandButton value="Editar" action="FuncionarioEditar.xhtml" ajax="false">
-                        <f:setPropertyActionListener target="#{ClienteController.entidade}"
+                        <f:setPropertyActionListener target="#{funcionarioController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>
                 </p:column>

@@ -5,6 +5,7 @@
  */
 package com.aeagamestore.apresentacao;
 
+import com.aeagamestore.entidade.Cargo;
 import com.aeagamestore.entidade.Cliente;
 import com.aeagamestore.entidade.Funcionario;
 import com.aeagamestore.entidade.Telefone;
@@ -14,14 +15,17 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
  *
  * @author arley
  */
+@ManagedBean
 @Named(value = "funcionarioController")
-@Dependent
+@SessionScoped
 public class FuncionarioController {
 
     /**
@@ -31,6 +35,16 @@ public class FuncionarioController {
     FuncionarioRepositorio dao;
     
     private Funcionario entidade;
+    
+    Cargo cargo = new Cargo();
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
     
     Funcionario filtro;
     
@@ -72,7 +86,6 @@ public class FuncionarioController {
     }
     
     public void salvar(){
-        //entidade.addTelefone(telefone);
         if(dao.Salvar(entidade)){
             this.limparCampos();
             MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");

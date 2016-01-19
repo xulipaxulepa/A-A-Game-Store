@@ -8,31 +8,21 @@
 
     <ui:define name="content">
         <h:form>
-            <p:dataTable value="#{funcionarioController.listagem}" 
+            <p:dataTable value="#{fornecedorController.listagem}" 
                          var="item">
                 <p:column headerText="ID">
                     #{item.id}
                 </p:column>
-                <p:column headerText="Nome">
+                <p:column headerText="Razão Social">
                     #{item.nome}
                 </p:column>
                 <p:column headerText="CPF">
-                    #{item.cpf}
-                </p:column>
-                <p:column headerText="Sexo">
-                    #{item.sexo}
-                </p:column>
-                <p:column headerText="Cargo">
-                    #{item.cargo.nome}
-                </p:column>
-                <p:column headerText="Sálario">
-                    #{item.salario}
-                </p:column>
-                
+                    #{item.cnpj}
+                </p:column>                          
                 <p:column>
 
-                    <p:commandButton value="Editar" action="FuncionarioEditar.xhtml" ajax="false">
-                        <f:setPropertyActionListener target="#{funcionarioController.entidade}"
+                    <p:commandButton value="Editar" action="FornecedorEditar.xhtml" ajax="false">
+                        <f:setPropertyActionListener target="#{fornecedorController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>
                 </p:column>

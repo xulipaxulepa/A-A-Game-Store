@@ -13,7 +13,7 @@
                 <p:column headerText="ID">
                     #{item.id}
                 </p:column>
-                <p:column headerText="nome">
+                <p:column headerText="Nome">
                     #{item.nome}
                 </p:column>
                 <p:column headerText="CPF">
@@ -24,7 +24,7 @@
                 </p:column>
                 <p:column>
 
-                    <p:commandButton value="Editar" action="FuncionarioEditar.xhtml" ajax="false">
+                    <p:commandButton value="Editar" action="ClienteEditar.xhtml" ajax="false">
                         <f:setPropertyActionListener target="#{ClienteController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>

@@ -13,7 +13,7 @@
                 <p:column headerText="ID">
                     #{item.id}
                 </p:column>
-                <p:column headerText="nome">
+                <p:column headerText="Nome">
                     #{item.nome}
                 </p:column>
                 <p:column headerText="Observação">
@@ -21,7 +21,7 @@
                 </p:column>
                 <p:column>
 
-                    <p:commandButton value="Editar" action="CadastrarCargo.xhtml">
+                    <p:commandButton value="Editar" action="CargoEditar.xhtml">
                         <f:setPropertyActionListener target="#{CargoController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>

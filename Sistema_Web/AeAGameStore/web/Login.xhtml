@@ -2,23 +2,26 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./TemplateGeral.xhtml"
-                xmlns:p="http://primefaces.org/ui">
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <p:panelGrid columns="2">
-            E-Mail:
-            <p:inputText />
-            Senha:
-            <p:inputText  />          
-        </p:panelGrid>
-        
-        <p:commandButton value="Login" onclick="msgSucesso.show();"  />
-        <p:commandButton value="Voltar" action="index.xhtml" />
-        
-        <p:confirmDialog message="Você fez Login"  
-                         header="Sucesso" severity="alert" widgetVar="msgSucesso">  
-                      
-        </p:confirmDialog>
+        <h:form>
+            <p:panelGrid columns="2">
+                E-Mail:
+                <p:inputText />
+                Senha:
+                <p:inputText  />          
+            </p:panelGrid>
+
+            <p:commandButton value="Login" onclick="msgSucesso.show();"  />
+            <p:commandButton value="Voltar" action="index.xhtml" />
+
+            <p:confirmDialog message="Você fez Login"  
+                             header="Sucesso" severity="alert" widgetVar="msgSucesso">  
+
+            </p:confirmDialog>
+        </h:form>
     </ui:define>
 
 </ui:composition>

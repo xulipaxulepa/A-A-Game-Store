@@ -62,8 +62,17 @@ public class ClienteController implements Serializable {
         this.telefone = new Telefone();
     }
     
+    public String editar(){
+        if(dao.Salvar(entidade)){
+            MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
+            return "ClienteListagem.xhtml";
+        }else
+            MensagemErro("Falha!", "Erro ao salvar o registro. Contacte o administrador do sistema!");
+        return "";
+               
+    }
+    
     public void salvar(){
-        //entidade.addTelefone(telefone);
         if(dao.Salvar(entidade)){
             this.limparCampos();
             MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");

@@ -7,6 +7,9 @@ package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.LinkedList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -17,6 +20,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -48,9 +52,25 @@ public abstract class Produto implements Serializable {
 
     @Column(precision = 5, scale = 2, nullable = false)
     private BigDecimal valor;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<FotoProduto> fotos;
+
+    public List<FotoProduto> getFotos() {
+        return fotos;
+    }
+    
+    public void addFoto(FotoProduto foto){
+        this.fotos.add(foto);
+    }
+
+    public void setFotos(List<FotoProduto> fotos) {
+        this.fotos = fotos;
+    }
 
     public Produto() {
         this.valor = new BigDecimal("0.00");
+        this.fotos = new LinkedList<>();
     }
 
     public BigDecimal getValor() {

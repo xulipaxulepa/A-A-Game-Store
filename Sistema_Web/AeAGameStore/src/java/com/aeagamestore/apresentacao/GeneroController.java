@@ -5,105 +5,104 @@
  */
 package com.aeagamestore.apresentacao;
 
-import com.aeagamestore.entidade.Cargo;
-import com.aeagamestore.entidade.Cliente;
-import com.aeagamestore.entidade.FotoProduto;
-import com.aeagamestore.entidade.Telefone;
-import com.aeagamestore.repositorios.CargoRepositorio;
+import com.aeagamestore.entidade.Genero;
+import com.aeagamestore.repositorios.GeneroRepositorio;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.UploadedFile;
 
 /**
  *
  * @author arley
  */
-@Named(value = "CargoController")
+@ManagedBean
+@Named(value = "generoController")
 @SessionScoped
-public class CargoController implements Serializable {
+public class GeneroController implements Serializable {
 
-    Cargo entidade;
-    Cargo filtro;
-    
+    /**
+     * Creates a new instance of GeneroController
+     */
+    Genero entidade, filtro;
+
     @EJB
-    CargoRepositorio dao;
+    GeneroRepositorio dao;
 
-    public Cargo getEntidade() {
-        return entidade;
+    public GeneroController() {
+        this.entidade = new Genero();
+        this.filtro = new Genero();
     }
 
-    public void setEntidade(Cargo entidade) {
-        this.entidade = entidade;
-    }
-
-    public Cargo getFiltro() {
-        return filtro;
-    }
-
-    public void setFiltro(Cargo filtro) {
-        this.filtro = filtro;
-    }
-    
     protected void MensagemSucesso(String titulo, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
 
         FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, titulo);
         context.addMessage(null, m);
-        context.getExternalContext().getFlash().setKeepMessages(true);        
+        context.getExternalContext().getFlash().setKeepMessages(true);
     }
-    
+
     protected void MensagemErro(String titulo, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
 
         FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, titulo);
         context.addMessage(null, m);
-        context.getExternalContext().getFlash().setKeepMessages(true);        
+        context.getExternalContext().getFlash().setKeepMessages(true);
     }
- 
-    public void limparCampos(){
-        this.entidade = new Cargo();
+
+    public void limparCampos() {
+        this.entidade = new Genero();
     }
-    
-    public void salvar(){
-        if(dao.Salvar(entidade)){
+
+    public void salvar() {
+        if (dao.Salvar(entidade)) {
             this.limparCampos();
             MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
-        }else
+        } else {
             MensagemErro("Falha!", "Erro ao salvar o registro. Contacte o administrador do sistema!");
+        }
     }
-    
-    public String apagar(){
-        if(dao.Apagar(entidade)){
+
+    public String apagar() {
+        if (dao.Apagar(entidade)) {
             limparCampos();
             return "CargoListagem.xhtml";
-        }
-        else {
+        } else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");
             return "";
         }
     }
-    
-    public void filtrar(){
-        
+
+    public void filtrar() {
+
     }
-    
-    public void limpar(){
-        filtro = new Cargo();
+
+    public Genero getEntidade() {
+        return entidade;
     }
-    
-    public List<Cargo> getListagem(){
+
+    public void setEntidade(Genero entidade) {
+        this.entidade = entidade;
+    }
+
+    public Genero getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(Genero filtro) {
+        this.filtro = filtro;
+    }
+
+    public void limpar() {
+        filtro = new Genero();
+    }
+
+    public List<Genero> getListagem() {
         return dao.Buscar(filtro);
     }
 
-    public CargoController() {
-        entidade = new Cargo();
-        filtro = new Cargo();
-    }
-    
 }

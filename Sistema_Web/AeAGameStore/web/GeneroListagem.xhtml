@@ -8,7 +8,7 @@
 
     <ui:define name="content">
         <h:form>
-            <p:dataTable value="#{funcionarioController.listagem}" 
+            <p:dataTable value="#{generoController.listagem}" 
                          var="item">
                 <p:column headerText="ID">
                     #{item.id}
@@ -16,27 +16,25 @@
                 <p:column headerText="Nome">
                     #{item.nome}
                 </p:column>
-                <p:column headerText="CPF">
-                    #{item.cpf}
+                <p:column headerText="Descrição">
+                    #{item.descricao}
                 </p:column>
-                <p:column headerText="Sexo">
-                    #{item.sexo}
-                </p:column>
-                <p:column headerText="Cargo">
-                    #{item.cargo.nome}
-                </p:column>
-                <p:column headerText="Sálario">
-                    #{item.salario}
-                </p:column>
-
                 <p:column>
 
-                    <p:commandButton value="Editar" action="FuncionarioEditar.xhtml" ajax="false">
-                        <f:setPropertyActionListener target="#{funcionarioController.entidade}"
+                    <p:commandButton value="Editar" action="GeneroEditar.xhtml">
+                        <f:setPropertyActionListener target="#{generoController.entidade}"
+                                                     value="#{item}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Excluir" action="#{generoController.apagar()}" ajax="false" immediate="true">
+                        <f:setPropertyActionListener target="#{generoController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
         </h:form>
+
     </ui:define>
+
 </ui:composition>

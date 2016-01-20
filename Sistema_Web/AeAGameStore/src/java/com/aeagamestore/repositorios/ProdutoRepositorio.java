@@ -5,12 +5,16 @@
  */
 package com.aeagamestore.repositorios;
 
+import com.aeagamestore.entidade.FotoProduto;
 import com.aeagamestore.entidade.Produto;
+import java.io.InputStream;
 
 /**
  *
  * @author arley
  */
 public interface ProdutoRepositorio extends Repositorio<Produto>{
+    
+    public FotoProduto SalvarImagemDiretorio(InputStream is, String nome);
     
 }

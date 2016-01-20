@@ -11,18 +11,18 @@
                 <p:tab title="Dados do cargo">
                     <h:panelGrid columns="3" cellpadding="4" >
                         <p:outputLabel value="Nome " for="nome" />
-                        <p:inputText  id="nome" value="#{CargoController.entidade.nome}" required="true" label="Nome"/>
+                        <p:inputText  id="nome" value="#{generoController.entidade.nome}" required="true" label="Nome"/>
                         <p:message for="nome" />
 
-                        <p:outputLabel value="Observação " for="observacao" />
-                        <p:inputTextarea rows="6" cols="33" id="observacao" value="#{CargoController.entidade.observacao}"  label="Observação"/>
-                        <p:message for="observacao" />      
+                        <p:outputLabel value="Descricao " for="descricao" />
+                        <p:inputTextarea rows="6" cols="33" id="descricao" value="#{generoController.entidade.descricao}"  label="Observação"/>
+                        <p:message for="descricao" />      
                     </h:panelGrid>
-                    <p:commandButton value="Voltar" immediate="true" action="CargoListagem.xhtml" ajax="false"/>
+                    <p:commandButton value="Voltar" immediate="true" action="GeneroListagem.xhtml" ajax="false"/>
 
                     <p:growl id="message" showDetail="true" />
 
-                    <p:commandButton value="Salvar" actionListener="#{CargoController.salvar}" update="message">
+                    <p:commandButton value="Salvar" actionListener="#{generoController.salvar}" update="message">
                         <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
                     </p:commandButton>
 

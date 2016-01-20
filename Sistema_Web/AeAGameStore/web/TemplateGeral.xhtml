@@ -14,55 +14,54 @@
 
         <title>AeA Game Store</title>
     </h:head>
-
     <h:body>
-        <h:form>
-            <div id="top">
 
+        <div id="top">
+            <h:form>
                 <p:menubar>
-                    <p:menuitem value="Inicio" action="index.xhtml" ajax="false" />
+                    <p:menuitem value="Inicio" action="index.xhtml" ajax="false" immediate="true"/>
                     <p:submenu label="Comprar" >
-                        <p:menuitem value="Comprar Jogos" action="ComprarJogo.xhtml" ajax="false" />
-                        <p:menuitem value="Comprar Consoles" action="ComprarConsole.xhtml" ajax="false" />
-                        <p:menuitem value="Comprar Perifericos" action="ComprarPeriferico.xhtml" ajax="false" />
+                        <p:menuitem value="Comprar Jogos" action="ComprarJogo.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Comprar Consoles" action="ComprarConsole.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Comprar Perifericos" action="ComprarPeriferico.xhtml" ajax="false" immediate="true" />
                     </p:submenu>
                     <p:submenu label="Cadastrar">
-                        <p:menuitem value="Cadastrar Cliente" action="CadastroCliente.xhtml" ajax="false" />
-                        <p:menuitem value="Cadastrar Funcionário" action="CadastroFuncionario.xhtml" ajax="false" />
-                        <p:menuitem value="Cadastrar Fornecedor" action="CadastroFornecedor.xhtml" ajax="false" />
+                        <p:menuitem value="Cadastrar Cliente" action="CadastroCliente.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Cadastrar Funcionário" action="CadastroFuncionario.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Cadastrar Fornecedor" action="CadastroFornecedor.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Cadastrar Gênero" action="CadastroGenero.xhtml" ajax="false" immediate="true" />
                         <p:submenu label="Cadastrar Produto">
-                            <p:menuitem value="Cadastrar Jogo" action="CadastraProdutoJogo.xhtml" ajax="false" />
-                            <p:menuitem value="Cadastrar Console" action="CadastraProdutoConsole.xhtml" ajax="false" />
-                            <p:menuitem value="Cadastrar Periferico" action="CadastraProdutoPeriferico.xhtml" ajax="false" />
+                            <p:menuitem value="Cadastrar Jogo" action="CadastraProdutoJogo.xhtml" ajax="false" immediate="true" />
+                            <p:menuitem value="Cadastrar Console" action="CadastraProdutoConsole.xhtml" ajax="false" immediate="true"/>
+                            <p:menuitem value="Cadastrar Periferico" action="CadastraProdutoPeriferico.xhtml" ajax="false" immediate="true" />
                         </p:submenu>
                         <p:menuitem value="Cadastrar Cargo" action="CadastrarCargo.xhtml" ajax="false" />
                     </p:submenu>
                     <p:submenu label="Consultar">
-                        <p:menuitem value="Consultar clientes" action="ClienteListagem.xhtml" ajax="false"/>
-                        <p:menuitem value="Consultar cargos" action="CargoListagem.xhtml" ajax="false"/>
-                        <p:menuitem value="Consultar funcionários" action="FuncionarioListagem.xhtml" ajax="false"/>
-                        <p:menuitem value="Consultar fornecedores" action="FornecedorListagem.xhtml" ajax="false"/>
+                        <p:menuitem value="Consultar Clientes" action="ClienteListagem.xhtml" ajax="false" immediate="true"/>
+                        <p:menuitem value="Consultar Cargos" action="CargoListagem.xhtml" ajax="false" immediate="true"/>
+                        <p:menuitem value="Consultar Funcionários" action="FuncionarioListagem.xhtml" ajax="false" immediate="true"/>
+                        <p:menuitem value="Consultar Fornecedores" action="FornecedorListagem.xhtml" ajax="false" immediate="true"/>
+                        <p:menuitem value="Consultar Gênero" action="GeneroListagem.xhtml" ajax="false" immediate="true" />
                     </p:submenu>
-                    <p:menuitem value="Login"  action="Login.xhtml" ajax="false"/>
-                    <p:menuitem value="WishList" />
+                    <p:menuitem value="Login"  action="Login.xhtml" ajax="false" immediate="true"/>
+                    <p:menuitem value="WishList" immediate="true"/>
                     <f:facet name="options">
                         <p:inputText style="margin-right:10px" placeholder="Pesquisar"/>
-                        <p:commandButton type="button" value="Logout" />
+                        <p:commandButton type="button" value="Logout" immediate="true" />
                     </f:facet>
                 </p:menubar>
                 <p:growl id="global" showDetail="true" />
+            </h:form>
+        </div>
 
-            </div>
+        <div id="content" class="center_content">
+            <ui:insert name="content"></ui:insert>
+        </div>
+        <div id="bottom">
 
-            <div id="content" class="center_content">
-                <ui:insert name="content"></ui:insert>
-            </div>
-            <div id="bottom">
-
-                Desenvolvido por Áquilla e Arley.
-            </div>
-        </h:form>
+            Desenvolvido por Áquilla e Arley.
+        </div>
     </h:body>
-
 </html>
 

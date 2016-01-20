@@ -7,6 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
+        <h:form>
             <p:tabView>
                 <p:tab title="Dados pessoais">
                     <h:panelGrid columns="3" cellpadding="4" >
@@ -32,7 +33,7 @@
                         <h:panelGroup>
                             Telefone:
                         </h:panelGroup>
-                        
+
                         <h:panelGroup >
                             <p:selectOneListbox id="tipoTelefone" value="#{ClienteController.entidade.telefone.tipo}">
                                 <f:selectItem itemLabel="Celular"  itemValue="Celular" />
@@ -40,7 +41,7 @@
                             </p:selectOneListbox> 
 
                             <p:spacer height="30" width="0"/>
-                            <p:inputMask mask="(99) 99999-9999" value="#{ClienteController.entidade.telefone.telefone}" />                   
+                            <p:inputMask mask="(99) 99999-9999" value="#{ClienteController.entidade.telefone.telefone}" label="Telefone"/>                   
                         </h:panelGroup>
                         <p:outputLabel/>
 
@@ -55,7 +56,7 @@
                                     />
                         <p:message for="email" />
                     </h:panelGrid>
-                    
+
                 </p:tab>
                 <p:tab title="Dados de endereço">
                     <h:panelGrid columns="3" cellpadding="5">
@@ -92,17 +93,18 @@
                         <p:inputText  id="cidade" required="true" value="#{ClienteController.entidade.endereco.cidade}" label="Cidade" />
                         <p:message for="cidade" />
                     </h:panelGrid>
-                    </p:tab>
+                </p:tab>
             </p:tabView>
-        <p:commandButton value="Cadastrar" onclick="msgSalvar.show();" ajax="false" />
-        <p:commandButton value="Cancelar" immediate="true" action="index.xhtml" ajax="false" />
-            <p:confirmDialog message="Deseja realmente cadastrar esse cliente?"  
-                             header="Confirmação" severity="alert" widgetVar="msgSalvar">  
+            <p:growl id="message" showDetail="true" />
 
-                <p:commandButton ajax="false" value="SIM" action="#{ClienteController.salvar()}" />  
-                <p:commandButton value="NÃO" onclick="msgSalvar.hide();" type="button" />   
+            <p:commandButton value="Salvar" actionListener="#{ClienteController.salvar}" update="message">
+                <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
+            </p:commandButton>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" immediate="true"/>
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
-        
+        </h:form>
     </ui:define>
-
 </ui:composition>

@@ -6,7 +6,6 @@
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
-import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,13 +15,12 @@ import javax.persistence.Table;
 
 /**
  *
- * @author grupoandroid
+ * @author arley
  */
-
 @Entity
-@Table(name = "generos")
-public class Genero implements Serializable {
-    
+@Table(name = "fotosProduto")
+public class FotoProduto implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,25 +28,6 @@ public class Genero implements Serializable {
     
     @Column(nullable = false, length = 500)
     private String nome;
-    
-    @Column(nullable = false, length = 500)
-    private String descricao;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Genero() {
-    }
-
-    public Genero(String nome, String descricao) {
-        this.nome = nome;
-        this.descricao = descricao;
-    }
 
     public String getNome() {
         return nome;
@@ -58,37 +37,37 @@ public class Genero implements Serializable {
         this.nome = nome;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public Long getId() {
+        return id;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 61 * hash + Objects.hashCode(this.id);
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof FotoProduto)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Genero other = (Genero) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        FotoProduto other = (FotoProduto) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "com.aeagamestore.entidade.FotoProduto[ id=" + id + " ]";
     }
     
 }

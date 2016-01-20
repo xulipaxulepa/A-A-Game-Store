@@ -6,7 +6,6 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <h:form>
             <p:panelGrid columns="2">
                 Nome:
                 <p:inputText  />
@@ -19,7 +18,7 @@
                 Console:
             </p:panelGrid>
             <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}"  />
-            <p:commandButton value="Voltar" action="index.xhtml" ajax="false"/>
+            <p:commandButton value="Voltar" immediate="true" action="index.xhtml" ajax="false"/>
 
             <p:confirmDialog message="Deseja realmente cadastrar esse periferico?"  
                              header="Confirmação" severity="alert" widgetVar="msgSalvar">  
@@ -27,7 +26,7 @@
                 <p:commandButton ajax="false" value="SIM" action="#{ClienteController.salvar()}" />  
                 <p:commandButton value="NÃO" onclick="msgSalvar.hide();" type="button" />   
             </p:confirmDialog>
-        </h:form>
+        
     </ui:define>
 
 </ui:composition>

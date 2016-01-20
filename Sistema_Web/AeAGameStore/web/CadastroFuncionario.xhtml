@@ -7,7 +7,6 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form>
             <p:tabView>
                 <p:tab title="Dados pessoais">
                     <h:panelGrid columns="3" cellpadding="4" >
@@ -67,10 +66,11 @@
                                     />
                         <p:message for="email" />
                     </h:panelGrid>
-                    <p:commandButton value="Salvar" action="#{funcionarioController.salvar()}" ajax="false" />
+                    
                 </p:tab>
             </p:tabView>
-        </h:form>
+            <p:commandButton value="Salvar" action="#{funcionarioController.salvar()}" ajax="false" />
+            <p:commandButton value="Cancelar" immediate="true" action="index.xhtml" ajax="false" />
     </ui:define>
 
 </ui:composition>

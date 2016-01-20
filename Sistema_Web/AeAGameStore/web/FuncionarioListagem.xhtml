@@ -7,7 +7,6 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <h:form>
             <p:dataTable value="#{funcionarioController.listagem}" 
                          var="item">
                 <p:column headerText="ID">
@@ -37,6 +36,6 @@
                     </p:commandButton>
                 </p:column>
             </p:dataTable>
-        </h:form>
+        
     </ui:define>
 </ui:composition>

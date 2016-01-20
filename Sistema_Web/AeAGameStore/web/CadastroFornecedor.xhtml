@@ -7,7 +7,6 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form>
             <p:tabView>
                 <p:tab title="Dados do Fornecedor">
                     <h:panelGrid columns="3" cellpadding="4" >
@@ -32,11 +31,12 @@
                         </h:panelGroup>
                         <p:outputLabel/>
 
-                        <p:commandButton value="Salvar" action="#{fornecedorController.salvar()}" ajax="false" />
-
+                        
                     </h:panelGrid>
+                    
                 </p:tab>
             </p:tabView>
-        </h:form>
+            <p:commandButton value="Salvar" action="#{fornecedorController.salvar()}" ajax="false" />
+                        <p:commandButton value="Cancelar" immediate="true" action="index.xhtml" ajax="false" />
     </ui:define>
 </ui:composition>

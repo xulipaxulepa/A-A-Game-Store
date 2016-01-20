@@ -16,10 +16,9 @@
     </h:head>
 
     <h:body>
+        <h:form>
+            <div id="top">
 
-
-        <div id="top">
-            <h:form>
                 <p:menubar>
                     <p:menuitem value="Inicio" action="index.xhtml" ajax="false" />
                     <p:submenu label="Comprar" >
@@ -52,15 +51,18 @@
                     </f:facet>
                 </p:menubar>
                 <p:growl id="global" showDetail="true" />
-            </h:form>
-        </div>
 
-        <div id="content" class="center_content">
-            <ui:insert name="content"></ui:insert>
-        </div>
-        <div id="bottom">
-            Desenvolvido por Áquilla e Arley.
-        </div>
+            </div>
+
+            <div id="content" class="center_content">
+                <ui:insert name="content"></ui:insert>
+            </div>
+            <div id="bottom">
+
+                Desenvolvido por Áquilla e Arley.
+            </div>
+        </h:form>
     </h:body>
 
 </html>
+

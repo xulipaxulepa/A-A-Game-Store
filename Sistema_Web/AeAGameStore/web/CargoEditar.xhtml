@@ -6,7 +6,6 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <h:form>
             <p:panelGrid columns="2" >
                 Nome:
                 <p:inputText  id="nome" value="#{CargoController.entidade.nome}"/>
@@ -26,7 +25,7 @@
                 <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" ajax="false" />
                 <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
-        </h:form>
+        
     </ui:define>
 
 </ui:composition>

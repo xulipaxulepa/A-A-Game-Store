@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./TemplateGeral.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <h:form>
+            <p:dataTable value="#{fabricanteController.listagem}" 
+                         var="item">
+                <p:column headerText="ID">
+                    #{item.id}
+                </p:column>
+                <p:column headerText="Nome">
+                    #{item.nome}
+                </p:column>
+                <p:column headerText="Web Site">
+                    <p:link href="#{item.website}" value="#{item.website}" rendered="true" target="_blank"/>       
+                </p:column>
+                <p:column>
+
+                    <p:commandButton value="Editar" action="CadastroFabricante.xhtml">
+                        <f:setPropertyActionListener target="#{fabricanteController.entidade}"
+                                                     value="#{item}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Excluir" action="#{fabricanteController.apagar()}" ajax="false" immediate="true">
+                        <f:setPropertyActionListener target="#{fabricanteController.entidade}"
+                                                     value="#{item}" />
+                    </p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+
+    </ui:define>
+
+</ui:composition>

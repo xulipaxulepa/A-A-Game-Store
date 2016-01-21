@@ -70,7 +70,7 @@
             <p:tab title="Imagem do produto">
                 <h:form>
                     <p:fileUpload fileUploadListener="#{produtoJogoController.handleFileUpload}" mode="advanced" dragDropSupport="false"
-                                  multiple="true" cancelLabel="Cancelar" uploadLabel="Anexar" label="Adicionar" update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                  multiple="true" cancelLabel="Cancelar" uploadLabel="Anexar" label="Adicionar" update="messages" sizeLimit="1000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 
                     <p:growl id="messages" showDetail="true" />
                 </h:form>

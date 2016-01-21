@@ -54,7 +54,7 @@ public class ProdutoDAO extends DAOGenerico<Produto> implements ProdutoRepositor
 
             String extension = nome.substring(nome.lastIndexOf("."));
             String name = java.util.UUID.randomUUID().toString() + extension;
-            File file = new File("/home/fotosProduto/" + name);
+            File file = new File("/home/arley/Projetos/A-A-Game-Store/Sistema_Web/AeAGameStore/web/resources/imagem/" + name);
             try (OutputStream os = new FileOutputStream(file)) {
                 byte buf[] = new byte[1024];
                 int len;
@@ -64,7 +64,7 @@ public class ProdutoDAO extends DAOGenerico<Produto> implements ProdutoRepositor
             }
             is.close();
             FotoProduto foto = new FotoProduto();
-            foto.setNome(nome);
+            foto.setNome(name);
             return foto;
 
         } catch (IOException ex) {

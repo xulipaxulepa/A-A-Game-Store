@@ -13,6 +13,7 @@ import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,8 @@ public class ProdutoJogoController implements Serializable {
     ProdutoRepositorio dao;
 
     Jogo entidade, filtro;
+
+    List<FileUploadEvent> fotos;
 
     public Jogo getEntidade() {
         return entidade;
@@ -70,13 +73,25 @@ public class ProdutoJogoController implements Serializable {
 
     public void limparCampos() {
         this.entidade = new Jogo();
+        this.filtro = new Jogo();
+        this.fotos = new LinkedList<>();
     }
 
     public void salvar() {
-        if (dao.Salvar(entidade)) {
-            this.limparCampos();
-            MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
-        } else {
+        FotoProduto foto;
+        try {
+            for (FileUploadEvent imagem : fotos) {
+                foto = dao.SalvarImagemDiretorio(imagem.getFile().getInputstream(), imagem.getFile().getFileName());
+                this.entidade.addFoto(foto);
+            }
+            if (dao.Salvar(entidade)) {
+                this.limparCampos();
+                MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
+            } else {
+                throw new RuntimeException();
+            }
+
+        } catch (Exception ex) {
             MensagemErro("Falha!", "Erro ao salvar o registro. Contacte o administrador do sistema!");
         }
     }
@@ -106,23 +121,16 @@ public class ProdutoJogoController implements Serializable {
     public ProdutoJogoController() {
         this.entidade = new Jogo();
         this.filtro = new Jogo();
+        this.fotos = new LinkedList<>();
     }
 
     public void handleFileUpload(FileUploadEvent event) {
-
-        FotoProduto foto = null;
-        try {
-            foto = dao.SalvarImagemDiretorio(event.getFile().getInputstream(), event.getFile().getFileName());
-        } catch (IOException ex) {
-            Logger.getLogger(ProdutoJogoController.class.getName()).log(Level.SEVERE, null, ex);
+        if(event != null){
+            fotos.add(event);
+            this.MensagemSucesso("Sucesso!", "Imagem anexada com sucesso");
+        }else{
+            this.MensagemErro("Falha!", "Erro ao anexar o arquivo");
         }
-
-        if (foto != null) {
-            entidade.addFoto(foto);
-            MensagemSucesso("Sucesso!", "Imagem salva com sucesso!");
-        }
-        else
-           MensagemErro("Falha!", "Erro ao salvar imagem!");
     }
-    
+
 }

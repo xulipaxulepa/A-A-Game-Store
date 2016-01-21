@@ -6,15 +6,14 @@
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -33,21 +32,30 @@ public class Console extends Produto implements Serializable {
     private Long id;
     
     @Column(nullable = false, length = 500)
-    private String versão;
+    private String versao;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Fabricante fabricante;
 
+    public Fabricante getFabricante() {
+        return fabricante;
+    }
+
+    public void setFabricante(Fabricante fabricante) {
+        this.fabricante = fabricante;
+    }
     
-    public String getVersão() {
-        return versão;
+    public String getVersao() {
+        return versao;
     }
 
     public Console() {
-  
+
     }
 
     
-    public void setVersão(String versão) {
-        this.versão = versão;
+    public void setVersao(String versao) {
+        this.versao = versao;
     }
     
     

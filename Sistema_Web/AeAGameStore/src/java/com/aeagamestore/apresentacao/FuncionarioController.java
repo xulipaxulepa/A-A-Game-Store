@@ -85,6 +85,11 @@ public class FuncionarioController {
         this.telefone = new Telefone();
     }
     
+    public String limparEntidade(){
+        entidade = new Funcionario();
+        return "FuncionarioListagem.xhtml";
+    }
+    
     public void salvar(){
         if(dao.Salvar(entidade)){
             this.limparCampos();
@@ -111,7 +116,7 @@ public class FuncionarioController {
     }
     
     public List<Funcionario> getListagem(){
-        return dao.Buscar(null);
+        return dao.Buscar(filtro);
     }
     
     public Funcionario getFiltro() {

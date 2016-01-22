@@ -12,9 +12,9 @@
                 <p:outputLabel value="Nome " for="nome" />
                 <p:inputText id="nome" value="#{CargoController.filtro.nome}" label="Nome"/>
                 <p:commandButton value="Filtrar" ajax="false" icon="ui-icon-search" 
-                                 action="#{CargoController.filtrar()}"/> 
+                                 action="#{CargoController.filtrar}"/> 
                 <p:commandButton value="Limpar" ajax="false" icon="ui-icon-closethick"
-                                 action="#{CargoController.limpar()}" />
+                                 action="#{CargoController.limpar}" />
                 <p:commandButton value="Novo" ajax="false" icon="ui-icon-plusthick" 
                                  action="CadastrarCargo.xhtml" /> 
             </h:panelGrid>

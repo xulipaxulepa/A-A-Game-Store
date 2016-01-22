@@ -69,7 +69,8 @@
                     </h:panelGrid>
                     <p:growl id="message" showDetail="true" />
 
-                    <p:commandButton value="Salvar" actionListener="#{funcionarioController.salvar}" update="message">
+                    <p:commandButton value="Voltar" immediate="true" action="#{funcionarioController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
+                    <p:commandButton value="Salvar" actionListener="#{funcionarioController.salvar}" update="message" icon="ui-icon-document">
                         <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
                     </p:commandButton>
 

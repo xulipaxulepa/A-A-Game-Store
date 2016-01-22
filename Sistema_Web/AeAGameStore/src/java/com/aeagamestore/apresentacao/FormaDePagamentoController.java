@@ -82,7 +82,8 @@ public class FormaDePagamentoController implements Serializable {
     public String apagar(){
         if(dao.Apagar(entidade)){
             limparCampos();
-            return "CargoListagem.xhtml";
+            MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
+            return "FormaDePagamentoListagem.xhtml";
         }
         else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");

@@ -27,7 +27,7 @@ public class FormaDePagamentoDAO extends DAOGenerico<FormaDePagamento> implement
         if(filtro != null){
             return this.Like("tipo", filtro.getTipo())
                    .IgualA("id", filtro.getId())
-                   .OrderBy("nome", "ASC").Buscar();
+                   .OrderBy("tipo", "ASC").Buscar();
             
         }
         return this.Buscar();

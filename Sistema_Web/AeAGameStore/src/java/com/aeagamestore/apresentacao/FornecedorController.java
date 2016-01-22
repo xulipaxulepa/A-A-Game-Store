@@ -37,7 +37,7 @@ public class FornecedorController implements Serializable {
     FornecedorRepositorio dao;
 
     public List<Fornecedor> getListagem() {
-        return dao.Buscar(null);
+        return dao.Buscar(filtro);
     }
 
     public Fornecedor getEntidade() {
@@ -94,6 +94,11 @@ public class FornecedorController implements Serializable {
 
     public void limpar() {
         filtro = new Fornecedor();
+    }
+    
+    public String limparEntidade(){
+        entidade = new Fornecedor();
+        return "FornecedorListagem.xhtml";
     }
 
     public FornecedorController() {

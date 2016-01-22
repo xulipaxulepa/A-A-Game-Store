@@ -37,6 +37,7 @@
 
                 </p:tab>
             </p:tabView>
+            <p:commandButton value="Voltar" immediate="true" action="#{fornecedorController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
             <p:commandButton value="Salvar" actionListener="#{fornecedorController.salvar}" ajax="false" update="message">
                 <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
             </p:commandButton>

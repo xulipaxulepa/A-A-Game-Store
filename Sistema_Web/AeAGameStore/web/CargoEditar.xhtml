@@ -18,7 +18,7 @@
                         <p:inputTextarea rows="6" cols="33" id="observacao" value="#{CargoController.entidade.observacao}"  label="Observação"/>
                         <p:message for="observacao" />      
                     </h:panelGrid>
-                    <p:commandButton value="Voltar" immediate="true" action="CargoListagem.xhtml" ajax="false"/>
+                    <p:commandButton value="Voltar" immediate="true" action="#{CargoController.limparEntidade}" ajax="false"/>
 
                     <p:growl id="message" showDetail="true" />
 

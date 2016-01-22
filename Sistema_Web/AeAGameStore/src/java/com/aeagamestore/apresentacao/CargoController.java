@@ -97,6 +97,11 @@ public class CargoController implements Serializable {
         filtro = new Cargo();
     }
     
+    public String limparEntidade(){
+        entidade = new Cargo();
+        return "CargoListagem.xhtml";
+    }
+    
     public List<Cargo> getListagem(){
         return dao.Buscar(filtro);
     }

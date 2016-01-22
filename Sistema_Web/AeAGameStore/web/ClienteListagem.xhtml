@@ -8,6 +8,25 @@
 
     <ui:define name="content">
         <h:form>
+            <h:panelGrid columns="5" cellpadding="4" >
+                <p:outputLabel value="Nome " for="nome" />
+                <p:inputText id="nome" value="#{ClienteController.filtro.nome}" label="Nome"/>
+                <p:outputLabel/>
+                <p:outputLabel/>
+                <p:outputLabel/>
+                
+                <p:outputLabel value="CPF " for="cpf" />
+                <p:inputText id="cpf" value="#{ClienteController.filtro.cpf}" label="cpf"/>
+                <p:commandButton value="Filtrar" ajax="false" icon="ui-icon-search" 
+                                 action="#{ClienteController.filtrar()}"/> 
+                <p:commandButton value="Limpar" ajax="false" icon="ui-icon-closethick"
+                                 action="#{ClienteController.limpar()}" />
+                <p:commandButton value="Novo" ajax="false" icon="ui-icon-plusthick" 
+                                 action="CadastroCliente.xhtml" /> 
+            </h:panelGrid>
+        </h:form>
+        
+        <h:form>
             <p:dataTable value="#{ClienteController.listagem}" 
                          var="item">
                 <p:column headerText="ID">
@@ -24,7 +43,7 @@
                 </p:column>
                 <p:column>
 
-                    <p:commandButton value="Editar" action="ClienteEditar.xhtml" ajax="false">
+                    <p:commandButton value="Editar" action="ClienteEditar.xhtml" ajax="false" icon="ui-icon-pencil">
                         <f:setPropertyActionListener target="#{ClienteController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>

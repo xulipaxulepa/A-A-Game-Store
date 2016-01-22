@@ -1,6 +1,7 @@
 
 package com.aeagamestore.apresentacao;
 
+import com.aeagamestore.entidade.Cargo;
 import com.aeagamestore.entidade.Cliente;
 import com.aeagamestore.entidade.Telefone;
 import com.aeagamestore.repositorios.ClienteRepositorio;
@@ -60,6 +61,11 @@ public class ClienteController implements Serializable {
     public void limparCampos(){
         this.entidade = new Cliente();
         this.telefone = new Telefone();
+    }
+    
+    public String limparEntidade(){
+        entidade = new Cliente();
+        return "ClienteListagem.xhtml";
     }
     
     public String editar(){

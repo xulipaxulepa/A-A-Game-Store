@@ -95,10 +95,10 @@
                     </h:panelGrid>
                 </p:tab>
             </p:tabView>
-            <p:commandButton value="Voltar" immediate="true" action="ClienteListagem.xhtml" ajax="false"/>
+            <p:commandButton value="Voltar" immediate="true" action="#{ClienteController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
             <p:growl id="message" showDetail="true" />
 
-            <p:commandButton value="Salvar" actionListener="#{ClienteController.editar()}" update="message">
+            <p:commandButton value="Salvar" actionListener="#{ClienteController.editar()}" update="message" icon="ui-icon-document">
                 <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
             </p:commandButton>
 

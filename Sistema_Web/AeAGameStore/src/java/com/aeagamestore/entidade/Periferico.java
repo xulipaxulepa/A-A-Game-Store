@@ -6,14 +6,11 @@
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -30,8 +27,15 @@ public class Periferico extends Produto implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @ManyToMany()
-    private List<Console> consoles;
+    String consoles;
+
+    public String getConsoles() {
+        return consoles;
+    }
+
+    public void setConsoles(String consoles) {
+        this.consoles = consoles;
+    }
     
     public Periferico() {
     }
@@ -43,14 +47,4 @@ public class Periferico extends Produto implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-  
-    public List<Console> getConsoles() {
-        return consoles;
-    }
-
-    public void setConsoles(List<Console> consoles) {
-        this.consoles = consoles;
-    }
-
 }

@@ -3,30 +3,58 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./TemplateGeral.xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-            <p:panelGrid columns="2">
-                Nome:
-                <p:inputText  />
-                Descrição:
-                <p:inputTextarea rows="6" cols="33" />
-                ValorUnitário:
-                <p:inputText />
-                Estoque:
-                <p:inputText />
-                Console:
-            </p:panelGrid>
-            <p:commandButton value="Cadastrar" action="#{ClienteController.salvar()}"  />
-            <p:commandButton value="Voltar" immediate="true" action="index.xhtml" ajax="false"/>
+        <p:tabView>
+            <p:tab title="Dados do produto">
+                <h:form>
+                    <h:panelGrid columns="3" cellpadding="4" >
 
-            <p:confirmDialog message="Deseja realmente cadastrar esse periferico?"  
-                             header="Confirmação" severity="alert" widgetVar="msgSalvar">  
+                        <p:outputLabel value="Nome " for="nome" />
+                        <p:inputText  id="nome" value="#{produtoPerifericoController.entidade.nome}" required="true" label="Nome"/>
+                        <p:message for="nome" />
 
-                <p:commandButton ajax="false" value="SIM" action="#{ClienteController.salvar()}" />  
-                <p:commandButton value="NÃO" onclick="msgSalvar.hide();" type="button" />   
-            </p:confirmDialog>
-        
+                        <p:outputLabel value="Descrição :" for="descricao"/>
+                        <p:inputTextarea rows="4" cols="35" value="#{produtoPerifericoController.entidade.descricao}" id="descricao" required="true"/>
+                        <p:message for="descricao" />
+
+                        <p:outputLabel value="ValorUnitário:" for="valorUnit"/>
+                        <p:inputText id="valorUnit" value="#{produtoPerifericoController.entidade.valor}" required="true" label="Valor Unitário" />
+                        <p:message for="valorUnit" />
+
+                        <p:outputLabel value="Estoque" for="estoque"/>
+                        <p:inputText id="estoque" value="#{produtoPerifericoController.entidade.estoque}" required="true" label="Estoque" />
+                        <p:message for="estoque" />
+                        
+                        <p:outputLabel value="Descrição dos Consoles" for="console"/>
+                        <p:inputTextarea  id="console" rows="6" cols="35" value="#{produtoPerifericoController.entidade.consoles}" label="Consoles" />
+                        <p:message for="console" />
+                        
+                    </h:panelGrid>
+                    <p:commandButton value="Voltar" immediate="true" action="ProdutoListagem.xhtml" ajax="false"/>
+                    <p:growl id="message" showDetail="true" />
+
+                    <p:commandButton value="Salvar" actionListener="#{produtoPerifericoController.salvar}" update="message">
+                        <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </h:form>
+            </p:tab>
+            <p:tab title="Imagem do produto">
+                <h:form>
+                    <p:fileUpload fileUploadListener="#{produtoPerifericoController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                                  multiple="true" cancelLabel="Cancelar" uploadLabel="Anexar" label="Adicionar" update="messages" sizeLimit="1000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+                    <p:growl id="messages" showDetail="true" />
+                </h:form>
+            </p:tab>
+        </p:tabView>
     </ui:define>
 
 </ui:composition>

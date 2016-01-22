@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,7 +25,7 @@ import javax.persistence.Table;
 @DiscriminatorValue("funcionario")
 public class Funcionario extends Pessoa implements Serializable{
     
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Cargo cargo;
     
     
@@ -49,7 +50,6 @@ public class Funcionario extends Pessoa implements Serializable{
     public void setSalario(BigDecimal salario) {
         this.salario = salario;
     }
-    
     
     
 }

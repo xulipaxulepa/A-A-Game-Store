@@ -12,13 +12,10 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
-
 /**
  *
  * @author petronio
  */
-
 public abstract class DAOGenerico<T> implements Repositorio<T> {
 
     @PersistenceContext(name = "AeAGameStorePU")
@@ -28,20 +25,20 @@ public abstract class DAOGenerico<T> implements Repositorio<T> {
     String orderby = "";
     String jpql = "select c from ";
     Map<String, Object> parametros = new HashMap<>();
-    
+
     public DAOGenerico(Class t) {
         this.classe = t;
     }
-    
+
     @Override
     public boolean Salvar(T obj) {
-                 
-        try {            
+
+        try {
             manager.merge(obj);
             manager.flush();
             return true;
-        
-        } catch (Exception e){
+
+        } catch (Exception e) {
             return false;
         }
     }
@@ -53,17 +50,18 @@ public abstract class DAOGenerico<T> implements Repositorio<T> {
 
     @Override
     public boolean Apagar(T obj) {
-        
-        try {           
-            manager.remove(obj);
+
+        try {
+            T objRemove = manager.merge(obj);
+            manager.remove(objRemove);
             manager.flush();
             return true;
-        
-        } catch (Exception e){
+
+        } catch (Exception e) {
             return false;
         }
     }
-    
+
     public DAOGenerico<T> OrderBy(String campo, String order) {
 
         if (campo != null) {
@@ -113,9 +111,9 @@ public abstract class DAOGenerico<T> implements Repositorio<T> {
 
     public List<T> Buscar() {
         try {
-            
+
             jpql += classe.getSimpleName() + " c";
-            
+
             if (where.length() > 0) {
                 jpql = jpql + " where " + where;
             }

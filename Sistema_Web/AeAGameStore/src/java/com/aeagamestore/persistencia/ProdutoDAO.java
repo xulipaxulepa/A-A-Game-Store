@@ -54,8 +54,8 @@ public class ProdutoDAO extends DAOGenerico<Produto> implements ProdutoRepositor
 
             String extension = nome.substring(nome.lastIndexOf("."));
             String name = java.util.UUID.randomUUID().toString() + extension;
-            //File file = new File("/home/arley/Projetos/A-A-Game-Store/Sistema_Web/AeAGameStore/web/resources/imagem/" + name);
-            File file = new File("/home/xulipaxulepa/Documentos/Apostilas (USER-PC)/5Quinto Semestre/Arquitetura de Software/A-A-Game-Store/Sistema_Web/AeAGameStore/web/resources/imagem/"+ name);
+            File file = new File("/home/arley/Projetos/A-A-Game-Store/Sistema_Web/AeAGameStore/web/resources/imagem/" + name);
+            //File file = new File("/home/xulipaxulepa/Documentos/Apostilas (USER-PC)/5Quinto Semestre/Arquitetura de Software/A-A-Game-Store/Sistema_Web/AeAGameStore/web/resources/imagem/"+ name);
             try (OutputStream os = new FileOutputStream(file)) {
                 byte buf[] = new byte[1024];
                 int len;

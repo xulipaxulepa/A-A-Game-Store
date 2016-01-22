@@ -8,21 +8,17 @@
     <ui:define name="content">
         <h:form>
             <p:tabView>
-                <p:tab title="Dados do cargo">
+                <p:tab title="Tipo de pagamento">
                     <h:panelGrid columns="3" cellpadding="4" >
-                        <p:outputLabel value="Nome " for="nome" />
-                        <p:inputText  id="nome" value="#{CargoController.entidade.nome}" required="true" label="Nome"/>
-                        <p:message for="nome" />
-
-                        <p:outputLabel value="Observação " for="observacao" />
-                        <p:inputTextarea rows="6" cols="33" id="observacao" value="#{CargoController.entidade.observacao}"  label="Observação"/>
-                        <p:message for="observacao" />      
+                        <p:outputLabel value="Tipo " for="tipo" />
+                        <p:inputText  id="tipo" value="#{formaDePagamentoController.entidade.tipo}" required="true" label="Tipo"/>
+                        <p:message for="tipo" />
                     </h:panelGrid>
-                    <p:commandButton value="Voltar" immediate="true" action="CargoListagem.xhtml" ajax="false" icon="ui-icon-arrowthick-1-w"/>
+                    <p:commandButton value="Voltar" immediate="true" action="#{formaDePagamentoController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
 
                     <p:growl id="message" showDetail="true" />
 
-                    <p:commandButton value="Salvar" actionListener="#{CargoController.salvar}" update="message" icon="ui-icon-check">
+                    <p:commandButton value="Salvar" actionListener="#{formaDePagamentoController.salvar}" update="message" icon="ui-icon-check">
                         <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
                     </p:commandButton>
 

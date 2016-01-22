@@ -6,7 +6,8 @@
 package com.aeagamestore.apresentacao;
 
 import com.aeagamestore.entidade.Cargo;
-import com.aeagamestore.repositorios.CargoRepositorio;
+import com.aeagamestore.entidade.FormaDePagamento;
+import com.aeagamestore.repositorios.FormaDePagamentoRepositorio;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -19,29 +20,34 @@ import javax.faces.context.FacesContext;
  *
  * @author arley
  */
-@Named(value = "CargoController")
+@Named(value = "formaDePagamentoController")
 @SessionScoped
-public class CargoController implements Serializable {
+public class FormaDePagamentoController implements Serializable {
 
-    Cargo entidade;
-    Cargo filtro;
+    
+    FormaDePagamento entidade, filtro;
     
     @EJB
-    CargoRepositorio dao;
+    FormaDePagamentoRepositorio dao;
+    
+    public FormaDePagamentoController() {
+        this.entidade = new FormaDePagamento();
+        this.filtro = new FormaDePagamento();
+    }
 
-    public Cargo getEntidade() {
+    public FormaDePagamento getEntidade() {
         return entidade;
     }
 
-    public void setEntidade(Cargo entidade) {
+    public void setEntidade(FormaDePagamento entidade) {
         this.entidade = entidade;
     }
 
-    public Cargo getFiltro() {
+    public FormaDePagamento getFiltro() {
         return filtro;
     }
 
-    public void setFiltro(Cargo filtro) {
+    public void setFiltro(FormaDePagamento filtro) {
         this.filtro = filtro;
     }
     
@@ -62,7 +68,7 @@ public class CargoController implements Serializable {
     }
  
     public void limparCampos(){
-        this.entidade = new Cargo();
+        this.entidade = new FormaDePagamento();
     }
     
     public void salvar(){
@@ -89,21 +95,16 @@ public class CargoController implements Serializable {
     }
     
     public void limpar(){
-        filtro = new Cargo();
+        filtro = new FormaDePagamento();
     }
     
     public String limparEntidade(){
-        entidade = new Cargo();
-        return "CargoListagem.xhtml";
+        entidade = new FormaDePagamento();
+        return "FormaDePagamentoListagem.xhtml";
     }
     
-    public List<Cargo> getListagem(){
+    public List<FormaDePagamento> getListagem(){
         return dao.Buscar(filtro);
-    }
-
-    public CargoController() {
-        entidade = new Cargo();
-        filtro = new Cargo();
     }
     
 }

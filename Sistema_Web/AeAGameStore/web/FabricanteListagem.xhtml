@@ -8,6 +8,18 @@
 
     <ui:define name="content">
         <h:form>
+            <h:panelGrid columns="5" cellpadding="4" >
+                <p:outputLabel value="Nome " for="nome" />
+                <p:inputText id="nome" value="#{fabricanteController.filtro.nome}" label="Nome"/>
+                <p:commandButton value="Filtrar" ajax="false" icon="ui-icon-search" 
+                                 action="#{fabricanteController.filtrar}"/> 
+                <p:commandButton value="Limpar" ajax="false" icon="ui-icon-closethick"
+                                 action="#{fabricanteController.limpar}" />
+                <p:commandButton value="Novo" ajax="false" icon="ui-icon-plusthick" 
+                                 action="CadastroFabricante.xhtml" /> 
+            </h:panelGrid>
+        </h:form>
+        <h:form>
             <p:dataTable value="#{fabricanteController.listagem}" 
                          var="item">
                 <p:column headerText="ID">
@@ -21,13 +33,13 @@
                 </p:column>
                 <p:column>
 
-                    <p:commandButton value="Editar" action="CadastroFabricante.xhtml">
+                    <p:commandButton value="Editar" action="FabricanteEditar.xhtml" icon="ui-icon-pencil">
                         <f:setPropertyActionListener target="#{fabricanteController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Excluir" action="#{fabricanteController.apagar()}" ajax="false" immediate="true">
+                    <p:commandButton value="Excluir" action="#{fabricanteController.apagar()}" ajax="false" immediate="true" icon="ui-icon-trash">
                         <f:setPropertyActionListener target="#{fabricanteController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>

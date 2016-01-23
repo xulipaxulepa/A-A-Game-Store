@@ -2,27 +2,27 @@
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./TemplateGeral.xhtml"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
         <h:form>
             <p:tabView>
-                <p:tab title="Dados do cargo">
+                <p:tab title="Dados do Fabricante">
                     <h:panelGrid columns="3" cellpadding="4" >
                         <p:outputLabel value="Nome " for="nome" />
-                        <p:inputText  id="nome" value="#{generoController.entidade.nome}" required="true" label="Nome"/>
+                        <p:inputText  id="nome" value="#{fabricanteController.entidade.nome}" required="true" label="Nome"/>
                         <p:message for="nome" />
 
-                        <p:outputLabel value="Descricao " for="descricao" />
-                        <p:inputTextarea rows="6" cols="33" id="descricao" value="#{generoController.entidade.descricao}"  label="Observação"/>
-                        <p:message for="descricao" />      
+                        <p:outputLabel value="Web Site " for="webSite" />
+                        <p:inputText  id="webSite" value="#{fabricanteController.entidade.website}" required="true" label="Web Site"/>
+                        <p:message for="webSite" />      
                     </h:panelGrid>
-                    <p:commandButton value="Voltar" immediate="true" action="#{generoController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
+                    <p:commandButton value="Voltar" immediate="true" action="#{fabricanteController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
 
                     <p:growl id="message" showDetail="true" />
 
-                    <p:commandButton value="Salvar" actionListener="#{generoController.salvar}" update="message" icon="ui-icon-document">
+                    <p:commandButton value="Salvar" actionListener="#{fabricanteController.salvar}" update="message" icon="ui-icon-check">
                         <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
                     </p:commandButton>
 

@@ -56,6 +56,7 @@ public class GeneroController implements Serializable {
 
     public void limparCampos() {
         this.entidade = new Genero();
+        this.filtro = new Genero();
     }
 
     public void salvar() {
@@ -70,7 +71,7 @@ public class GeneroController implements Serializable {
     public String apagar() {
         if (dao.Apagar(entidade)) {
             limparCampos();
-            return "CargoListagem.xhtml";
+            return "GeneroListagem.xhtml";
         } else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");
             return "";
@@ -99,6 +100,11 @@ public class GeneroController implements Serializable {
 
     public void limpar() {
         filtro = new Genero();
+    }
+    
+    public String limparEntidade(){
+        entidade = new Genero();
+        return "GeneroListagem.xhtml";
     }
 
     public List<Genero> getListagem() {

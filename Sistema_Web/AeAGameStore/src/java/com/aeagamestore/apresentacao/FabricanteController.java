@@ -97,6 +97,11 @@ public class FabricanteController implements Serializable {
         filtro = new Fabricante();
     }
     
+    public String limparEntidade(){
+        entidade = new Fabricante();
+        return "FabricanteListagem.xhtml";
+    }
+    
     public List<Fabricante> getListagem(){
         return dao.Buscar(filtro);
     }

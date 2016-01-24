@@ -26,8 +26,12 @@ public class FornecedorDAO extends DAOGenerico<Fornecedor> implements Fornecedor
 
     @Override
     public List<Fornecedor> Buscar(Fornecedor filtro) {
-        Query query = manager.createQuery("Select f from Fornecedor f");
-        return query.getResultList();
+        if(filtro != null){
+            return this.Like("nome", filtro.getNome())
+                   .IgualA("id", filtro.getId())
+                    .Buscar();   
+        }
+        return this.Buscar();
     }
 
     @Override

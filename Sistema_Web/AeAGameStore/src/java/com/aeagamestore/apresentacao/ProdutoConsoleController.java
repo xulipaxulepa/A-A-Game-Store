@@ -79,6 +79,8 @@ public class ProdutoConsoleController implements Serializable {
     public void salvar() {
         FotoProduto foto;
         try {
+            if(this.fotos.isEmpty())
+                throw new RuntimeException("Este produto não possui nenhuma foto anexada.");
             for (FileUploadEvent imagem : fotos) {
                 foto = dao.SalvarImagemDiretorio(imagem.getFile().getInputstream(), imagem.getFile().getFileName());
                 this.entidade.addFoto(foto);
@@ -90,6 +92,8 @@ public class ProdutoConsoleController implements Serializable {
                 throw new RuntimeException();
             }
 
+        } catch (RuntimeException ere) {
+            MensagemErro("Validação!", ere.getMessage());
         } catch (Exception ex) {
             MensagemErro("Falha!", "Erro ao salvar o registro. Contacte o administrador do sistema!");
         }

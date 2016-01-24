@@ -1,7 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./TemplateGeral.xhtml">
+                template="./TemplateGeral.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <ui:define name="content">
+        <p:outputLabel value="Aqui o preço é la em baixo!"  />
+        <h:form>
 
+            <p:dataGrid var="jogo" value="#{produtoJogoController.listagem}" columns="3" 
+                        rows="10" paginator="false" id="jogos" 
+                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                        rowsPerPageTemplate="6,12,16">
+
+                <f:facet name="header">
+                    Nossos produtos
+                </f:facet>
+                <h:panelGrid columns="1" style="width:100%; margin-left: 20px; margin-right: 20px">
+
+                    <p:imageSwitch effect="fade" id="fadeEffect" >
+                        <ui:repeat value="#{jogo.fotos}" var="image" id="fadeEffectImages">
+                            <p:graphicImage name="imagem/#{image.nome}" id="image" width="180" height="150" alt="#{jogo.nome}" rendered="true" />
+                        </ui:repeat>
+                    </p:imageSwitch>
+
+                    <h:outputText value="#{jogo.nome}" />
+                    <p:outputLabel value="#{jogo.valor}" />
+                    <p:commandButton value="Comprar" />
+                </h:panelGrid>
+
+            </p:dataGrid>
+        </h:form>
+    </ui:define>
 </ui:composition>

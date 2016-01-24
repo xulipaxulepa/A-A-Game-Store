@@ -11,7 +11,7 @@
             <h:panelGrid columns="5" cellpadding="4" >
                 <p:outputLabel for="data" value="Data: " />
                 <p:calendar id="data" locale="de" navigator="true" pattern="dd/MM/yyyy" mask="true" value="#{compraController.entidade.data}" label="Data da compra"/>
-                
+
                 <p:commandButton value="Filtrar" ajax="false" icon="ui-icon-search" 
                                  action="#{CargoController.filtrar}"/> 
                 <p:commandButton value="Limpar" ajax="false" icon="ui-icon-closethick"
@@ -37,7 +37,7 @@
                 </p:column>
                 <p:column>
 
-                    <p:commandButton value="Editar" action="CadastroCompraProduto.xhtml" icon="ui-icon-pencil">
+                    <p:commandButton value="Abrir" action="AbrirCompra.xhtml" icon="ui-icon-folder-open">
                         <f:setPropertyActionListener target="#{compraController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>

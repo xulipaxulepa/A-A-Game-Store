@@ -10,7 +10,7 @@
         <h:form>
             <h:panelGrid columns="5" cellpadding="4" >
                 <p:outputLabel value="Razão Social " for="nome" />
-                <p:inputText id="nome" value="#{fornecedorController.filtro.nome}" label="Nome"/>
+                <p:inputText id="nome" value="#{fornecedorController.filtro.nome}" label="Razão Socila"/>
                 <p:commandButton value="Filtrar" ajax="false" icon="ui-icon-search" 
                                  action="#{fornecedorController.filtrar}"/> 
                 <p:commandButton value="Limpar" ajax="false" icon="ui-icon-closethick"
@@ -28,7 +28,7 @@
                 <p:column headerText="Razão Social">
                     #{item.nome}
                 </p:column>
-                <p:column headerText="CPF">
+                <p:column headerText="CNPJ">
                     #{item.cnpj}
                 </p:column>                          
                 <p:column>

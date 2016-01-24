@@ -24,12 +24,11 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class FormaDePagamentoController implements Serializable {
 
-    
     FormaDePagamento entidade, filtro;
-    
+
     @EJB
     FormaDePagamentoRepositorio dao;
-    
+
     public FormaDePagamentoController() {
         this.entidade = new FormaDePagamento();
         this.filtro = new FormaDePagamento();
@@ -50,62 +49,62 @@ public class FormaDePagamentoController implements Serializable {
     public void setFiltro(FormaDePagamento filtro) {
         this.filtro = filtro;
     }
-    
+
     protected void MensagemSucesso(String titulo, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
 
         FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, titulo);
         context.addMessage(null, m);
-        context.getExternalContext().getFlash().setKeepMessages(true);        
+        context.getExternalContext().getFlash().setKeepMessages(true);
     }
-    
+
     protected void MensagemErro(String titulo, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
 
         FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, titulo);
         context.addMessage(null, m);
-        context.getExternalContext().getFlash().setKeepMessages(true);        
+        context.getExternalContext().getFlash().setKeepMessages(true);
     }
- 
-    public void limparCampos(){
+
+    public void limparCampos() {
         this.entidade = new FormaDePagamento();
     }
-    
-    public void salvar(){
-        if(dao.Salvar(entidade)){
+
+    public void salvar() {
+        if (dao.Salvar(entidade)) {
             this.limparCampos();
             MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
-        }else
+        } else {
             MensagemErro("Falha!", "Erro ao salvar o registro. Contacte o administrador do sistema!");
-    }
-    
-    public String apagar(){
-        if(dao.Apagar(entidade)){
-            limparCampos();
-            MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
-            return "FormaDePagamentoListagem.xhtml";
         }
-        else {
+    }
+
+    public String apagar() {
+        if (dao.Apagar(entidade)) {
+            limparCampos();
+            MensagemSucesso("Sucesso!", "Registro deletado com sucesso!");
+            return "FormaDePagamentoListagem.xhtml";
+        } else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");
             return "";
         }
     }
-    
-    public void filtrar(){
-        
+
+    public void filtrar() {
+
     }
-    
-    public void limpar(){
+
+    public void limpar() {
         filtro = new FormaDePagamento();
     }
-    
-    public String limparEntidade(){
+
+    public String limparEntidade() {
         entidade = new FormaDePagamento();
         return "FormaDePagamentoListagem.xhtml";
     }
-    
-    public List<FormaDePagamento> getListagem(){
+
+    public List<FormaDePagamento> getListagem() {
         return dao.Buscar(filtro);
     }
-    
+
 }

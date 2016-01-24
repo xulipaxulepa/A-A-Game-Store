@@ -31,5 +31,9 @@ public class ProdutoController implements Serializable {
         return dao.Buscar(null);
     }
     
-    
+    public List<Produto> getAutoComplete(String nome){
+        Produto produto = new Produto();
+        produto.setNome(nome);
+        return dao.Buscar(produto);
+    }
 }

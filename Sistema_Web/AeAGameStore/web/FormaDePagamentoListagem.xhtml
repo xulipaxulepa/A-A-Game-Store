@@ -8,7 +8,7 @@
 
     <ui:define name="content">
         <h:form>
-            <h:panelGrid columns="5" cellpadding="4" id="tabela" >
+            <h:panelGrid columns="5" cellpadding="4" >
                 <p:outputLabel value="Tipo" for="tipo" />
                 <p:inputText id="tipo" value="#{formaDePagamentoController.filtro.tipo}" label="Nome"/>
                 <p:commandButton value="Filtrar" ajax="false" icon="ui-icon-search" 
@@ -18,9 +18,7 @@
                 <p:commandButton value="Novo" ajax="false" icon="ui-icon-plusthick" 
                                  action="CadastroDeFormaDePagamento.xhtml" /> 
             </h:panelGrid>
-        </h:form>
-        <h:form>
-            <p:dataTable value="#{formaDePagamentoController.listagem}" 
+            <p:dataTable value="#{formaDePagamentoController.listagem}" id="tabela" 
                          var="item">
                 <p:column headerText="ID">
                     #{item.id}
@@ -30,28 +28,27 @@
                 </p:column>
                 <p:column>
 
-                    <p:commandButton value="Editar" action="CadastroDeFormaDePagamento.xhtml" icon="ui-icon-pencil">
+                    <p:commandButton value="Editar" action="CadastroDeFormaDePagamento.xhtml" icon="ui-icon-pencil" immediate="true">
                         <f:setPropertyActionListener target="#{formaDePagamentoController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Excluir" action="#{formaDePagamentoController.apagar()}" update="message" icon="ui-icon-trash">
-                        <p:confirm header="Confirmação" message="Deseja realmente excluir este registro ?" icon="ui-icon-alert"  />
+                    <p:commandButton value="Excluir" icon="ui-icon-trash" update="message" action="#{formaDePagamentoController.apagar}" immediate="true">
+                        <p:confirm header="Confirmação" message="Deseja realmente deletar este registro?" icon="ui-icon-alert" />
                         <f:setPropertyActionListener target="#{formaDePagamentoController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>
                     <p:growl id="message" showDetail="true" />
 
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" >
-                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes"  icon="ui-icon-check" update="tabela" ajax="true" />
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                     </p:confirmDialog>
                 </p:column>
             </p:dataTable>
 
         </h:form>
-
     </ui:define>
 
 </ui:composition>

@@ -7,13 +7,18 @@ package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -34,18 +39,15 @@ public class ItemCompra implements Serializable {
     private BigDecimal valor;
     
     @ManyToOne()
-    private Compra compra;
-    
-    @ManyToOne
     private Produto produto;   
     
     private int quantidade;
 
     public ItemCompra() {
+        this.valor = new BigDecimal("0.00");
     }
 
     public ItemCompra(Compra compra, Produto produto, int quantidade) {
-        this.compra = compra;
         this.produto = produto;
         this.quantidade = quantidade;
     }
@@ -64,14 +66,6 @@ public class ItemCompra implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Compra getCompra() {
-        return compra;
-    }
-
-    public void setCompra(Compra compra) {
-        this.compra = compra;
     }
 
     public Produto getProduto() {
@@ -113,6 +107,10 @@ public class ItemCompra implements Serializable {
     @Override
     public String toString() {
         return "com.aeagamestore.entidade.ItemCompra[ id=" + id + " ]";
+    }
+    
+    public BigDecimal getValorTotal(){
+         return valor.multiply(new BigDecimal(quantidade));
     }
     
 }

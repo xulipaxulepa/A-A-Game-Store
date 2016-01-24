@@ -32,7 +32,7 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING, length = 32)
 @DiscriminatorValue("produto")
-public abstract class Produto implements Serializable {
+public class Produto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id

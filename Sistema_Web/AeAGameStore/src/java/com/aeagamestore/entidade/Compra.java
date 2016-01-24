@@ -7,6 +7,10 @@ package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -38,19 +42,20 @@ public class Compra implements Serializable {
     @ManyToOne
     private Fornecedor fornecedor;
     
-    @Column(precision = 5, scale = 2)
+    @Column(precision = 6, scale = 2)
     private BigDecimal valor;
     
 
     @Temporal(TemporalType.DATE)
     private Date data;
     
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "compra")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<ItemCompra> itens;
 
     public Compra(){
         this.itens = new LinkedList<>();
         this.valor = new BigDecimal("0.00");
+        this.fornecedor = new Fornecedor();
     }
 
     public Fornecedor getFornecedor() {
@@ -59,7 +64,7 @@ public class Compra implements Serializable {
     
     public void add(ItemCompra i){
         this.itens.add(i);
-        this.valor.add(i.getProduto().getValor().multiply(new BigDecimal(i.getQuantidade())));
+        //this.valor.add((BigDecimal)i.getValorTotal());
     }
     
     public void remove(ItemCompra i){
@@ -122,10 +127,15 @@ public class Compra implements Serializable {
         }
         return true;
     }
+    
+    public String getDataFormatada(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+        return sdf.format(data);
+    }
 
     @Override
     public String toString() {
-        return "br.edu.ifnmg.MeuPrimeiroJPA.Entidades.Compra[ id=" + id + " ]";
+        return "Compra{" + "id=" + id + ", fornecedor=" + fornecedor + ", valor=" + valor + ", data=" + data + ", itens=" + itens + '}';
     }
-    
+   
 }

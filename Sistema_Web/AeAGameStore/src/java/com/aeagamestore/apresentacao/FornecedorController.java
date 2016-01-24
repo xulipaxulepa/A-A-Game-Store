@@ -122,5 +122,12 @@ public class FornecedorController implements Serializable {
         context.addMessage(null, m);
         context.getExternalContext().getFlash().setKeepMessages(true);
     }
+    
+    public List<Fornecedor> getAutoComplete(String nome) {
+        Fornecedor fornecedor = new Fornecedor();
+        fornecedor.setNome(nome);
+        List<Fornecedor> fornecedores = dao.Buscar(fornecedor);
+        return fornecedores;
+    }
 
 }

@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -111,6 +112,47 @@ public class Produto implements Serializable {
 
     public void setEstoque(int estoque) {
         this.estoque = estoque;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        hash = 29 * hash + Objects.hashCode(this.nome);
+        hash = 29 * hash + Objects.hashCode(this.descricao);
+        hash = 29 * hash + this.estoque;
+        hash = 29 * hash + Objects.hashCode(this.valor);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Produto other = (Produto) obj;
+        if (this.estoque != other.estoque) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.descricao, other.descricao)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.valor, other.valor)) {
+            return false;
+        }
+        return true;
     }
 
 }

@@ -9,6 +9,7 @@ import com.aeagamestore.entidade.Compra;
 import com.aeagamestore.entidade.Fornecedor;
 import com.aeagamestore.entidade.ItemCompra;
 import com.aeagamestore.repositorios.CompraRepositorio;
+import com.aeagamestore.repositorios.ProdutoRepositorio;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -33,6 +34,9 @@ public class CompraController implements Serializable {
 
     @EJB
     CompraRepositorio dao;
+    
+    @EJB
+    ProdutoRepositorio daoProduto;
 
     public CompraController() {
         this.entidade = new Compra();
@@ -83,7 +87,7 @@ public class CompraController implements Serializable {
     public void addProduto() {
         try {
             for (ItemCompra item : this.entidade.getItens()) {
-                if (item.equals(i)) {
+                if (item.getProduto().equals(i.getProduto())) {
                     throw new RuntimeException();
                 }
             }
@@ -96,6 +100,7 @@ public class CompraController implements Serializable {
                 MensagemErro("Erro!", "Preenchar os campos obrigatorios");
             }
         } catch (RuntimeException e) {
+            limparItemCompra();
             MensagemErro("Erro!", "Este produto já esta na lista!");
         }
     }
@@ -114,11 +119,20 @@ public class CompraController implements Serializable {
     public void limparItemCompra() {
         this.i = new ItemCompra();
     }
+    
+    public void atualizaEstoqueProduto(){
+        for (ItemCompra i : this.entidade.getItens()) { 
+            i.getProduto().setEstoque(i.getProduto().getEstoque() + i.getQuantidade());
+            daoProduto.Salvar(i.getProduto());
+        }
+    }
 
     public void salvar() {
+        
         if(this.entidade.getFornecedor() != null && this.entidade.getData() != null) {
             if (!this.entidade.getItens().isEmpty()) {
                 if (dao.Salvar(entidade)) {
+                    this.atualizaEstoqueProduto();
                     this.limparCampos();
                     this.limparItemCompra();
                     MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");

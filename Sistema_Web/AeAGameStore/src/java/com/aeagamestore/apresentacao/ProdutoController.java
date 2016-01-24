@@ -5,6 +5,7 @@
  */
 package com.aeagamestore.apresentacao;
 
+import com.aeagamestore.entidade.FotoProduto;
 import com.aeagamestore.entidade.Produto;
 import com.aeagamestore.repositorios.ProdutoRepositorio;
 import javax.inject.Named;
@@ -12,6 +13,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import org.primefaces.event.FileUploadEvent;
 
 /**
  *
@@ -35,5 +37,9 @@ public class ProdutoController implements Serializable {
         Produto produto = new Produto();
         produto.setNome(nome);
         return dao.Buscar(produto);
+    }
+    
+     public void salvar(Produto produto) {
+         dao.Salvar(produto);
     }
 }

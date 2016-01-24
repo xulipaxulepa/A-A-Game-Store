@@ -176,6 +176,7 @@ public class CompraController implements Serializable {
 
     public String limparEntidade() {
         entidade = new Compra();
+        this.limparItemCompra();
         return "CompraListagem.xhtml";
     }
 

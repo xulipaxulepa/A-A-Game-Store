@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--    <h:outputStylesheet name="css/default.css"/>
+                <h:outputStylesheet name="css/cssLayout.css"/>
+        
+        -->
+        <title>AeA Game Store</title>
+    </h:head>
+    <h:body>
+
+        <div id="top">
+            <h:form>
+                <p:menubar>
+                    <p:menuitem value="Inicio" action="index1.xhtml" ajax="false" immediate="true"/>
+                    <p:submenu label="Cadastrar">
+                        <p:menuitem value="Cadastrar Cliente" action="CadastroCliente.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Cadastrar Funcionário" action="CadastroFuncionario.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Cadastrar Fornecedor" action="CadastroFornecedor.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Cadastrar Gênero" action="CadastroGenero.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Cadastrar Fabricante" action="CadastroFabricante.xhtml" ajax="false" immediate="true" />
+                        <p:submenu label="Cadastrar Produto">
+                            <p:menuitem value="Cadastrar Jogo" action="CadastraProdutoJogo.xhtml" ajax="false" immediate="true" />
+                            <p:menuitem value="Cadastrar Console" action="CadastraProdutoConsole.xhtml" ajax="false" immediate="true"/>
+                            <p:menuitem value="Cadastrar Periferico" action="CadastraProdutoPeriferico.xhtml" ajax="false" immediate="true" />
+                        </p:submenu>
+                        <p:menuitem value="Cadastrar Cargo" action="CadastrarCargo.xhtml" ajax="false" />
+                    </p:submenu>
+                    <p:submenu label="Consultar">
+                        <p:menuitem value="Consultar Clientes" action="ClienteListagem.xhtml" ajax="false" immediate="true"/>
+                        <p:menuitem value="Consultar Cargos" action="CargoListagem.xhtml" ajax="false" immediate="true"/>
+                        <p:menuitem value="Consultar Funcionários" action="FuncionarioListagem.xhtml" ajax="false" immediate="true"/>
+                        <p:menuitem value="Consultar Fornecedores" action="FornecedorListagem.xhtml" ajax="false" immediate="true"/>
+                        <p:menuitem value="Consultar Gênero" action="GeneroListagem.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Consultar Fabricante" action="FabricanteListagem.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Consultar Compras" action="CompraListagem.xhtml" ajax="false" immediate="true" />
+                    </p:submenu>
+                    <p:menuitem value="Login"  action="Login.xhtml" ajax="false" immediate="true"/>
+                    <p:menuitem value="Area publica" action="index.xhtml" immediate="true"/>
+                    <f:facet name="options">
+                        <p:inputText style="margin-right:10px" placeholder="Pesquisar"/>
+                        <p:commandButton type="button" value="Logout" immediate="true" />
+                    </f:facet>
+                </p:menubar>
+                <p:growl id="global" showDetail="true" />
+            </h:form>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content"></ui:insert>
+        </div>
+        <div id="bottom">
+
+            Desenvolvido por Áquilla e Arley.
+        </div>
+    </h:body>
+</html>
+

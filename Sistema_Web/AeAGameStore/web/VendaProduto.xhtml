@@ -12,47 +12,46 @@
             <ui:define name="content">
                 <h:form>
                     <div style="margin-left: 100px">
-                        <h1 style="color: blue; margin-left: 30px;"> #{vendaProduto.produto.nome} </h1>
+                        <h1 style="color: blue; margin-left: 30px;"> #{vendaController.produto.nome} </h1>
                         <p:growl id="msgs" showDetail="true" />
                         <h:panelGrid columns="2" cellpadding="40" >
                             <p:imageSwitch effect="fade" id="fadeEffect">
-                                <ui:repeat value="#{vendaProduto.produto.fotos}" var="image" id="fadeEffectImages">
+                                <ui:repeat value="#{vendaController.produto.fotos}" var="image" id="fadeEffectImages">
                                     <p:graphicImage name="/imagem/#{image.nome}" id="image" />
                                 </ui:repeat>
                             </p:imageSwitch>
                             <h:panelGroup>
-                                <h1> #{vendaProduto.produto.descricao} </h1>
-                                <h1 style="color: red"> R$ #{vendaProduto.produto.valor} </h1>
+                                <h1> #{vendaController.produto.descricao} </h1>
+                                <h1 style="color: red"> R$ #{vendaController.produto.valor} </h1>
+                                
+                                <h:outputLabel for="quantidade" value="Quantidade: " />
+                                <p:spinner id="quantidade" value="#{vendaController.i.quantidade}" min="1" max="#{vendaController.produto.estoque}" size="3"  />
+                                
                                 <h3> Detalhes </h3>
-                                <h:panelGroup rendered="#{vendaProduto.rederize('jogo')}" id="jogo" style="text-align: left; color: blue">
-                                    <h4> Mídia : #{vendaProduto.produto.midia} </h4>
-                                    <h4> Genero : #{vendaProduto.produto.genero.nome} </h4>
-                                    <h4> Classificação Indicativa: #{vendaProduto.produto.ESRB} </h4>
-                                    <h4> Data de Lançamento : #{vendaProduto.produto.dataFormatada} </h4>
+                                <h:panelGroup rendered="#{vendaController.rederize('jogo')}" id="jogo" style="text-align: left; color: blue">
+                                    <h4> Mídia : #{vendaController.produto.midia} </h4>
+                                    <h4> Genero : #{vendaController.produto.genero.nome} </h4>
+                                    <h4> Classificação Indicativa: #{vendaController.produto.ESRB} </h4>
+                                    <h4> Data de Lançamento : #{vendaController.produto.dataFormatada} </h4>
                                 </h:panelGroup>
-                                <h:panelGroup rendered="#{vendaProduto.rederize('periferico')}"  id="periferico" style="text-align: left; color: blue">
-                                    <h4> Consoles : #{vendaProduto.produto.consoles} </h4>
+                                <h:panelGroup rendered="#{vendaController.rederize('periferico')}"  id="periferico" style="text-align: left; color: blue">
+                                    <h4> Consoles : #{vendaController.produto.consoles} </h4>
                                 </h:panelGroup>
-                                <h:panelGroup rendered="#{vendaProduto.rederize('console')}"  id="console" style="text-align: left; color: blue">
-                                    <h4> Versão : #{vendaProduto.produto.versao} </h4>
-                                    <h4> Fabricante : #{vendaProduto.produto.fabricante.nome} </h4>
+                                <h:panelGroup rendered="#{vendaController.rederize('console')}"  id="console" style="text-align: left; color: blue">
+                                    <h4> Versão : #{vendaController.produto.versao} </h4>
+                                    <h4> Fabricante : #{vendaController.produto.fabricante.nome} </h4>
                                 </h:panelGroup>                        
                             </h:panelGroup>
                             <p:outputLabel/>
                             <h:panelGroup>
-                                <p:commandLink value="Adicionar ao carrinho">
-
-                                </p:commandLink>
+                                <p:commandLink ajax="false" value="Adicionar ao carrinho" action="#{vendaController.addProdutoAoCarrinho()}"/>
                                 <p:spacer width="10" />
-                                <p:commandButton value="Comprar" action="EtapasDaCompra.xhtml">
-                            
-                                </p:commandButton>
+                                <p:commandButton value="Comprar" action="#{vendaController.addProdutoIrParaConcretirzarVenda()}"/>
                             </h:panelGroup>
                         </h:panelGrid>
                     </div>
                 </h:form>
             </ui:define>
         </ui:composition>
-
     </body>
 </html>

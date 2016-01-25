@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,27 +30,27 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "vendas")
 public class Venda implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @ManyToOne
+
+    @ManyToOne(optional = false)
     public Cliente cliente;
-    
+
     @ManyToOne
     public Funcionario funcionario;
 
-       
-    @Column(precision = 5, scale = 2)
+    @Column(precision = 6, scale = 2, nullable = false)
     private BigDecimal valor;
-    
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "venda")
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venda")
     private List<ItemVenda> itens;
-    
+
     @Temporal(TemporalType.DATE)
     private Date data;
-    
+
     @ManyToOne
     private FormaDePagamento formaDePagamento;
 
@@ -65,16 +65,15 @@ public class Venda implements Serializable {
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
     }
-    
-    
 
     public void setFormaDePagamento(FormaDePagamento formaDePagamento) {
         this.formaDePagamento = formaDePagamento;
     }
-    
+
     public Venda() {
         this.itens = new LinkedList<>();
-        this.valor = new BigDecimal("0.00");
+        this.valor = new BigDecimal(0.00);
+        this.data = new Date();
     }
 
     public Date getData() {
@@ -84,7 +83,7 @@ public class Venda implements Serializable {
     public void setData(Date data) {
         this.data = data;
     }
-  
+
     public Long getId() {
         return id;
     }
@@ -101,7 +100,6 @@ public class Venda implements Serializable {
         this.cliente = cliente;
     }
 
-    
     public BigDecimal getValor() {
         return valor;
     }
@@ -122,15 +120,20 @@ public class Venda implements Serializable {
         return itens;
     }
 
-    
-    public void add(ItemVenda i){
+    public void add(ItemVenda i) {
         this.itens.add(i);
-        this.valor.add(i.getProduto().getValor().multiply(new BigDecimal(i.getQuantidade())));
+        double valorVenda = this.valor.doubleValue();
+        valorVenda = valorVenda + i.getValorTotal().doubleValue();
+        BigDecimal valorAtualizado = new BigDecimal(valorVenda);
+        this.setValor(valorAtualizado);
     }
-    
-    public void remove(ItemVenda i){
+
+    public void remove(ItemVenda i) {
         this.itens.remove(i);
-        this.valor.subtract(i.getProduto().getValor().multiply(new BigDecimal(i.getQuantidade())));
+        double valorVenda = this.valor.doubleValue();
+        valorVenda = valorVenda - i.getValorTotal().doubleValue();
+        BigDecimal valorAtualizado = new BigDecimal(valorVenda);
+        this.setValor(valorAtualizado);
     }
 
     @Override
@@ -157,5 +160,5 @@ public class Venda implements Serializable {
     public String toString() {
         return "br.edu.ifnmg.MeuPrimeiroJPA.Entidades.Venda[ id=" + id + " ]";
     }
-    
+
 }

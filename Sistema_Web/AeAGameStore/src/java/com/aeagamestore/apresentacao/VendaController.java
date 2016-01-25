@@ -8,12 +8,14 @@ package com.aeagamestore.apresentacao;
 import com.aeagamestore.entidade.Cliente;
 import com.aeagamestore.entidade.Console;
 import com.aeagamestore.entidade.Genero;
+import com.aeagamestore.entidade.ItemCompra_;
 import com.aeagamestore.entidade.ItemVenda;
 import com.aeagamestore.entidade.Jogo;
 import com.aeagamestore.entidade.Periferico;
 import com.aeagamestore.entidade.Produto;
 import com.aeagamestore.entidade.Venda;
 import com.aeagamestore.repositorios.ClienteRepositorio;
+import com.aeagamestore.repositorios.ProdutoRepositorio;
 import com.aeagamestore.repositorios.VendaRepositorio;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -32,25 +34,44 @@ import org.primefaces.event.FlowEvent;
  *
  * @author arley
  */
-@Named(value = "vendaProduto")
+@Named(value = "vendaController")
 @SessionScoped
 @ViewScoped
-public class VendaProduto implements Serializable {
+public class VendaController implements Serializable {
 
     /**
-     * Creates a new instance of VendaProduto
+     * Creates a new instance of VendaController
      */
     private Venda entidade;
-    private Produto produto;
     private Cliente cliente;
     private String email, senha;
     private boolean skip;
-
+    private ItemVenda i;
+    private Produto produto;
     @EJB
     ClienteRepositorio daoCliente;
 
     @EJB
     VendaRepositorio dao;
+
+    @EJB
+    ProdutoRepositorio daoProduto;
+
+    public ItemVenda getI() {
+        return i;
+    }
+
+    public Produto getProduto() {
+        return produto;
+    }
+
+    public void setProduto(Produto produto) {
+        this.produto = produto;
+    }
+
+    public void setI(ItemVenda i) {
+        this.i = i;
+    }
 
     public Cliente getCliente() {
         return cliente;
@@ -60,8 +81,9 @@ public class VendaProduto implements Serializable {
         this.cliente = cliente;
     }
 
-    public VendaProduto() {
+    public VendaController() {
         this.entidade = new Venda();
+        this.i = new ItemVenda();
     }
 
     public Venda getEntidade() {
@@ -72,12 +94,11 @@ public class VendaProduto implements Serializable {
         this.entidade = entidade;
     }
 
-    public Produto getProduto() {
-        return produto;
-    }
-
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void atualizaEstoque() {
+        for (ItemVenda item : this.entidade.getItens()) {
+            item.getProduto().setEstoque(item.getProduto().getEstoque() - item.getQuantidade());
+            daoProduto.Salvar(item.getProduto());
+        }
     }
 
     public boolean rederize(String descricao) {
@@ -164,6 +185,12 @@ public class VendaProduto implements Serializable {
         this.senha = senha;
     }
 
+    public void excluirItem() {
+        this.entidade.remove(i);
+        MensagemSucesso("Suceso!", "Item foi removido com sucesso!");
+        limparItem();
+    }
+
     protected void MensagemSucesso(String titulo, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -192,23 +219,69 @@ public class VendaProduto implements Serializable {
             this.skip = false;
         }
     }
-    
-    public void limparCampos(){
-        
+
+    public void limparCampos() {
+        this.produto = new Produto();
+        this.entidade = new Venda();
+        this.email = "";
+        this.senha = "";
+        this.limparItem();
     }
-    
-    public void salvar(){
-        this.entidade.cliente = this.cliente;
-        ItemVenda item = new ItemVenda();
-        item.setProduto(produto);
-        item.setQuantidade(1);
-        item.getValor().add(produto.getValor().multiply(new BigDecimal(1)));
-        this.entidade.add(item);
-        this.entidade.setData(new Date());
-        if(dao.Salvar(entidade)){
-            this.limparCampos();
-            MensagemSucesso("Sucesso!", "Compra realizada com sucesso!");
-        }else
-            MensagemErro("Falha!", "Erro ao salvar o registro. Contacte o administrador do sistema!");
+
+    public void limparItem() {
+        this.i = new ItemVenda();
+    }
+
+    public void addItem() {
+        this.entidade.add(i);
+        this.limparItem();
+    }
+
+    public void addClienteVenda() {
+        this.entidade.setCliente(cliente);
+    }
+
+    public String salvar() {
+        if (!this.entidade.getItens().isEmpty()) {
+            this.addClienteVenda();
+            if (dao.Salvar(entidade)) {
+                this.atualizaEstoque();
+                this.limparCampos();
+                MensagemSucesso("Sucesso!", "Compra realizada com sucesso!");
+                return "index.xhtml";
+            } else {
+                MensagemErro("Falha!", "Erro ao salvar o registro. Contacte o administrador do sistema!");
+                return "";
+            }
+        } else {
+            MensagemErro("Erro!", "Não há nenhum item!");
+            return "";
+        }
+    }
+
+    public void addProdutoAoItemVenda() {
+        try {
+            for (ItemVenda item : this.entidade.getItens()) {
+                if (this.i.getProduto().equals(item.getProduto())) {
+                    throw new RuntimeException("Produto iguais, foram atualizados");
+                }
+            }
+            this.i.setProduto(this.produto);
+            this.i.setValor(i.getProduto().getValor());
+            this.entidade.add(i);
+            this.limparItem();
+        } catch (RuntimeException e) {
+            MensagemSucesso("Produtos iguais", "Foi mantido o anterior");
+        }
+    }
+
+    public void addProdutoAoCarrinho() {
+        this.addProdutoAoItemVenda();
+        this.MensagemSucesso("Sucesso!", "Item adicionado com sucesso!");
+    }
+
+    public String addProdutoIrParaConcretirzarVenda() {
+        this.addProdutoAoItemVenda();
+        return "EtapasDaCompra.xhtml";
     }
 }

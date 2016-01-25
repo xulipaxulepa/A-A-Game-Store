@@ -55,6 +55,7 @@ public class ItemVenda implements Serializable {
 
     public ItemVenda() {
         this.valor = new BigDecimal("0.00");
+        this.quantidade = 1;
     }
     
     
@@ -116,6 +117,10 @@ public class ItemVenda implements Serializable {
     @Override
     public String toString() {
         return "br.edu.ifnmg.MeuPrimeiroJPA.Entidades.ItemVenda[ id=" + id + " ]";
+    }
+    
+    public BigDecimal getValorTotal(){
+         return valor.multiply(new BigDecimal(quantidade));
     }
     
 }

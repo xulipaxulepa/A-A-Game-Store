@@ -8,32 +8,33 @@
                 xmlns="http://www.w3.org/1999/xhtml">
 
     <ui:define name="content">
-        <h:form>
 
-            <p:growl id="growl" sticky="true" showDetail="true"/>
+        <h:form style="margin: 40px; ">
+            <h1 style="color: blue; text-align: center" > <p:graphicImage name="/icon/visto.png" width="70" height="40" /> Concretize sua compra </h1>
+            <p:growl id="growl" showDetail="true"/>
 
-            <p:wizard flowListener="#{vendaProduto.onFlowProcess}" nextLabel="Avançar" backLabel="Voltar" onnext="true">
+            <p:wizard flowListener="#{vendaController.onFlowProcess}" nextLabel="Avançar" backLabel="Voltar" onnext="true">
                 <p:tab id="personal" title="Autenticação" >
                     <p:panel header="Login">
                         <p:messages />
-                        <h:panelGrid columns="2" id="formLogin" columnClasses="label, value" rendered="#{vendaProduto.usuarioLogado('formLogin')}">
+                        <h:panelGrid columns="2" id="formLogin" columnClasses="label, value" rendered="#{vendaController.usuarioLogado('formLogin')}">
 
                             <h:outputText value="E-mail: *" />
-                            <p:inputText value="#{vendaProduto.email}" required="true" label="E-mail"/>
+                            <p:inputText value="#{vendaController.email}" required="true" label="E-mail"/>
 
                             <h:outputText value="Senha *" />
-                            <p:password value="#{vendaProduto.senha}" required="true" label="Senha"/>
+                            <p:password value="#{vendaController.senha}" required="true" label="Senha"/>
 
                             <p:commandLink action="CadastroCliente.xhtml" ajax="false" immediate="true" value="Registra-se" />
-                            <p:commandButton action="#{vendaProduto.autenticar}" ajax="false" update="growl formLogin papelUsuarioLogado" value="Entrar" />
+                            <p:commandButton action="#{vendaController.autenticar}" ajax="false" update="growl formLogin papelUsuarioLogado" value="Entrar" />
 
 
                         </h:panelGrid>
-                        <h:panelGrid style="text-align: center" id="papelUsuarioLogado" rendered="#{vendaProduto.usuarioLogado('')}">
+                        <h:panelGrid style="text-align: center" id="papelUsuarioLogado" rendered="#{vendaController.usuarioLogado('')}">
                             <div style="text-align: center">
-                                <h3 > Olá #{vendaProduto.cliente.nome} </h3>
+                                <h3 > Olá #{vendaController.cliente.nome} </h3>
                                 <p> Avance para concluir sua compra </p>
-                                <p:commandLink value="Sair" action="#{vendaProduto.logout()}" ajax="false"/>
+                                <p:commandLink value="Sair" action="#{vendaController.logout()}" ajax="false"/>
                             </div>
 
                         </h:panelGrid>
@@ -45,25 +46,25 @@
                         <p:messages />
                         <h:panelGrid columns="2" >
                             <p:outputLabel value="Rua: " />
-                            <p:outputLabel id="rua" value="#{vendaProduto.cliente.endereco.rua}"/>
+                            <p:outputLabel id="rua" value="#{vendaController.cliente.endereco.rua}"/>
 
                             <p:outputLabel value="Número: " />
-                            <p:outputLabel id="numero" value="#{vendaProduto.cliente.endereco.numero}"/>
+                            <p:outputLabel id="numero" value="#{vendaController.cliente.endereco.numero}"/>
 
                             <p:outputLabel value="Complemento: " />
-                            <p:outputLabel id="complemento" value="#{vendaProduto.cliente.endereco.complemento}"/>
+                            <p:outputLabel id="complemento" value="#{vendaController.cliente.endereco.complemento}"/>
 
                             <p:outputLabel value="Referência: " />
-                            <p:outputLabel id="referencia" value="#{vendaProduto.cliente.endereco.referencia}"/>
+                            <p:outputLabel id="referencia" value="#{vendaController.cliente.endereco.referencia}"/>
 
                             <p:outputLabel value="Bairro: " />
-                            <p:outputLabel id="bairro" value="#{vendaProduto.cliente.endereco.bairro}"/>
+                            <p:outputLabel id="bairro" value="#{vendaController.cliente.endereco.bairro}"/>
 
                             <p:outputLabel value="Cidade: " />
-                            <p:outputLabel id="cidade" value="#{vendaProduto.cliente.endereco.cidade}"/>
+                            <p:outputLabel id="cidade" value="#{vendaController.cliente.endereco.cidade}"/>
 
                             <p:outputLabel value="Estado: " />
-                            <p:outputLabel id="estado" value="#{vendaProduto.cliente.endereco.estado}"/>
+                            <p:outputLabel id="estado" value="#{vendaController.cliente.endereco.estado}"/>
                         </h:panelGrid>
                     </p:panel>
                 </p:tab>
@@ -75,7 +76,7 @@
                         <h:panelGrid columns="3">
                             <p:outputLabel value="Forma de Pagamento " for="forma"/>
                             <p:selectOneMenu id="forma" converter="formaDePagamentoConverter" required="true" 
-                                             value="#{vendaProduto.entidade.formaDePagamento}">  
+                                             value="#{vendaController.entidade.formaDePagamento}">  
                                 <f:selectItems id="formas" value="#{formaDePagamentoController.listagem}" var="t" itemLabel="#{t.tipo}" itemValue="#{t}"/>
                             </p:selectOneMenu>
                             <p:message for="forma" />
@@ -85,26 +86,40 @@
 
                 <p:tab id="confirm" title="Confirmação">
                     <p:panel header="Confirme sua compra">
-                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                <p:imageSwitch effect="fade" id="fadeEffect">
-                                    <ui:repeat value="#{vendaProduto.produto.fotos}" var="image" id="fadeEffectImages">
-                                        <p:graphicImage name="/imagem/#{image.nome}" id="image" />
-                                    </ui:repeat>
-                                </p:imageSwitch>
-                                <h:panelGroup>
-                                    <h1> #{vendaProduto.produto.descricao} </h1>
-                                    <h1 style="color: red"> R$ #{vendaProduto.produto.valor} </h1>
-                                </h:panelGroup>
-                                <h3> Forma de Pagamento: </h3> #{vendaProduto.entidade.formaDePagamento.tipo}
-                            </h:panelGrid>
-                            <h:panelGrid columns="2" columnClasses="label, value">
-                                
-                            </h:panelGrid>
+                        <h:panelGrid id="confirmation">
+                            <h2 style="color: blue; text-align: center" > Dados da sua Compra </h2>
+                            <p:dataTable var="item" value="#{vendaController.entidade.itens}" id="itens">
+                                <p:column headerText="Código">
+                                    <h:outputText value="#{item.produto.id}" />
+                                </p:column>
 
+                                <p:column headerText="Nome">
+                                    <h:outputText value="#{item.produto.nome}" />
+                                </p:column>
+
+                                <p:column headerText="Quantidade">
+                                    <h:outputText value="#{item.quantidade}" />
+                                </p:column>
+
+                                <p:column headerText="Vlr. Unt.">
+                                    <h:outputText value="#{item.valor}" />
+                                </p:column>
+                                <p:column headerText="Vlr. Total">
+                                    <h:outputText value="#{item.valorTotal}" />
+                                </p:column>
+                                <p:column>
+                                    <p:commandButton value="Excluir" action="#{vendaController.excluirItem()}" ajax="false"  icon="ui-icon-trash">
+                                        <f:setPropertyActionListener target="#{vendaController.i}"
+                                                                     value="#{item}" />
+                                    </p:commandButton>
+                                </p:column>
+                            </p:dataTable>
                         </h:panelGrid>
-
-                        <p:commandButton value="Confirmar" actionListener="#{vendaProduto.salvar}" update="growl" process="@this"/>
+                        <h3 style="text-align: right" id="totalVenda"> Valor Total : R$ #{vendaController.entidade.valor} </h3>
+                        <br />
+                        <p style="text-align: right">
+                            <p:commandButton  value="Confirmar" action="#{vendaController.salvar}"  icon="ui-icon-check" ajax="false"/>
+                        </p>
                     </p:panel>
                 </p:tab>
             </p:wizard>

@@ -8,6 +8,7 @@ package com.aeagamestore.apresentacao;
 import com.aeagamestore.entidade.Compra;
 import com.aeagamestore.entidade.Fornecedor;
 import com.aeagamestore.entidade.ItemCompra;
+import static com.aeagamestore.entidade.ItemCompra_.produto;
 import com.aeagamestore.repositorios.CompraRepositorio;
 import com.aeagamestore.repositorios.ProdutoRepositorio;
 import javax.inject.Named;

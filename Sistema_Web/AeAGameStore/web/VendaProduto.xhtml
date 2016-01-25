@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./TemplateGeral.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <div style="margin-left: 100px">
+                        <h1 style="color: blue; margin-left: 30px;"> #{vendaProduto.produto.nome} </h1>
+                        <p:growl id="msgs" showDetail="true" />
+                        <h:panelGrid columns="2" cellpadding="40" >
+                            <p:imageSwitch effect="fade" id="fadeEffect">
+                                <ui:repeat value="#{vendaProduto.produto.fotos}" var="image" id="fadeEffectImages">
+                                    <p:graphicImage name="/imagem/#{image.nome}" id="image" />
+                                </ui:repeat>
+                            </p:imageSwitch>
+                            <h:panelGroup>
+                                <h1> #{vendaProduto.produto.descricao} </h1>
+                                <h1 style="color: red"> R$ #{vendaProduto.produto.valor} </h1>
+                                <h3> Detalhes </h3>
+                                <h:panelGroup rendered="#{vendaProduto.rederize('jogo')}" id="jogo" style="text-align: left; color: blue">
+                                    <h4> Mídia : #{vendaProduto.produto.midia} </h4>
+                                    <h4> Genero : #{vendaProduto.produto.genero.nome} </h4>
+                                    <h4> Classificação Indicativa: #{vendaProduto.produto.ESRB} </h4>
+                                    <h4> Data de Lançamento : #{vendaProduto.produto.dataFormatada} </h4>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{vendaProduto.rederize('periferico')}"  id="periferico" style="text-align: left; color: blue">
+                                    <h4> Consoles : #{vendaProduto.produto.consoles} </h4>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{vendaProduto.rederize('console')}"  id="console" style="text-align: left; color: blue">
+                                    <h4> Versão : #{vendaProduto.produto.versao} </h4>
+                                    <h4> Fabricante : #{vendaProduto.produto.fabricante.nome} </h4>
+                                </h:panelGroup>                        
+                            </h:panelGroup>
+                            <p:outputLabel/>
+                            <h:panelGroup>
+                                <p:commandLink value="Adicionar ao carrinho">
+
+                                </p:commandLink>
+                                <p:spacer width="10" />
+                                <p:commandButton value="Comprar" action="EtapasDaCompra.xhtml">
+                            
+                                </p:commandButton>
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </div>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

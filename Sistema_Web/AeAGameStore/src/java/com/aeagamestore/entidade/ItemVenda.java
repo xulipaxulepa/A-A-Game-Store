@@ -39,6 +39,14 @@ public class ItemVenda implements Serializable {
     
     private int quantidade;
 
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
     public ItemVenda(Venda venda, Produto produto, int quantidade) {
         this.venda = venda;
         this.produto = produto;
@@ -46,6 +54,7 @@ public class ItemVenda implements Serializable {
     }
 
     public ItemVenda() {
+        this.valor = new BigDecimal("0.00");
     }
     
     

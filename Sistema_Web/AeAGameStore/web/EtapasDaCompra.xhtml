@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./TemplateGeral.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <h:form>
+
+            <p:growl id="growl" sticky="true" showDetail="true"/>
+
+            <p:wizard flowListener="#{vendaProduto.onFlowProcess}" nextLabel="Avançar" backLabel="Voltar" onnext="true">
+                <p:tab id="personal" title="Autenticação" >
+                    <p:panel header="Login">
+                        <p:messages />
+                        <h:panelGrid columns="2" id="formLogin" columnClasses="label, value" rendered="#{vendaProduto.usuarioLogado('formLogin')}">
+
+                            <h:outputText value="E-mail: *" />
+                            <p:inputText value="#{vendaProduto.email}" required="true" label="E-mail"/>
+
+                            <h:outputText value="Senha *" />
+                            <p:password value="#{vendaProduto.senha}" required="true" label="Senha"/>
+
+                            <p:commandLink action="CadastroCliente.xhtml" ajax="false" immediate="true" value="Registra-se" />
+                            <p:commandButton action="#{vendaProduto.autenticar}" ajax="false" update="growl formLogin papelUsuarioLogado" value="Entrar" />
+
+
+                        </h:panelGrid>
+                        <h:panelGrid style="text-align: center" id="papelUsuarioLogado" rendered="#{vendaProduto.usuarioLogado('')}">
+                            <div style="text-align: center">
+                                <h3 > Olá #{vendaProduto.cliente.nome} </h3>
+                                <p> Avance para concluir sua compra </p>
+                                <p:commandLink value="Sair" action="#{vendaProduto.logout()}" ajax="false"/>
+                            </div>
+
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="address" title="Endereço de Entrega">
+                    <p:panel header="Endereço">
+                        <p:messages />
+                        <h:panelGrid columns="2" >
+                            <p:outputLabel value="Rua: " />
+                            <p:outputLabel id="rua" value="#{vendaProduto.cliente.endereco.rua}"/>
+
+                            <p:outputLabel value="Número: " />
+                            <p:outputLabel id="numero" value="#{vendaProduto.cliente.endereco.numero}"/>
+
+                            <p:outputLabel value="Complemento: " />
+                            <p:outputLabel id="complemento" value="#{vendaProduto.cliente.endereco.complemento}"/>
+
+                            <p:outputLabel value="Referência: " />
+                            <p:outputLabel id="referencia" value="#{vendaProduto.cliente.endereco.referencia}"/>
+
+                            <p:outputLabel value="Bairro: " />
+                            <p:outputLabel id="bairro" value="#{vendaProduto.cliente.endereco.bairro}"/>
+
+                            <p:outputLabel value="Cidade: " />
+                            <p:outputLabel id="cidade" value="#{vendaProduto.cliente.endereco.cidade}"/>
+
+                            <p:outputLabel value="Estado: " />
+                            <p:outputLabel id="estado" value="#{vendaProduto.cliente.endereco.estado}"/>
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="contact" title="Formas de Pagamento">
+                    <p:panel header="Tipo de pagamentos">
+                        <p:messages />
+                        <h3> Como deseja paga a sua compra ? </h3>
+                        <h:panelGrid columns="3">
+                            <p:outputLabel value="Forma de Pagamento " for="forma"/>
+                            <p:selectOneMenu id="forma" converter="formaDePagamentoConverter" required="true" 
+                                             value="#{vendaProduto.entidade.formaDePagamento}">  
+                                <f:selectItems id="formas" value="#{formaDePagamentoController.listagem}" var="t" itemLabel="#{t.tipo}" itemValue="#{t}"/>
+                            </p:selectOneMenu>
+                            <p:message for="forma" />
+                        </h:panelGrid>
+                    </p:panel>
+                </p:tab>
+
+                <p:tab id="confirm" title="Confirmação">
+                    <p:panel header="Confirme sua compra">
+                        <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <p:imageSwitch effect="fade" id="fadeEffect">
+                                    <ui:repeat value="#{vendaProduto.produto.fotos}" var="image" id="fadeEffectImages">
+                                        <p:graphicImage name="/imagem/#{image.nome}" id="image" />
+                                    </ui:repeat>
+                                </p:imageSwitch>
+                                <h:panelGroup>
+                                    <h1> #{vendaProduto.produto.descricao} </h1>
+                                    <h1 style="color: red"> R$ #{vendaProduto.produto.valor} </h1>
+                                </h:panelGroup>
+                                <h3> Forma de Pagamento: </h3> #{vendaProduto.entidade.formaDePagamento.tipo}
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                
+                            </h:panelGrid>
+
+                        </h:panelGrid>
+
+                        <p:commandButton value="Confirmar" actionListener="#{vendaProduto.salvar}" update="growl" process="@this"/>
+                    </p:panel>
+                </p:tab>
+            </p:wizard>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

@@ -22,24 +22,34 @@ import org.primefaces.event.FileUploadEvent;
 @Named(value = "ProdutoController")
 @SessionScoped
 public class ProdutoController implements Serializable {
+
+    private Produto produtoCompra;
+
     @EJB
     ProdutoRepositorio dao;
-    
+
     public ProdutoController() {
     }
-    
-    
-    public List<Produto> getListagem(){
+
+    public List<Produto> getListagem() {
         return dao.Buscar(null);
     }
-    
-    public List<Produto> getAutoComplete(String nome){
+
+    public List<Produto> getAutoComplete(String nome) {
         Produto produto = new Produto();
         produto.setNome(nome);
         return dao.Buscar(produto);
     }
-    
-     public void salvar(Produto produto) {
-         dao.Salvar(produto);
+
+    public Produto getProdutoCompra() {
+        return produtoCompra;
+    }
+
+    public void setProdutoCompra(Produto produtoCompra) {
+        this.produtoCompra = produtoCompra;
+    }
+
+    public void salvar(Produto produto) {
+        dao.Salvar(produto);
     }
 }

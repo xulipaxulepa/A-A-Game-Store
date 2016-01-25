@@ -6,6 +6,7 @@
 package com.aeagamestore.entidade;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -82,5 +83,8 @@ public class Jogo extends Produto implements Serializable{
     }
     
     
-    
+    public String getDataFormatada(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); 
+        return sdf.format(this.dataDeLancamento);
+    }
 }

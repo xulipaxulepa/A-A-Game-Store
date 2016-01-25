@@ -13,5 +13,5 @@ import com.aeagamestore.entidade.Cliente;
  */
 
 public interface ClienteRepositorio extends Repositorio<Cliente>{
-    
+    public Cliente autentica(String email, String senha) throws Exception;
 }

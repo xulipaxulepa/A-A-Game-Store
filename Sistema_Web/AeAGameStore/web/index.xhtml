@@ -10,7 +10,7 @@
         <p:outputLabel value="Aqui o preço é la em baixo!"  />
         <h:form>
 
-            <p:dataGrid var="jogo" value="#{produtoJogoController.listagem}" columns="3" 
+            <p:dataGrid var="item" value="#{produtoJogoController.listagem}" columns="3" 
                         rows="10" paginator="false" id="jogos" 
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                         rowsPerPageTemplate="6,12,16">
@@ -21,14 +21,17 @@
                 <h:panelGrid columns="1" style="width:100%; margin-left: 20px; margin-right: 20px">
 
                     <p:imageSwitch effect="fade" id="fadeEffect" >
-                        <ui:repeat value="#{jogo.fotos}" var="image" id="fadeEffectImages">
-                            <p:graphicImage name="imagem/#{image.nome}" id="image" width="180" height="150" alt="#{jogo.nome}" rendered="true" />
+                        <ui:repeat value="#{item.fotos}" var="image" id="fadeEffectImages">
+                            <p:graphicImage name="imagem/#{image.nome}" id="image" width="180" height="150" alt="#{item.nome}" rendered="true" />
                         </ui:repeat>
                     </p:imageSwitch>
 
-                    <h:outputText value="#{jogo.nome}" />
-                    <p:outputLabel value="#{jogo.valor}" />
-                    <p:commandButton value="Comprar" />
+                    <h:outputText value="#{item.nome}" />
+                    <p:outputLabel value="#{item.valor}" />
+                    <p:commandButton value="Comprar" action="VendaProduto.xhtml">
+                        <f:setPropertyActionListener target="#{vendaProduto.produto}"
+                                                     value="#{item}" />
+                    </p:commandButton>
                 </h:panelGrid>
 
             </p:dataGrid>

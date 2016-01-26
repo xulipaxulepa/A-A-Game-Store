@@ -27,10 +27,9 @@ public class VendaDAO extends DAOGenerico<Venda> implements VendaRepositorio{
     public List<Venda> Buscar(Venda filtro) {
         if(filtro != null){
             return this.Like("nome", filtro.getCliente().getNome())
-                   .Like("nome", filtro.getFuncionario().getNome())
                    .IgualA("id", filtro.getId())
-                   .OrderBy("nome", "ASC").Buscar();
-            
+                   .IgualA("data", filtro.getData())
+                   .OrderBy("data", "ASC").Buscar();
         }
         return this.Buscar();
     }

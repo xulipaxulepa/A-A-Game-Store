@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./TemplateAdmin.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+
+        <p:tabView>
+            <p:tab title="Dados do produto">
+                <h:form>
+                    <h:panelGrid columns="3" cellpadding="4" >
+
+                        <p:outputLabel value="Nome " for="nome" />
+                        <p:inputText  id="nome" value="#{produtoJogoController.entidade.nome}" required="true" label="Nome"/>
+                        <p:message for="nome" />
+
+                        <p:outputLabel value="Descrição :" for="descricao"/>
+                        <p:inputTextarea rows="4" cols="35" value="#{produtoJogoController.entidade.descricao}" id="descricao" required="true"/>
+                        <p:message for="descricao" />
+
+                        <p:outputLabel value="ValorUnitário:" for="valorUnit"/>
+                        <p:inputText id="valorUnit" value="#{produtoJogoController.entidade.valor}" required="true" label="Valor Unitário" />
+                        <p:message for="valorUnit" />
+
+                        <p:outputLabel value="Estoque" for="estoque"/>
+                        <p:inputText id="estoque" value="#{produtoJogoController.entidade.estoque}" required="true" label="Estoque" />
+                        <p:message for="estoque" />
+
+                        <p:outputLabel for="dataDeLancamento" value="Data de Lançamento:" />
+                        <p:calendar id="dataDeLancamento" locale="de" navigator="true" pattern="dd/MM/yyyy" mask="true" value="#{produtoJogoController.entidade.dataDeLançamento}" required="true" label="Data de Lançamento"/>
+                        <p:message for="dataDeLancamento" />
+
+                        <p:outputLabel for="midia" value="Mídia"  />
+                        <p:selectOneRadio id="midia" required="true" value="#{produtoJogoController.entidade.midia}">
+                            <f:selectItem itemLabel="CD" itemValue="CD" />
+                            <f:selectItem itemLabel="DVD" itemValue="DVD" />
+                            <f:selectItem itemLabel="Blu-Ray" itemValue="Blu-Ray" />
+                        </p:selectOneRadio>
+                        <p:message for="midia" />
+                        
+                        <p:outputLabel value="Gênero: " for="genero"/>
+                        <p:selectOneMenu id="genero" converter="generoConverter" 
+                                         value="#{produtoJogoController.entidade.genero}">  
+                            <f:selectItems id="generos" value="#{generoController.listagem}" var="t" itemLabel="#{t.nome}" itemValue="#{t}"/>
+                        </p:selectOneMenu>
+                        <p:message for="genero" />
+
+                        <p:outputLabel value="Classificação Indicativa:" for="classificacao"/>
+                        <p:inputText id="classificacao" value="#{produtoJogoController.entidade.ESRB}" label="Classificação Indicativa" required="true"/>
+                        <p:message for="classificacao" />
+
+
+                    </h:panelGrid>
+                    <p:commandButton value="Voltar" immediate="true" action="ProdutoListagem.xhtml" ajax="false"/>
+                    <p:growl id="message" showDetail="true" />
+
+                    <p:commandButton value="Salvar" actionListener="#{produtoJogoController.salvar}" update="message">
+                        <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </h:form>
+            </p:tab>
+            <p:tab title="Imagem do produto">
+                <h:form>
+                    <p:fileUpload fileUploadListener="#{produtoJogoController.handleFileUpload}" mode="advanced" dragDropSupport="false"
+                                  multiple="true" cancelLabel="Cancelar" uploadLabel="Anexar" label="Adicionar" update="messages" sizeLimit="1000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+                    <p:growl id="messages" showDetail="true" />
+                </h:form>
+            </p:tab>
+        </p:tabView>
+    </ui:define>
+
+</ui:composition>

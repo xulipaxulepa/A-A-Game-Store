@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./TemplateGeral.xhtml"
+                template="./TemplateAdmin.xhtml"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -95,7 +95,7 @@
                     </h:panelGrid>
                 </p:tab>
             </p:tabView>
-            <p:commandButton value="Voltar" immediate="true" action="index.xhtml" ajax="false" icon="ui-icon-arrowthick-1-w"/>
+            <p:commandButton value="Voltar" immediate="true" action="#{ClienteController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
             <p:growl id="message" showDetail="true" />
 
             <p:commandButton value="Salvar" actionListener="#{ClienteController.editar()}" update="message" icon="ui-icon-document">

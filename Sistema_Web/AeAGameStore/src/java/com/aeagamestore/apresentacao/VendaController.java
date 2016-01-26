@@ -6,6 +6,7 @@
 package com.aeagamestore.apresentacao;
 
 import com.aeagamestore.entidade.Cliente;
+import com.aeagamestore.entidade.Compra;
 import com.aeagamestore.entidade.Console;
 import com.aeagamestore.entidade.Genero;
 import com.aeagamestore.entidade.ItemCompra_;
@@ -22,6 +23,7 @@ import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
@@ -42,7 +44,7 @@ public class VendaController implements Serializable {
     /**
      * Creates a new instance of VendaController
      */
-    private Venda entidade;
+    private Venda entidade, filtro;
     private Cliente cliente;
     private String email, senha;
     private boolean skip;
@@ -84,6 +86,7 @@ public class VendaController implements Serializable {
     public VendaController() {
         this.entidade = new Venda();
         this.i = new ItemVenda();
+        this.filtro = new Venda();
     }
 
     public Venda getEntidade() {
@@ -283,5 +286,24 @@ public class VendaController implements Serializable {
     public String addProdutoIrParaConcretirzarVenda() {
         this.addProdutoAoItemVenda();
         return "EtapasDaCompra.xhtml";
+    }
+
+    public List<Venda> getListagem() {
+        return dao.Buscar(null);
+    }
+    
+    public void limpar(){
+        this.filtro = new Venda();
+    }
+
+    public Venda getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(Venda filtro) {
+        this.filtro = filtro;
+    }
+    
+    public void filtrar(){
     }
 }

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./TemplateAdmin.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="content">
+        <h:form>
+            <p:tabView>
+                <p:tab title="Dados de genero">
+                    <h:panelGrid columns="3" cellpadding="4" >
+                        <p:outputLabel value="Nome " for="nome" />
+                        <p:inputText  id="nome" value="#{generoController.entidade.nome}" required="true" label="Nome"/>
+                        <p:message for="nome" />
+
+                        <p:outputLabel value="Descricao " for="descricao" />
+                        <p:inputTextarea rows="6" cols="33" id="descricao" value="#{generoController.entidade.descricao}"  label="Observação"/>
+                        <p:message for="descricao" />      
+                    </h:panelGrid>
+                    <p:commandButton value="Voltar" immediate="true" action="#{generoController.limparEntidade}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
+
+                    <p:growl id="message" showDetail="true" />
+
+                    <p:commandButton value="Salvar" actionListener="#{generoController.salvar}" update="message" icon="ui-icon-check">
+                        <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" ajax="false"/>
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </p:tab>
+            </p:tabView>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

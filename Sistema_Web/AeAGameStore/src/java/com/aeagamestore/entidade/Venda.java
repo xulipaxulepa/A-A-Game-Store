@@ -8,6 +8,7 @@ package com.aeagamestore.entidade;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -161,4 +162,8 @@ public class Venda implements Serializable {
         return "br.edu.ifnmg.MeuPrimeiroJPA.Entidades.Venda[ id=" + id + " ]";
     }
 
+    public String getDataFormatada() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(data);
+    }
 }

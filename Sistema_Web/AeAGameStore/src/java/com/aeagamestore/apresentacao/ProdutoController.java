@@ -23,16 +23,17 @@ import org.primefaces.event.FileUploadEvent;
 @SessionScoped
 public class ProdutoController implements Serializable {
 
-    private Produto produtoCompra;
+    private Produto produtoCompra, filtro;
 
     @EJB
     ProdutoRepositorio dao;
 
     public ProdutoController() {
+        filtro = new Produto();
     }
 
     public List<Produto> getListagem() {
-        return dao.Buscar(null);
+        return dao.Buscar(filtro);
     }
 
     public List<Produto> getAutoComplete(String nome) {
@@ -47,6 +48,22 @@ public class ProdutoController implements Serializable {
 
     public void setProdutoCompra(Produto produtoCompra) {
         this.produtoCompra = produtoCompra;
+    }
+
+    public void limpar(){
+        this.filtro = new Produto();
+    }
+    
+    public void filtrar(){
+    }
+        
+    
+    public Produto getFiltro() {
+        return filtro;
+    }
+
+    public void setFiltro(Produto filtro) {
+        this.filtro = filtro;
     }
 
     public void salvar(Produto produto) {

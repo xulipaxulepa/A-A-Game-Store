@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./TemplateGeral.xhtml"
+                template="./TemplateAdmin.xhtml"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -41,7 +41,7 @@
                             </p:selectOneListbox> 
 
                             <p:spacer height="30" width="0"/>
-                            <p:inputMask mask="(99) 99999-9999" value="#{ClienteController.entidade.telefone.telefone}" />                   
+                            <p:inputMask mask="(99) 99999-9999" value="#{ClienteController.entidade.telefone.telefone}" label="Telefone"/>                   
                         </h:panelGroup>
                         <p:outputLabel/>
 
@@ -95,18 +95,18 @@
                     </h:panelGrid>
                 </p:tab>
             </p:tabView>
-            <p:commandButton value="Voltar" immediate="true" action="index.xhtml" ajax="false" icon="ui-icon-arrowthick-1-w"/>
             <p:growl id="message" showDetail="true" />
 
-            <p:commandButton value="Salvar" actionListener="#{ClienteController.editar()}" update="message" icon="ui-icon-document">
+            <p:commandButton value="Voltar" immediate="true" action="ClienteListagem.xhtml" ajax="false" icon="ui-icon-arrowthick-1-w"/>
+            
+            <p:commandButton value="Salvar" actionListener="#{ClienteController.salvar}" update="message" icon="ui-icon-check">
                 <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
             </p:commandButton>
 
             <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" ajax="false" />
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" immediate="true"/>
                 <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
             </p:confirmDialog>
         </h:form>
     </ui:define>
-
 </ui:composition>

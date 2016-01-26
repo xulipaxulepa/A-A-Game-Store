@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--    <h:outputStylesheet name="css/default.css"/>
+                <h:outputStylesheet name="css/cssLayout.css"/>
+        -->
+        <title>AeA Game Store</title>
+    </h:head>
+    <h:body>
+
+        <div id="top">
+            <h:form>
+                <p:menubar>
+                    <p:menuitem value="Inicio" action="index.xhtml" ajax="false" immediate="true"/>
+                    <p:submenu label="Cadastros">
+                        <p:menuitem value="Clientes" action="ClienteListagem" ajax="false" immediate="true" />
+                        <p:menuitem value="Funcionários" action="FuncionarioListagem.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Fornecedores" action="FornecedorListagem.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Fabricantes" action="FabricanteListagem.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Cargos" action="CargoListagem.xhtml" ajax="false" immediate="true" />
+                        <p:menuitem value="Gêneros" action="GeneroListagem.xhtml" ajax="false" immediate="true" />                   
+                    </p:submenu>
+                    <p:submenu label="Produtos">
+                        <p:submenu label="Cadastro">
+                            <p:menuitem value="Jogo" action="CadastraProdutoJogo.xhtml" ajax="false" immediate="true" />
+                            <p:menuitem value="Console" action="CadastraProdutoConsole.xhtml" ajax="false" immediate="true"/>
+                            <p:menuitem value="Periferico" action="CadastraProdutoPeriferico.xhtml" ajax="false" immediate="true" />
+                        </p:submenu>
+                        <p:menuitem value="Consultar Estoque" action="ProdutoListagem.xhtml" ajax="false" immediate="true" />
+                    </p:submenu>
+                    <p:menuitem value="Meios de Pagamento" action="FormaDePagamentoListagem.xhtml" ajax="false" immediate="true" />
+                    <p:menuitem value="Compras" action="CompraListagem.xhtml" ajax="false" immediate="true" />
+                    <p:menuitem value="Vendas" action="VendaListagem.xhtml" ajax="false" immediate="true" />
+                    <p:menuitem value="Área pública" url="./../" ajax="false" immediate="true"/>
+
+                </p:menubar>
+                <p:growl id="global" showDetail="true" />
+            </h:form>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content"></ui:insert>
+        </div>
+        <div id="bottom" style="float: bottom; text-align: center">
+            Copyright 2016 - AeA Game Store 
+        </div>
+    </h:body>
+</html>
+

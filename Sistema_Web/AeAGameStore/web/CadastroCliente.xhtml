@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./TemplateGeral1.xhtml"
+                template="./TemplateGeral.xhtml"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
@@ -54,7 +54,7 @@
                                     promptLabel="Enter com sua senha" weakLabel="Fraca"
                                     goodLabel="Razoável" strongLabel="Forte" 
                                     />
-                        <p:message for="email" />
+                        <p:message for="senha" />
                     </h:panelGrid>
 
                 </p:tab>
@@ -97,7 +97,7 @@
             </p:tabView>
             <p:growl id="message" showDetail="true" />
 
-            <p:commandButton value="Voltar" immediate="true" action="CargoListagem.xhtml" ajax="false" icon="ui-icon-arrowthick-1-w"/>
+            <p:commandButton value="Voltar" immediate="true" action="index.xhtml" ajax="false" icon="ui-icon-arrowthick-1-w"/>
             
             <p:commandButton value="Salvar" actionListener="#{ClienteController.salvar}" update="message" icon="ui-icon-check">
                 <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />

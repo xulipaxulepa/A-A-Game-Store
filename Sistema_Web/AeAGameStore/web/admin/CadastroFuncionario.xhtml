@@ -7,7 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form>
+        <h:form id="cadFuncionario">
             <p:tabView>
                 <p:tab title="Dados pessoais">
                     <h:panelGrid columns="3" cellpadding="4" >
@@ -35,19 +35,21 @@
                         </h:panelGroup>
 
                         <h:panelGroup >
-                            <p:selectOneListbox id="tipoTelefone" value="#{funcionarioController.entidade.telefone.tipo}">
+                            <p:selectOneListbox id="tipoTelefone" value="#{funcionarioController.entidade.telefone.tipo}" required="true" label="Tipo de Telefone">
                                 <f:selectItem itemLabel="Celular"  itemValue="Celular" />
                                 <f:selectItem itemLabel="Fixo" itemValue="Fixo" />
                             </p:selectOneListbox> 
+                            <p:message for="tipoTelefone" />
 
                             <p:spacer height="30" width="0"/>
-                            <p:inputMask mask="(99) 99999-9999" value="#{funcionarioController.entidade.telefone.telefone}" />                   
+                            <p:inputMask mask="(99) 99999-9999" id="telefoneN" value="#{funcionarioController.entidade.telefone.telefone}" required="true" label="Número Telefone"/>                   
+                            <p:message for="telefoneN" />
                         </h:panelGroup>
                         <p:outputLabel/>
 
                         <p:outputLabel value="Cargo: " for="cargo"/>
                         <p:selectOneMenu id="cargo" converter="cargoConverter" 
-                                         value="#{funcionarioController.entidade.cargo}">  
+                                         value="#{funcionarioController.entidade.cargo}" required="true" label="Cargo">  
                             <f:selectItems id="cargos" value="#{CargoController.listagem}" var="t" itemLabel="#{t.nome}" itemValue="#{t}"/>
                         </p:selectOneMenu>
                         <p:message for="cargo" />
@@ -71,9 +73,18 @@
                 </p:tab>
 
             </p:tabView>
+            <p:growl id="message" showDetail="true" />
             <p:commandButton value="Voltar" immediate="true" action="#{funcionarioController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
-            <p:commandButton value="Salvar" action="#{funcionarioController.salvar()}" ajax="false" icon="ui-icon-check"/>
             
+            <p:commandButton value="Salvar" actionListener="#{funcionarioController.salvar}" update="message :cadFuncionario" icon="ui-icon-check">
+                <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
+            </p:commandButton>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" immediate="true"/>
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
+
         </h:form>
     </ui:define>
 

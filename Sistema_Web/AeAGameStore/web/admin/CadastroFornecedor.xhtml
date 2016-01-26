@@ -7,7 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form>
+        <h:form id="cadFornecedor">
             <p:tabView>
                 <p:tab title="Dados do Fornecedor">
                     <h:panelGrid columns="3" cellpadding="4" >
@@ -38,7 +38,16 @@
                 </p:tab>
             </p:tabView>
             <p:commandButton value="Voltar" immediate="true" action="#{fornecedorController.limparEntidade()}" ajax="false" icon="ui-icon-arrowthick-1-w"/>
-            <p:commandButton value="Salvar" action="#{fornecedorController.salvar()}" ajax="false" icon="ui-icon-check"/>
+            <p:growl id="message" showDetail="true" />
+
+            <p:commandButton value="Salvar" actionListener="#{fornecedorController.salvar}" update="message :cadFornecedor" icon="ui-icon-check">
+                <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
+            </p:commandButton>
+
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+            </p:confirmDialog>
         </h:form>
     </ui:define>
 </ui:composition>

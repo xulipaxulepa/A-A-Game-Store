@@ -18,7 +18,7 @@
                 <p:commandButton value="Novo" ajax="false" icon="ui-icon-plusthick" 
                                  action="CadastroDeFormaDePagamento.xhtml" /> 
             </h:panelGrid>
-            <p:dataTable value="#{formaDePagamentoController.listagem}" id="tabela" 
+            <p:dataTable value="#{formaDePagamentoController.listagem}" id="tblFormaPagemento" 
                          var="item">
                 <p:column headerText="ID">
                     #{item.id}
@@ -34,8 +34,8 @@
                     </p:commandButton>
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Excluir" icon="ui-icon-trash" update="message tabela" action="#{formaDePagamentoController.apagar}" immediate="true">
-                        <p:confirm header="Confirmação" message="Deseja realmente deletar este registro?" icon="ui-icon-alert" />
+                    <p:commandButton value="Excluir" icon="ui-icon-trash" update="message tblFormaPagemento" action="#{formaDePagamentoController.apagar}" immediate="true">
+                        <p:confirm header="Confirmação" message="Deseja realmente deletar este Forma de Pagemento?" icon="ui-icon-alert" />
                         <f:setPropertyActionListener target="#{formaDePagamentoController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>

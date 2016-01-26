@@ -10,7 +10,7 @@
 
         <p:tabView>
             <p:tab title="Dados do produto">
-                <h:form>
+                <h:form id="cadProdutoJogo">
                     <h:panelGrid columns="3" cellpadding="4" >
 
                         <p:outputLabel value="Nome " for="nome" />
@@ -57,7 +57,7 @@
                     <p:commandButton value="Voltar" immediate="true" action="ProdutoListagem.xhtml" ajax="false"/>
                     <p:growl id="message" showDetail="true" />
 
-                    <p:commandButton value="Salvar" actionListener="#{produtoJogoController.salvar}" update="message">
+                    <p:commandButton value="Salvar" actionListener="#{produtoJogoController.salvar}" update="message cadProdutoJogo">
                         <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
                     </p:commandButton>
 
@@ -68,7 +68,7 @@
                 </h:form>
             </p:tab>
             <p:tab title="Imagem do produto">
-                <h:form>
+                <h:form >
                     <p:fileUpload fileUploadListener="#{produtoJogoController.handleFileUpload}" mode="advanced" dragDropSupport="false"
                                   multiple="true" cancelLabel="Cancelar" uploadLabel="Anexar" label="Adicionar" update="messages" sizeLimit="1000000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
 

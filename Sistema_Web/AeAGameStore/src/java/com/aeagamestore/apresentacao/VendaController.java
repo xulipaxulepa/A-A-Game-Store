@@ -289,7 +289,7 @@ public class VendaController implements Serializable {
     }
 
     public List<Venda> getListagem() {
-        return dao.Buscar(null);
+        return dao.Buscar(filtro);
     }
     
     public void limpar(){

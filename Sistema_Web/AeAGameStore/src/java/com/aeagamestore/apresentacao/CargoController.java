@@ -25,7 +25,7 @@ public class CargoController implements Serializable {
 
     Cargo entidade;
     Cargo filtro;
-    
+
     @EJB
     CargoRepositorio dao;
 
@@ -44,60 +44,62 @@ public class CargoController implements Serializable {
     public void setFiltro(Cargo filtro) {
         this.filtro = filtro;
     }
-    
+
     protected void MensagemSucesso(String titulo, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
 
         FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, titulo);
         context.addMessage(null, m);
-        context.getExternalContext().getFlash().setKeepMessages(true);        
+        context.getExternalContext().getFlash().setKeepMessages(true);
     }
-    
+
     protected void MensagemErro(String titulo, String msg) {
         FacesContext context = FacesContext.getCurrentInstance();
 
         FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, titulo);
         context.addMessage(null, m);
-        context.getExternalContext().getFlash().setKeepMessages(true);        
+        context.getExternalContext().getFlash().setKeepMessages(true);
     }
- 
-    public void limparCampos(){
+
+    public void limparCampos() {
         this.entidade = new Cargo();
     }
-    
-    public void salvar(){
-        if(dao.Salvar(entidade)){
+
+    public void salvar() {
+        if (dao.Salvar(entidade)) {
             this.limparCampos();
             MensagemSucesso("Sucesso!", "Registro salvo com sucesso!");
-        }else
+        } else {
             MensagemErro("Falha!", "Erro ao salvar o registro. Contacte o administrador do sistema!");
-    }
-    
-    public String apagar(){
-        if(dao.Apagar(entidade)){
-            limparCampos();
-            return "CargoListagem.xhtml";
         }
-        else {
+    }
+
+    public String apagar() {
+        if (dao.Apagar(entidade)) {
+            limparCampos();
+            MensagemSucesso("Sucesso!", "Registro deletado com sucesso!");
+            return "CargoListagem.xhtml";
+        } else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");
+            limparCampos();
             return "";
         }
     }
-    
-    public void filtrar(){
-        
+
+    public void filtrar() {
+
     }
-    
-    public void limpar(){
+
+    public void limpar() {
         filtro = new Cargo();
     }
-    
-    public String limparEntidade(){
+
+    public String limparEntidade() {
         entidade = new Cargo();
         return "CargoListagem.xhtml";
     }
-    
-    public List<Cargo> getListagem(){
+
+    public List<Cargo> getListagem() {
         return dao.Buscar(filtro);
     }
 
@@ -105,5 +107,5 @@ public class CargoController implements Serializable {
         entidade = new Cargo();
         filtro = new Cargo();
     }
-    
+
 }

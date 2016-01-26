@@ -99,8 +99,10 @@ public class FuncionarioController {
     }
     
     public String apagar(){
-        if(dao.Apagar(entidade))
-            return "ClienteListagem.xhtml";
+        if(dao.Apagar(entidade)){
+            MensagemSucesso("Sucesso!", "Registro deletado com sucesso!");
+            return "FuncionarioListagem.xhtml";
+        }
         else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");
             return "";

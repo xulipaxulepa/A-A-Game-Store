@@ -81,7 +81,8 @@ public class FornecedorController implements Serializable {
 
     public String apagar() {
         if (dao.Apagar(entidade)) {
-            return "ClienteListagem.xhtml";
+            MensagemSucesso("Sucesso!", "Registro deletado com sucesso!");
+            return "FornecedorListagem.xhtml";
         } else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");
             return "";

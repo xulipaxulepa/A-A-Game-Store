@@ -6,7 +6,7 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html">
 
     <ui:define name="content">
-        <h:form>
+        <h:form id="cadCargo">
             <p:tabView>
                 <p:tab title="Dados do cargo">
                     <h:panelGrid columns="3" cellpadding="4" >
@@ -22,7 +22,7 @@
 
                     <p:growl id="message" showDetail="true" />
 
-                    <p:commandButton value="Salvar" actionListener="#{CargoController.salvar}" update="message" icon="ui-icon-check">
+                    <p:commandButton value="Salvar" actionListener="#{CargoController.salvar}" update="message :cadCargo" icon="ui-icon-check">
                         <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
                     </p:commandButton>
 

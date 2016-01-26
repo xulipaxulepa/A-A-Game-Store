@@ -6,7 +6,7 @@
                 xmlns:p="http://primefaces.org/ui">
 
     <ui:define name="content">
-        <h:form>
+        <h:form id="cadFabricante">
             <p:tabView>
                 <p:tab title="Dados do Fabricante">
                     <h:panelGrid columns="3" cellpadding="4" >
@@ -22,7 +22,7 @@
 
                     <p:growl id="message" showDetail="true" />
 
-                    <p:commandButton value="Salvar" actionListener="#{fabricanteController.salvar}" update="message" icon="ui-icon-check">
+                    <p:commandButton value="Salvar" actionListener="#{fabricanteController.salvar}" update="message :cadFabricante" icon="ui-icon-check">
                         <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
                     </p:commandButton>
 

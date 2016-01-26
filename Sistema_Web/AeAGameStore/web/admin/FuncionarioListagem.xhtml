@@ -14,7 +14,7 @@
                 <p:outputLabel/>
                 <p:outputLabel/>
                 <p:outputLabel/>
-                
+
                 <p:outputLabel value="CPF " for="cpf" />
                 <p:inputText id="cpf" value="#{funcionarioController.filtro.cpf}" label="cpf"/>
                 <p:commandButton value="Filtrar" ajax="false" icon="ui-icon-search" 
@@ -27,7 +27,7 @@
         </h:form>
         <h:form>
             <p:dataTable value="#{funcionarioController.listagem}" 
-                         var="item">
+                         var="item" id="tblFuncionario">
                 <p:column headerText="ID">
                     #{item.id}
                 </p:column>
@@ -55,10 +55,18 @@
                     </p:commandButton>
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Excluir" action="#{funcionarioController.apagar()}" ajax="false" immediate="true" icon="ui-icon-trash">
+                    <p:growl id="message" showDetail="true" />
+                    <p:commandButton value="Excluir" actionListener="#{funcionarioController.apagar}" update="message tblFuncionario" icon="ui-icon-trash">
                         <f:setPropertyActionListener target="#{funcionarioController.entidade}"
                                                      value="#{item}" />
+
+                        <p:confirm header="Confirmação" message="Deseja realmente excluir este Funcionário?" icon="ui-icon-alert"  />
                     </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
                 </p:column>
             </p:dataTable>
         </h:form>

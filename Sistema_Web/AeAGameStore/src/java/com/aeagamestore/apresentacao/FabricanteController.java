@@ -81,6 +81,7 @@ public class FabricanteController implements Serializable {
     public String apagar(){
         if(dao.Apagar(entidade)){
             limparCampos();
+            MensagemSucesso("Sucesso!", "Registro deletado com sucesso!");
             return "CargoListagem.xhtml";
         }
         else {

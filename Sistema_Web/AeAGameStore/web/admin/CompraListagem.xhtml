@@ -22,7 +22,7 @@
         </h:form>
         <h:form>
             <p:dataTable value="#{compraController.listagem}" 
-                         var="item">
+                         var="item" id="tblCompra" >
                 <p:column headerText="ID">
                     #{item.id}
                 </p:column>
@@ -43,10 +43,17 @@
                     </p:commandButton>
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Excluir" action="#{compraController.apagar}" ajax="false" immediate="true" icon="ui-icon-trash">
+                    <p:commandButton value="Excluir" icon="ui-icon-trash" update="message tblCompra" action="#{compraController.apagar}" immediate="true">
+                        <p:confirm header="Confirmação" message="Deseja realmente deletar esta Compra?" icon="ui-icon-alert" />
                         <f:setPropertyActionListener target="#{compraController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>
+                    <p:growl id="message" showDetail="true" />
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" update="tblCompra" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
                 </p:column>
             </p:dataTable>
         </h:form>

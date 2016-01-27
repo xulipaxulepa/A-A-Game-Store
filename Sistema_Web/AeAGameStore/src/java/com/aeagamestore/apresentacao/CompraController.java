@@ -152,6 +152,7 @@ public class CompraController implements Serializable {
     public String apagar() {
         if (dao.Apagar(entidade)) {
             limparCampos();
+            MensagemSucesso("Sucesso!", "Registro deletado com sucesso!");
             return "CompraListagem.xhtml";
         } else {
             MensagemErro("Falha!", "Erro ao apagar o registro. Contacte o administrador do sistema!");

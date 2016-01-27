@@ -39,16 +39,15 @@
                     </p:commandButton>
                 </p:column>
                 <p:column>
-                    <p:growl id="message" showDetail="true" />
-                    <p:commandButton value="Excluir" actionListener="#{fabricanteController.apagar}" update="message tblFabricante" icon="ui-icon-trash">
+                    <p:commandButton value="Excluir" icon="ui-icon-trash" update="message tblFabricante" action="#{fabricanteController.apagar}" immediate="true">
+                        <p:confirm header="Confirmação" message="Deseja realmente deletar este Fabricante?" icon="ui-icon-alert" />
                         <f:setPropertyActionListener target="#{fabricanteController.entidade}"
                                                      value="#{item}" />
-
-                        <p:confirm header="Confirmação" message="Deseja realmente excluir este Fabricante?" icon="ui-icon-alert"  />
                     </p:commandButton>
+                    <p:growl id="message" showDetail="true" />
 
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check"/>
+                        <p:commandButton value="Sim" update="tblFabricante" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
                         <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
                     </p:confirmDialog>
                 </p:column>

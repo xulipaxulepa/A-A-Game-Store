@@ -7,7 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
-        <h:form>
+        <h:form id="cadastro">
             <p:tabView>
                 <p:tab title="Dados pessoais">
                     <h:panelGrid columns="3" cellpadding="4" >
@@ -54,7 +54,7 @@
                                     promptLabel="Enter com sua senha" weakLabel="Fraca"
                                     goodLabel="Razoável" strongLabel="Forte" 
                                     />
-                        <p:message for="senha" />
+                        <p:message for="email" />
                     </h:panelGrid>
 
                 </p:tab>
@@ -97,9 +97,9 @@
             </p:tabView>
             <p:growl id="message" showDetail="true" />
 
-            <p:commandButton value="Voltar" immediate="true" action="index.xhtml" ajax="false" icon="ui-icon-arrowthick-1-w"/>
+            <p:commandButton value="Voltar" immediate="true" action="ClienteListagem.xhtml" ajax="false" icon="ui-icon-arrowthick-1-w"/>
             
-            <p:commandButton value="Salvar" actionListener="#{ClienteController.salvar}" update="message" icon="ui-icon-check">
+            <p:commandButton value="Salvar" actionListener="#{ClienteController.salvar}" update="message :cadastro" icon="ui-icon-check">
                 <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
             </p:commandButton>
 

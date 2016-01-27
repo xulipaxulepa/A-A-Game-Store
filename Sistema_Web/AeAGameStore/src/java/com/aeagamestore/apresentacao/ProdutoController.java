@@ -12,7 +12,11 @@ import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import org.primefaces.event.FileUploadEvent;
 
 /**
@@ -23,13 +27,22 @@ import org.primefaces.event.FileUploadEvent;
 @SessionScoped
 public class ProdutoController implements Serializable {
 
-    private Produto produtoCompra, filtro;
+    private Produto produtoCompra, filtro, entidade;
+
+    public Produto getEntidade() {
+        return entidade;
+    }
+
+    public void setEntidade(Produto entidade) {
+        this.entidade = entidade;
+    }
 
     @EJB
     ProdutoRepositorio dao;
 
     public ProdutoController() {
         filtro = new Produto();
+        entidade = new Produto();
     }
 
     public List<Produto> getListagem() {
@@ -50,14 +63,13 @@ public class ProdutoController implements Serializable {
         this.produtoCompra = produtoCompra;
     }
 
-    public void limpar(){
+    public void limpar() {
         this.filtro = new Produto();
     }
-    
-    public void filtrar(){
+
+    public void filtrar() {
     }
-        
-    
+
     public Produto getFiltro() {
         return filtro;
     }
@@ -66,7 +78,45 @@ public class ProdutoController implements Serializable {
         this.filtro = filtro;
     }
 
-    public void salvar(Produto produto) {
-        dao.Salvar(produto);
+    protected void MensagemSucesso(String titulo, String msg) {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, msg, titulo);
+        context.addMessage(null, m);
+        context.getExternalContext().getFlash().setKeepMessages(true);
+    }
+
+    protected void MensagemErro(String titulo, String msg) {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, titulo);
+        context.addMessage(null, m);
+        context.getExternalContext().getFlash().setKeepMessages(true);
+    }
+    
+    public String limparEntidadeVoltar(){
+        this.entidade = new Produto();
+        return "ProdutoListagem.xhtml";
+    }
+    
+    public void limparEntidade(){
+        this.entidade = new Produto();
+    }
+
+    public void salvar() {
+        try {
+            if (this.entidade == null) {
+                throw new Exception("Nenhum produto selecionado");
+            }
+            if (dao.Salvar(this.entidade)) {
+                MensagemSucesso("Sucesso", "Registro salvo com sucesso!");
+                this.limparEntidade();
+            } else {
+                throw new Exception("Erro ao salvar o registro. Contacte o administrador do sistema!");
+            }
+        } catch (Exception ex) {
+            this.MensagemErro("Erro!", ex.getMessage());
+        }
+
     }
 }

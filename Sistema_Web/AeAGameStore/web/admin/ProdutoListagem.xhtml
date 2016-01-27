@@ -3,7 +3,8 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="./TemplateAdmin.xhtml"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="content">
         <h:form>
@@ -15,7 +16,7 @@
                 <p:outputLabel />
                 <p:outputLabel value="Nome " for="nome" />
                 <p:inputText id="nome" value="#{ProdutoController.filtro.nome}" label="Nome"/>
-                
+
                 <p:commandButton value="Filtrar" ajax="false" icon="ui-icon-search" 
                                  action="#{ProdutoController.filtrar}"/> 
                 <p:commandButton value="Limpar" ajax="false" icon="ui-icon-closethick"
@@ -44,6 +45,12 @@
                 </p:column>
                 <p:column headerText="Valor">
                     #{item.estoque}
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Atualizar Estoque" action="AtualizaEstoqueProduto.xhtml" icon="ui-icon-arrowrefresh-1-s">
+                        <f:setPropertyActionListener target="#{ProdutoController.entidade}"
+                                                     value="#{item}" />
+                    </p:commandButton>
                 </p:column>
             </p:dataTable>
         </h:form>

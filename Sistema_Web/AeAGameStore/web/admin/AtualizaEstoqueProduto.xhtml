@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./TemplateAdmin.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="content">
+        <h3> Atualiza Estoque </h3>
+        <h:form id="atualizaEstoque">
+            <p:tabView>
+                <p:tab title="Atualização de Estoque">
+                    <h:panelGrid columns="3" cellpadding="4" >
+                        <p:outputLabel value="Produto" for="produto" />
+                        <p:autoComplete  size="30" id="produto" value="#{ProdutoController.entidade}"  completeMethod="#{ProdutoController.getAutoComplete}" label="Produto"
+                                         var="p" itemLabel="#{p.nome}" itemValue="#{p}" converter="produtoConverter" forceSelection="true" >
+                            <p:ajax event="itemSelect" update="quantidade" />
+                        </p:autoComplete>
+
+                        <p:message for="produto" />
+
+                        <p:outputLabel value="Quantidade" for="quantidade"/>
+                        <p:inputText id="quantidade" value="#{ProdutoController.entidade.estoque}" label="Quantidade" />
+                        <p:message for="quantidade" />
+                    </h:panelGrid>
+                    <p:growl id="message" showDetail="true" />
+                    <p:commandButton value="Voltar" immediate="true" action="#{ProdutoController.limparEntidadeVoltar()}" ajax="false"  icon="ui-icon-arrowthick-1-w"/>
+                    
+                    <p:commandButton value="Salvar" actionListener="#{ProdutoController.salvar}" update="message :atualizaEstoque" icon="ui-icon-document">
+                        <p:confirm header="Confirmação" message="Deseja realmente salvar os dados?" icon="ui-icon-alert"  />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                        <p:commandButton value="Sim" update="atualizaEstoque" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                    </p:confirmDialog>
+                </p:tab>
+            </p:tabView>
+        </h:form>
+    </ui:define>
+
+</ui:composition>

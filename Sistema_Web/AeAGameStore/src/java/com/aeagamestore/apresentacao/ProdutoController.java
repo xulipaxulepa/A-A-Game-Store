@@ -5,7 +5,10 @@
  */
 package com.aeagamestore.apresentacao;
 
+import com.aeagamestore.entidade.Console;
 import com.aeagamestore.entidade.FotoProduto;
+import com.aeagamestore.entidade.Jogo;
+import com.aeagamestore.entidade.Periferico;
 import com.aeagamestore.entidade.Produto;
 import com.aeagamestore.repositorios.ProdutoRepositorio;
 import javax.inject.Named;
@@ -55,6 +58,30 @@ public class ProdutoController implements Serializable {
         return dao.Buscar(produto);
     }
 
+    public boolean renderize(String tipo) {
+        if (tipo.equals("Jogo")) {
+            if (entidade instanceof Jogo) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (tipo.equals("Console")) {
+            if (entidade instanceof Console) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (tipo.equals("Periferico")) {
+            if (entidade instanceof Periferico) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public Produto getProdutoCompra() {
         return produtoCompra;
     }
@@ -93,14 +120,23 @@ public class ProdutoController implements Serializable {
         context.addMessage(null, m);
         context.getExternalContext().getFlash().setKeepMessages(true);
     }
-    
-    public String limparEntidadeVoltar(){
+
+    public String limparEntidadeVoltar() {
         this.entidade = new Produto();
         return "ProdutoListagem.xhtml";
     }
-    
-    public void limparEntidade(){
+
+    public void limparEntidade() {
         this.entidade = new Produto();
+    }
+
+    public void salvarDados() {
+        if (dao.Salvar(this.entidade)) {
+            MensagemSucesso("Sucesso", "Registro salvo com sucesso!");
+            this.limparEntidade();
+        } else {
+            MensagemErro("Falha!","Erro ao salvar o registro. Contacte o administrador do sistema!");
+        }
     }
 
     public void salvar() {

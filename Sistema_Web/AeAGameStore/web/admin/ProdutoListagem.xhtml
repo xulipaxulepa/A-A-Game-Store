@@ -47,7 +47,13 @@
                     #{item.estoque}
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Atualizar Estoque" action="AtualizaEstoqueProduto.xhtml" icon="ui-icon-arrowrefresh-1-s">
+                    <p:commandButton value="Estoque" action="AtualizaEstoqueProduto.xhtml" icon="ui-icon-arrowrefresh-1-s">
+                        <f:setPropertyActionListener target="#{ProdutoController.entidade}"
+                                                     value="#{item}" />
+                    </p:commandButton>
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Editar" action="ProdutoEditar.xhtml" icon="ui-icon-pencil">
                         <f:setPropertyActionListener target="#{ProdutoController.entidade}"
                                                      value="#{item}" />
                     </p:commandButton>

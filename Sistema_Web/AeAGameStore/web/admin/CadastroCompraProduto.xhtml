@@ -10,7 +10,7 @@
         <h:form id="compra">
             <p:tabView>
                 <p:tab title="Registro de Compra">
-                    <h:panelGrid columns="3" cellpadding="4" >
+                    <h:panelGrid columns="3" cellpadding="4" bgcolor="grey">
                         <p:outputLabel value="Fornecedor: *" for="fornecedor" />
                         <p:autoComplete id="fornecedor" value="#{compraController.entidade.fornecedor}" completeMethod="#{fornecedorController.getAutoComplete}" label="Fornecedor"
                                          var="f" itemLabel="#{f.nome}" itemValue="#{f}" converter="fornecedorConverter" forceSelection="true" />
@@ -27,7 +27,7 @@
                     </h:panelGrid>
                     <p:spacer  height="25" />
                     <p:separator />
-                    <h:panelGrid columns="10" cellpadding="4" >
+                    <h:panelGrid columns="10" cellpadding="4" bgcolor="grey">
                         <p:outputLabel value="Produto" for="produto" />
                         <p:autoComplete size="30" id="produto" value="#{compraController.i.produto}" completeMethod="#{ProdutoController.getAutoComplete}" label="Produto"
                                         var="p" itemLabel="#{p.nome}" itemValue="#{p}" converter="produtoConverter" forceSelection="true" />

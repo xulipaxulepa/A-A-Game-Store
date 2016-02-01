@@ -11,7 +11,7 @@
         <h:form id="atualizaEstoque">
             <p:tabView>
                 <p:tab title="Atualização de Estoque">
-                    <h:panelGrid columns="3" cellpadding="4" >
+                    <h:panelGrid columns="3" cellpadding="4" bgcolor="grey">
                         <p:outputLabel value="Produto" for="produto" />
                         <p:autoComplete  size="30" id="produto" value="#{ProdutoController.entidade}"  completeMethod="#{ProdutoController.getAutoComplete}" label="Produto"
                                          var="p" itemLabel="#{p.nome}" itemValue="#{p}" converter="produtoConverter" forceSelection="true" >

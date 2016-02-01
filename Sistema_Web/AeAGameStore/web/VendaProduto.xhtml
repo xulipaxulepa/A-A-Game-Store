@@ -14,10 +14,10 @@
                     <div style="margin-left: 100px">
                         <h1 style="color: blue; margin-left: 30px;"> #{vendaController.produto.nome} </h1>
                         <p:growl id="msgs" showDetail="true" />
-                        <h:panelGrid columns="2" cellpadding="40" >
+                        <h:panelGrid columns="2" cellpadding="40" style="width:100%; margin-left: 20px; margin-right: 20px">
                             <p:imageSwitch effect="fade" id="fadeEffect">
                                 <ui:repeat value="#{vendaController.produto.fotos}" var="image" id="fadeEffectImages">
-                                    <p:graphicImage name="/imagem/#{image.nome}" id="image" />
+                                    <p:graphicImage name="/imagem/#{image.nome}" id="image" width="620" height="450"/>
                                 </ui:repeat>
                             </p:imageSwitch>
                             <h:panelGroup>

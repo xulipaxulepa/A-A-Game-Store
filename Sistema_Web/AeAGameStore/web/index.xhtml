@@ -18,14 +18,12 @@
                 <f:facet name="header">
                     Nossos produtos
                 </f:facet>
-                <h:panelGrid columns="1" style="width:100%; margin-left: 20px; margin-right: 20px">
+                <h:panelGrid columns="1" style="width:100%; margin-left: 20px; margin-right: 20px" bgcolor="grey" >
 
-                    <p:imageSwitch effect="fade" id="fadeEffect" >
-                        <ui:repeat value="#{item.fotos}" var="image" id="fadeEffectImages">
-                            <p:graphicImage name="imagem/#{image.nome}" id="image" width="180" height="150" alt="#{item.nome}" rendered="true" />
+                    <ui:repeat value="#{item.fotos.get(0)}" var="image" id="fadeEffectImages">
+                            <p:graphicImage  name="imagem/#{image.nome}" id="image" width="180" height="150" alt="#{item.nome}" rendered="true" />
                         </ui:repeat>
-                    </p:imageSwitch>
-
+                    
                     <h:outputText value="#{item.nome}" />
                     <p:outputLabel value="#{item.valor}" />
                     <p:commandButton value="Comprar" action="VendaProduto.xhtml" ajax="false">

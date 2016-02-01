@@ -10,7 +10,7 @@
         <h:form id="cadastro">
             <p:tabView>
                 <p:tab title="Dados pessoais">
-                    <h:panelGrid columns="3" cellpadding="4" >
+                    <h:panelGrid columns="3" cellpadding="4" bgcolor="grey">
                         <p:outputLabel value="Nome " for="nome" />
                         <p:inputText  id="nome" value="#{ClienteController.entidade.nome}" required="true" label="Nome"/>
                         <p:message for="nome" />
@@ -59,7 +59,7 @@
 
                 </p:tab>
                 <p:tab title="Dados de endereço">
-                    <h:panelGrid columns="3" cellpadding="5">
+                    <h:panelGrid columns="3" cellpadding="5" bgcolor="grey">
 
                         <p:outputLabel value="Rua:" for="rua"/>
                         <p:inputText  id="rua" value="#{ClienteController.entidade.endereco.rua}" required="true" label="Rua"/>

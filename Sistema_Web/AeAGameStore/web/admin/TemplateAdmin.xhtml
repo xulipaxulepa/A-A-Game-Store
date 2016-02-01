@@ -15,8 +15,9 @@
     </h:head>
     <h:body>
 
-        <div id="top">
+        <div id="top" align="center" style="background-color: grey">
             <h:form>
+                <p:graphicImage value="/resources/imagem/logo.jpg" />
                 <p:menubar>
                     <p:menuitem value="Inicio" action="index.xhtml" ajax="false" immediate="true"/>
                     <p:submenu label="Cadastros">
@@ -39,17 +40,17 @@
                     <p:menuitem value="Meios de Pagamento" action="FormaDePagamentoListagem.xhtml" ajax="false" immediate="true" />
                     <p:menuitem value="Compras" action="CompraListagem.xhtml" ajax="false" immediate="true" />
                     <p:menuitem value="Vendas" action="VendaListagem.xhtml" ajax="false" immediate="true" />
-                    <p:menuitem value="Área pública" url="./../" ajax="false" immediate="true"/>
+                    <p:menuitem value="Área pública" url="/index.xhtml" ajax="false" immediate="true"/>
 
                 </p:menubar>
                 <p:growl id="global" showDetail="true" />
             </h:form>
         </div>
 
-        <div id="content" class="center_content">
+        <div id="content" class="center_content" style="background-color: grey">
             <ui:insert name="content"></ui:insert>
         </div>
-        <div id="bottom" style="float: bottom; text-align: center">
+        <div id="bottom" style="float: bottom; text-align: center" >
             Copyright 2016 - AeA Game Store 
         </div>
     </h:body>

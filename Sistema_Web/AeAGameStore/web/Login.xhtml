@@ -8,7 +8,7 @@
     <ui:define name="content">
         <h:form>
             <p:panel id="basic" header="Painel de Autenticação" style="margin-bottom:20px">
-                <h:panelGrid columns="3" cellpadding="10">
+                <h:panelGrid columns="3" cellpadding="10" bgcolor="grey">
                     <p:outputLabel value="E-mail:" for="email" />
                     <p:inputText id="email" value="#{ClienteController.entidade.email}" required="true" label="Email"/>
                     <p:message for="email" />
